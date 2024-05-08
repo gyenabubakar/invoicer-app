@@ -4,7 +4,7 @@
   import { Input } from 'shadcn-ui/input';
   import { FormFieldError, PasswordInput } from '#components';
   import { fieldIsValid } from '#lib/form-schemas/utils';
-  import { formSchema, formFieldErrors } from '#lib/form-schemas/signup';
+  import { formSchema, formFieldErrors as fieldErrors } from '#lib/form-schemas/signup';
 
   let firstName = '';
   let lastName = '';
@@ -40,37 +40,35 @@
     <div class="form-group no-mb">
       <Label for="firstName">First name</Label>
       <Input type="text" id="firstName" name="firstName" bind:value={firstName} />
-      {#if firstNameIsValid === false}
-        <FormFieldError message={formFieldErrors.firstName} />
-      {/if}
+      <FormFieldError message={fieldErrors.firstName} invalid={firstNameIsValid === false} />
     </div>
 
     <div class="form-group no-mb">
       <Label for="lastName">Last name</Label>
       <Input type="text" id="lastName" name="lastName" bind:value={lastName} />
-      {#if lastNameIsValid === false}
-        <FormFieldError message={formFieldErrors.lastName} />
-      {/if}
+      <FormFieldError message={fieldErrors.lastName} invalid={lastNameIsValid === false} />
     </div>
   </div>
 
   <div class="form-group">
     <Label for="email">Email</Label>
     <Input type="email" id="email" name="email" bind:value={email} />
-    {#if emailIsValid === false}
-      <FormFieldError message={formFieldErrors.email} />
-    {/if}
+    <FormFieldError message={fieldErrors.email} invalid={emailIsValid === false} />
   </div>
 
   <div class="form-group">
     <Label for="password">Password</Label>
     <PasswordInput id="password" name="password" bind:value={password} />
-    {#if passwordIsValid === false}
-      <FormFieldError message={formFieldErrors.password} />
-    {/if}
+    <FormFieldError message={fieldErrors.password} invalid={passwordIsValid === false} />
   </div>
 
-  <Button type="submit" class="w-full mt-4" disabled={!canSubmit} loading={submitting}>
+  <Button
+    type="submit"
+    class="w-full mt-4"
+    disabled={!canSubmit}
+    loading={submitting}
+    aria-label={submitting ? 'Creating account...' : 'Sign up'}
+  >
     Sign up
   </Button>
 
