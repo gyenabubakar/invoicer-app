@@ -21,6 +21,10 @@
   $: canSubmit = formIsValid && !submitting;
 </script>
 
+<svelte:head>
+  <title>Sign up | Gyen's Invoicer</title>
+</svelte:head>
+
 <form method="post" class="">
   <div class="header">
     <h1 class="text-3xl font-bold mb-2">Sign up</h1>
