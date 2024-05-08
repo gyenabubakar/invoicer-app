@@ -19,6 +19,7 @@
   "dependencies": {
     "bits-ui": "^0.21.4",
     "clsx": "^2.1.0",
+    "js-cookie": "^3.0.5",
     "mode-watcher": "^0.3.0",
     "phosphor-svelte": "^2.0.1",
     "svelte-loading-spinners": "^0.3.6",
@@ -32,6 +33,7 @@
     "@sveltejs/kit": "^2.5.6",
     "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@types/eslint": "^8.56.0",
+    "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "autoprefixer": "^10.4.19",

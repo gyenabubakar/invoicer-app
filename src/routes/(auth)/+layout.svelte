@@ -1,6 +1,10 @@
 <!--suppress CssUnusedSymbol -->
+<script lang="ts">
+  import { Logo } from '#components';
+</script>
+
 <main class="w-screen h-screen flex items-center justify-center flex-col">
-  <img src="/logo-dark.svg" alt="Gyen's Invoicer logo" class="w-10 h-10 mx-auto mb-4" />
+  <Logo />
   <slot />
 </main>
 
