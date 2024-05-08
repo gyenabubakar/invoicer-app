@@ -21,9 +21,11 @@
     "clsx": "^2.1.0",
     "mode-watcher": "^0.3.0",
     "phosphor-svelte": "^2.0.1",
+    "svelte-loading-spinners": "^0.3.6",
     "svelte-sonner": "^0.3.22",
     "tailwind-merge": "^2.2.2",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.2.0",
