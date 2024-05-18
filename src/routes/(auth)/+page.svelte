@@ -2,7 +2,7 @@
   import { Button } from 'shadcn-ui/button';
   import { Label } from 'shadcn-ui/label';
   import { Input } from 'shadcn-ui/input';
-  import { FormFieldError, PasswordInput } from '#components';
+  import { Container, FormFieldError, PasswordInput } from '#components';
   import { fieldIsValid } from '#lib/form-schemas/utils';
   import { formSchema, formFieldErrors } from '#lib/form-schemas/signup';
 
@@ -21,45 +21,51 @@
   <title>Sign in | Gyen's Invoicer</title>
 </svelte:head>
 
-<form method="post" class="">
-  <div class="header">
-    <h1 class="text-3xl font-bold mb-2">Sign in</h1>
-    <p class="text-gray-500">Sign in to your account.</p>
-  </div>
+<Container>
+  <form method="post" class="">
+    <div class="header">
+      <h1 class="text-3xl font-bold mb-2">Sign in</h1>
+      <p class="text-gray-500">Sign in to your account.</p>
+    </div>
 
-  <Button variant="outline" class="w-full">
-    <img src="/google-icon.svg" alt="Google icon" class="w-[18px] h-[18px] mr-2" />
-    <span>Sign in with Google</span>
-  </Button>
+    <Button variant="outline" class="w-full">
+      <img src="/google-icon.svg" alt="Google icon" class="w-[18px] h-[18px] mr-2" />
+      <span>Sign in with Google</span>
+    </Button>
 
-  <div class="divider">
-    <span>or</span>
-  </div>
+    <div class="divider">
+      <span>or</span>
+    </div>
 
-  <div class="form-group">
-    <Label for="email">Email</Label>
-    <Input type="email" id="email" name="email" bind:value={email} />
-    <FormFieldError message={formFieldErrors.email} invalid={emailIsValid === false} />
-  </div>
+    <div class="form-group">
+      <Label for="email">Email</Label>
+      <Input type="email" id="email" name="email" bind:value={email} />
+      <FormFieldError message={formFieldErrors.email} invalid={emailIsValid === false} />
+    </div>
 
-  <div class="form-group">
-    <Label for="password">Password</Label>
-    <PasswordInput id="password" name="password" bind:value={password} />
-    <FormFieldError message={formFieldErrors.password} invalid={passwordIsValid === false} />
-  </div>
+    <div class="form-group">
+      <Label for="password">Password</Label>
+      <PasswordInput id="password" name="password" bind:value={password} />
+      <FormFieldError message={formFieldErrors.password} invalid={passwordIsValid === false} />
+    </div>
 
-  <Button type="submit" class="w-full mt-4" disabled={!canSubmit} loading={submitting}>
-    Sign in
-  </Button>
+    <Button type="submit" class="w-full mt-4" disabled={!canSubmit} loading={submitting}>
+      Sign in
+    </Button>
 
-  <div class="mt-8">
-    <p class="text-center text-gray-500">
-      Don't have an account? <a href="/signup" class="text-blue-500">Create one</a>
-    </p>
-  </div>
-</form>
+    <div class="mt-8">
+      <p class="text-center text-gray-500">
+        Don't have an account? <a href="/signup">Create one</a>
+      </p>
+    </div>
+  </form>
+</Container>
 
 <style lang="postcss">
+  form {
+    @apply max-w-[100vw];
+  }
+
   .divider {
     @apply relative mb-4 mt-6 flex items-center;
 

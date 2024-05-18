@@ -78,7 +78,7 @@
 
   <div class="mt-8">
     <p class="text-center text-gray-500">
-      Already have an account? <a href="/" class="text-blue-500">Sign in</a>
+      Already have an account? <a href="/">Sign in</a>
     </p>
   </div>
 </form>

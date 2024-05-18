@@ -17,12 +17,14 @@
     "format": "prettier --write . --log-level silent"
   },
   "dependencies": {
-    "bits-ui": "^0.21.4",
+    "bits-ui": "^0.21.7",
     "clsx": "^2.1.0",
+    "cmdk-sv": "^0.0.17",
     "js-cookie": "^3.0.5",
     "mode-watcher": "^0.3.0",
     "phosphor-svelte": "^2.0.1",
     "svelte-loading-spinners": "^0.3.6",
+    "svelte-radix": "^1.1.0",
     "svelte-sonner": "^0.3.22",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1",

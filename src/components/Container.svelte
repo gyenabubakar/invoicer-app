@@ -16,19 +16,20 @@
 </script>
 
 <div
-  class={cn('sv-container', className)}
+  class={cn('ig-container', className)}
   class:sm={size === 'sm'}
   class:md={size === 'md'}
   class:lg={size === 'lg'}
   class:xl={size === 'xl'}
   class:xxl={size === '2xl'}
+  {...$$restProps}
 >
   <slot />
 </div>
 
 <style lang="postcss">
-  .sv-container {
-    @apply mx-auto my-0 px-4;
+  .ig-container {
+    @apply mx-auto w-full px-4;
 
     &.sm {
       max-width: 560px;
