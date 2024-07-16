@@ -82,16 +82,4 @@
 </form>
 
 <style lang="postcss">
-  .divider {
-    @apply relative mb-4 mt-6 flex items-center;
-
-    &::before {
-      @apply inline-block h-[1px] w-full bg-gray-200;
-      content: '';
-    }
-
-    span {
-      @apply absolute left-[48%] bg-white px-1.5 text-sm uppercase text-gray-500;
-    }
-  }
 </style>
