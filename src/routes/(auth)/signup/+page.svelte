@@ -2,7 +2,7 @@
   import { Button } from 'shadcn-ui/button';
   import { Label } from 'shadcn-ui/label';
   import { Input } from 'shadcn-ui/input';
-  import { FormFieldError, PasswordInput } from '#components';
+  import { Divider, FormFieldError, PasswordInput } from '#components';
   import { fieldIsValid } from '#lib/form-schemas/utils';
   import { formSchema, formFieldErrors as fieldErrors } from '#lib/form-schemas/signup';
 
@@ -36,9 +36,7 @@
     <span>Sign up with Google</span>
   </Button>
 
-  <div class="divider">
-    <span>or</span>
-  </div>
+  <Divider />
 
   <div class="grid grid-cols-2 gap-4 mb-3">
     <div class="form-group no-mb">

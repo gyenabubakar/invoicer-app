@@ -2,7 +2,7 @@
   import { Button } from 'shadcn-ui/button';
   import { Label } from 'shadcn-ui/label';
   import { Input } from 'shadcn-ui/input';
-  import { Container, FormFieldError, PasswordInput } from '#components';
+  import { Container, FormFieldError, PasswordInput, Divider } from '#components';
   import { fieldIsValid } from '#lib/form-schemas/utils';
   import { formSchema, formFieldErrors } from '#lib/form-schemas/signup';
 
@@ -33,9 +33,7 @@
       <span>Sign in with Google</span>
     </Button>
 
-    <div class="divider">
-      <span>or</span>
-    </div>
+    <Divider />
 
     <div class="form-group">
       <Label for="email">Email</Label>
@@ -64,18 +62,5 @@
 <style lang="postcss">
   form {
     @apply max-w-[100vw];
-  }
-
-  .divider {
-    @apply relative mb-4 mt-6 flex items-center;
-
-    &::before {
-      @apply inline-block h-[1px] w-full bg-gray-200;
-      content: '';
-    }
-
-    span {
-      @apply absolute left-[48%] bg-white px-1.5 text-sm uppercase text-gray-500;
-    }
   }
 </style>
