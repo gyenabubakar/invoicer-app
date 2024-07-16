@@ -15,9 +15,5 @@
     :global(.header) {
       @apply mb-8 text-center;
     }
-
-    :global(.form-group:not(.no-mb)) {
-      @apply mb-3;
-    }
   }
 </style>
