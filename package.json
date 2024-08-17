@@ -17,7 +17,7 @@
     "format": "prettier --write . --log-level silent"
   },
   "dependencies": {
-    "bits-ui": "^0.21.7",
+    "bits-ui": "^0.21.13",
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.17",
     "js-cookie": "^3.0.5",

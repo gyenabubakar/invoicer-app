@@ -6,12 +6,18 @@
   export { className as class };
   export let withText = false;
   export let href: string | undefined = '/';
+  export let hideTextOnExtraSmall = false;
 </script>
 
-<a {href} class="flex items-center no-underline" aria-label="Gyen's Invoicer logo">
+<a data-logo {href} class="flex items-center no-underline" aria-label="Gyen's Invoicer logo">
   <img src="/logo.svg" alt="Gyen's Invoicer logo" class={cn('w-8', className)} aria-hidden="true" />
   {#if withText}
-    <span class="uppercase font-medium ml-2 text-invoicer-dark" aria-hidden="true">
+    <span
+      class={cn('uppercase font-medium ml-2 text-invoicer-dark', {
+        'hidden sm:inline-block': hideTextOnExtraSmall,
+      })}
+      aria-hidden="true"
+    >
       Gyen's Invoicer
     </span>
   {/if}

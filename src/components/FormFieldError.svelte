@@ -14,10 +14,10 @@
   export { className as class };
   export let message: string | undefined | null;
   export let invalid: boolean;
-
-  $: visibility = message && invalid ? 'visible' : 'hidden';
 </script>
 
-<p class={cn('text-red-500 text-sm mt-0.5', className)} aria-live="polite" style:visibility>
-  {message}
-</p>
+{#if message && invalid}
+  <p class={cn('text-red-500 text-sm mt-0.5', className)} aria-live="polite">
+    {message}
+  </p>
+{/if}

@@ -14,6 +14,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xs: '375px',
+      },
       colors: {
         invoicer: '#6DBC45',
         'invoicer-dark': '#508146',

@@ -7,6 +7,8 @@
   import type { ComboboxOption } from '#components/types';
   import { cn } from '#components/shadcn/utils';
 
+  let className = '';
+  export { className as class };
   export let open = false;
   export let value = '';
   export let options: ComboboxOption[];
@@ -38,9 +40,9 @@
         variant="outline"
         role="combobox"
         aria-expanded={open}
-        class="w-[200px] justify-between "
+        class={cn('justify-between', className)}
       >
-        <span class="text-gray-600">{selectedValue}</span>
+        <span class="text-gray-600 truncate">{selectedValue}</span>
         <CaretUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </Popover.Trigger>
