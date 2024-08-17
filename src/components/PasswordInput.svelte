@@ -9,7 +9,6 @@
   type $$Props = HTMLInputAttributes & {
     class?: string;
     value?: string;
-    canTogglePasswordVisibility?: boolean;
   };
   type $$Events = InputEvents;
 
