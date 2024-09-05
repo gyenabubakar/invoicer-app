@@ -36,5 +36,7 @@ module.exports = {
       'warn',
       { varsIgnorePattern: '^\\$\\$(Props|Events|Slots)$' },
     ],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };

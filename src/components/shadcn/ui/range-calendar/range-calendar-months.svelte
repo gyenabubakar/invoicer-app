@@ -8,16 +8,9 @@
   export { className as class };
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-  class={cn('bg-card text-card-foreground rounded-xl border shadow', className)}
+  class={cn('mt-4 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0', className)}
   {...$$restProps}
-  on:click
-  on:focusin
-  on:focusout
-  on:mouseenter
-  on:mouseleave
 >
-  <p></p>
   <slot />
 </div>

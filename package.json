@@ -17,6 +17,7 @@
     "format": "prettier --write . --log-level silent"
   },
   "dependencies": {
+    "@internationalized/date": "^3.5.5",
     "bits-ui": "^0.21.13",
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.17",
@@ -24,7 +25,7 @@
     "mode-watcher": "^0.3.0",
     "phosphor-svelte": "^2.0.1",
     "svelte-loading-spinners": "^0.3.6",
-    "svelte-radix": "^1.1.0",
+    "svelte-radix": "^1.1.1",
     "svelte-sonner": "^0.3.22",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1",

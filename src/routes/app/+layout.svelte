@@ -218,15 +218,15 @@
       />
     </div>
 
-    <main class="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+    <div id="main" class="flex-1">
       <slot />
-    </main>
+    </div>
   </div>
 </div>
 
 <style lang="postcss">
-  main {
-    @apply pb-28 pt-10;
+  #main {
+    @apply p-10 pb-28;
 
     :global(h1) {
       @apply text-4xl font-semibold;
