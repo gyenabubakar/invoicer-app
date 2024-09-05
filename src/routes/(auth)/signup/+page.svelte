@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mb-3">
     <Label for="email">Email</Label>
     <Input type="email" id="email" name="email" bind:value={email} />
     <FormFieldError message={fieldErrors.email} invalid={emailIsValid === false} />
@@ -76,7 +76,7 @@
 
   <div class="mt-8">
     <p class="text-center text-gray-500">
-      Already have an account? <a href="/">Sign in</a>
+      Already have an account? <a data-gi href="/">Sign in</a>
     </p>
   </div>
 </form>
