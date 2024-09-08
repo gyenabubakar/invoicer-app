@@ -95,7 +95,7 @@
     </div>
   </aside>
 
-  <div class="flex flex-col flex-1">
+  <div class="grid grid-cols-1 grid-rows-[60px,calc(100vh-60px)] flex-col flex-1">
     <header
       class="bg-muted/40 flex h-14 items-center justify-between border-b px-4 lg:h-[60px] lg:px-6"
     >
@@ -219,15 +219,19 @@
       />
     </div>
 
-    <div id="main" class="flex-1">
+    <div id="main" class="flex-grow p-10 pb-52 overflow-y-scroll">
       <slot />
     </div>
   </div>
 </div>
 
 <style lang="postcss">
+  :global(body) {
+    @apply overflow-y-hidden;
+  }
+
   #main {
-    @apply p-10 pb-52;
+    /*height: calc(100vh - 60px);*/
 
     :global(h1) {
       @apply text-4xl font-semibold;
