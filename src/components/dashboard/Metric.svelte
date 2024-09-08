@@ -1,20 +1,27 @@
+<!--suppress CssUnusedSymbol -->
 <script lang="ts">
   import { Badge } from 'shadcn-ui/badge';
   import { Card } from 'shadcn-ui/card';
   import { PhArrowUp, PhArrowDown } from '#components/icons';
   import { cn } from '#shadcn/utils';
+  import { METRICS_COLOURS, METRICS_TITLES, METRICS_ICONS } from '#components/dashboard/constants';
 
-  export let title: string;
+  export let key: keyof typeof METRICS_COLOURS;
   export let value: string;
   export let trend: 'up' | 'down';
   export let trendValue: number;
-  export let icon: any;
+
+  $: colour = METRICS_COLOURS[key];
+  $: title = METRICS_TITLES[key];
+  $: icon = METRICS_ICONS[key];
 </script>
 
 <Card data-metric class="shadow-none">
   <div
     data-metric-icon
     class="p-1.5 rounded-full bg-gray-200 max-w-max text-primary-background mb-2"
+    style:--fg={colour.foreground}
+    style:--bg={colour.background}
   >
     <svelte:component this={icon} class="w-5 h-5" weight="fill" />
   </div>
@@ -59,30 +66,6 @@
 
     p {
       @apply text-muted-foreground;
-    }
-  }
-
-  :global([data-metric]:nth-child(1)) {
-    [data-metric-icon] {
-      @apply bg-purple-100 text-purple-500;
-    }
-  }
-
-  :global([data-metric]:nth-child(2)) {
-    [data-metric-icon] {
-      @apply bg-blue-100 text-blue-500;
-    }
-  }
-
-  :global([data-metric]:nth-child(3)) {
-    [data-metric-icon] {
-      @apply bg-green-100 text-green-500;
-    }
-  }
-
-  :global([data-metric]:nth-child(4)) {
-    [data-metric-icon] {
-      @apply bg-pink-100 text-pink-500;
     }
   }
 </style>

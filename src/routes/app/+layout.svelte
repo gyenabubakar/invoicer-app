@@ -22,7 +22,7 @@
     PhKanban,
     PhMagnifyingGlass,
   } from '#components/icons';
-  import { fakeAvatar } from '#lib/fakes';
+  import { FAKE_AVATAR } from '#lib/fakes';
   import type { ComboboxOption } from '#components/types';
   import { AppLogo } from '#components/logos';
 
@@ -179,7 +179,7 @@
         <DropdownMenuTrigger>
           <button class="flex items-center justify-center">
             <Avatar class="w-[30px] h-[30px]">
-              <AvatarImage src={fakeAvatar} alt="Avatar" />
+              <AvatarImage src={FAKE_AVATAR} alt="Avatar" />
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
           </button>
@@ -227,7 +227,7 @@
 
 <style lang="postcss">
   #main {
-    @apply p-10 pb-28;
+    @apply p-10 pb-52;
 
     :global(h1) {
       @apply text-4xl font-semibold;

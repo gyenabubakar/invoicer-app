@@ -1,13 +1,11 @@
 <script lang="ts">
   import type { DateRange } from 'bits-ui';
   import * as Tabs from 'shadcn-ui/tabs';
-  import * as Avatar from 'shadcn-ui/avatar';
-  import { Integration, Metric, RecentInvoice } from '#components/dashboard';
-  import { PhCurrencyDollar, PhCoins, PhTimer, PhCheckSquare } from '#components/icons';
+  import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
   import { Container, DateRangePicker } from '#components';
   import { goto } from '$app/navigation';
-  import { Badge } from 'shadcn-ui/badge';
-  import { Button } from 'shadcn-ui/button';
+  import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
+  import { Separator } from 'shadcn-ui/separator';
 
   let dateRange: DateRange | undefined = undefined;
 
@@ -34,6 +32,7 @@
       <p class="text-muted-foreground">Here's an overview of your recent activity.</p>
     </header>
 
+    <!-- METRICS FILTERS -->
     <div id="metrics-filter" class="mb-5 flex items-center justify-between">
       <Tabs.Root value="30" onValueChange={onTabChange}>
         <Tabs.List>
@@ -47,24 +46,17 @@
       <DateRangePicker bind:value={dateRange} />
     </div>
 
+    <!-- METRICS -->
     <div id="metrics" class="grid grid-cols-4 gap-6">
-      <Metric
-        title="Total revenue"
-        value="$12,000"
-        trend="up"
-        trendValue={2}
-        icon={PhCurrencyDollar}
-      />
-
-      <Metric title="Billable hours" value="24" trend="down" trendValue={5} icon={PhTimer} />
-
-      <Metric title="Average hourly rate" value="$50" trend="up" trendValue={10} icon={PhCoins} />
-
-      <Metric title="Tasks completed" value="12" trend="down" trendValue={3} icon={PhCheckSquare} />
+      <Metric key="totalRevenue" value="$12,000" trend="up" trendValue={2} />
+      <Metric key="billableHours" value="24" trend="down" trendValue={5} />
+      <Metric key="avgHourlyRate" value="$50" trend="up" trendValue={10} />
+      <Metric key="tasksCompleted" value="12" trend="down" trendValue={3} />
     </div>
 
-    <div class="grid grid-cols-12 gap-14 mt-10">
-      <div class="col-span-7">
+    <!-- INTEGRATIONS, GRAPHS, AND RECENT INVOICES -->
+    <div class="grid grid-cols-12 mt-14">
+      <div class="col-span-6">
         <section id="integrations" class="">
           <h2 class="text-3xl font-semibold">Integrations</h2>
           <p class="text-muted-foreground">
@@ -72,44 +64,42 @@
             assigned to you.
           </p>
 
-          <div class="grid grid-cols-2 mt-7 gap-5">
+          <div class="flex flex-col mt-7 gap-8">
             <Integration app="GitHub" />
             <Integration app="GitLab" isConnected />
           </div>
         </section>
-
-        <section id="graphs"></section>
       </div>
 
-      <div class="col-span-5">
+      <div class="col-start-8 col-end-13">
         <section id="recent-invoices">
           <h2 class="text-3xl font-semibold">Recent invoices</h2>
           <p class="text-muted-foreground">Here are the invoices you've sent out recently.</p>
 
           <div class="mt-7">
             <RecentInvoice
-              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              avatar={FAKE_AVATAR}
               client="Gyen Abubakar"
               invoiceNumber="INV-0TG39"
               invoiceStatus="Overdue"
             />
 
             <RecentInvoice
-              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              avatar={FAKE_AVATAR}
               client="Gyen Abubakar"
               invoiceNumber="INV-0TG39"
               invoiceStatus="Paid"
             />
 
             <RecentInvoice
-              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              avatar={FAKE_AVATAR}
               client="Gyen Abubakar"
               invoiceNumber="INV-0TG39"
               invoiceStatus="Pending"
             />
 
             <RecentInvoice
-              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              avatar={FAKE_AVATAR}
               client="Gyen Abubakar"
               invoiceNumber="INV-0TG39"
               invoiceStatus="Sent"
@@ -117,6 +107,41 @@
           </div>
         </section>
       </div>
+    </div>
+
+    <Separator class="my-14" />
+
+    <div class="">
+      <section id="graphs" class="col-span-8">
+        <h2 class="text-3xl font-semibold">Your metrics in detail</h2>
+        <p class="text-muted-foreground">Here's a detailed breakdown of your recent activity.</p>
+
+        <div class="mt-7 grid grid-cols-2 gap-8">
+          <MetricGraph
+            key="totalRevenue"
+            dates={FAKE_GRAPH_DATA.totalRevenue.dates}
+            values={FAKE_GRAPH_DATA.totalRevenue.values}
+          />
+
+          <MetricGraph
+            key="billableHours"
+            dates={FAKE_GRAPH_DATA.billableHours.dates}
+            values={FAKE_GRAPH_DATA.billableHours.values}
+          />
+
+          <MetricGraph
+            key="avgHourlyRate"
+            dates={FAKE_GRAPH_DATA.avgHourlyRate.dates}
+            values={FAKE_GRAPH_DATA.avgHourlyRate.values}
+          />
+
+          <MetricGraph
+            key="tasksCompleted"
+            dates={FAKE_GRAPH_DATA.tasksCompleted.dates}
+            values={FAKE_GRAPH_DATA.tasksCompleted.values}
+          />
+        </div>
+      </section>
     </div>
   </Container>
 </main>

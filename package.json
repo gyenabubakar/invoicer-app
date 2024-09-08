@@ -18,9 +18,11 @@
   },
   "dependencies": {
     "@internationalized/date": "^3.5.5",
+    "apexcharts": "^3.53.0",
     "bits-ui": "^0.21.13",
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.17",
+    "date-fns": "^3.6.0",
     "js-cookie": "^3.0.5",
     "mode-watcher": "^0.3.0",
     "phosphor-svelte": "^2.0.1",

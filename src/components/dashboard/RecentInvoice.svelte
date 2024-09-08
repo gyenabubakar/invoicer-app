@@ -20,7 +20,8 @@
   </Avatar.Root>
 
   <div
-    class="border-b border-b-gray-100 pb-2 flex-grow flex items-center justify-between"
+    data-recent-invoice-details
+    class="pb-2 flex-grow flex items-center justify-between"
     style="width: calc(100% - (50px + 12px));"
   >
     <div class="truncate">
@@ -30,7 +31,7 @@
       <p
         class="text-base items-center leading-5 text-muted-foreground text-ellipsis mt-0.5 overflow-clip"
       >
-        &nbsp;<span class="font-medium text-black inline">#{invoiceNumber}</span>&nbsp;sent to {client}.
+        &nbsp;<span class="font-medium text-black inline">#{invoiceNumber}</span>&nbsp;&nbsp;sent to {client}.
       </p>
     </div>
 
@@ -57,5 +58,9 @@
 
   :global([data-invoice-status].sent) {
     @apply bg-blue-50 text-blue-500 hover:bg-blue-50;
+  }
+
+  :global([data-recent-invoice]:not(:last-child) > [data-recent-invoice-details]) {
+    @apply border-b border-b-gray-100;
   }
 </style>

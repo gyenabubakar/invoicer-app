@@ -25,7 +25,7 @@
 
 <Card
   class={cn(
-    'shadow-none p-4 flex flex-col justify-between',
+    'shadow-none border-slate-300 p-4',
     isConnected && 'border-invoicer bg-invoicer/5 relative'
   )}
 >
@@ -87,7 +87,7 @@
         </AlertDialog.Content>
       </AlertDialog.Root>
     {:else}
-      <Button class="mt-4">
+      <Button>
         <PhPlugsConnected class="mr-2 shadow-none" size="20px" weight="fill" />
         Connect
       </Button>

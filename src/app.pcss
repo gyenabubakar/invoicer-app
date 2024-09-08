@@ -80,11 +80,19 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Alegreya Sans', sans-serif;
-    @apply bg-background text-foreground;
+    @apply bg-background text-lg text-foreground;
   }
 
   /* gi — gyen's invoicer */
   a[data-gi] {
     @apply text-invoicer underline hover:text-invoicer-dark;
+  }
+
+  [data-metric-icon] {
+    --fg: var(--foreground);
+    --bg: var(--background);
+
+    color: var(--fg);
+    background-color: var(--bg) !important;
   }
 }
