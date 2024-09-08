@@ -12,6 +12,9 @@ export {
   CurrencyDollar as PhCurrencyDollar,
   Coins as PhCoins,
   CheckSquare as PhCheckSquare,
+  Check as PhCheck,
   Timer as PhTimer,
   CalendarBlank as PhCalendarBlank,
+  Plugs as PhPlugs,
+  PlugsConnected as PhPlugsConnected,
 } from 'phosphor-svelte';

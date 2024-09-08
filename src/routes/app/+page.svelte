@@ -1,14 +1,15 @@
 <script lang="ts">
+  import type { DateRange } from 'bits-ui';
   import * as Tabs from 'shadcn-ui/tabs';
-  import { Metric } from '#components/dashboard';
+  import { Card } from 'shadcn-ui/card';
+  import { Integration, Metric } from '#components/dashboard';
   import { PhCurrencyDollar, PhCoins, PhTimer, PhCheckSquare } from '#components/icons';
   import { Container, DateRangePicker } from '#components';
   import { goto } from '$app/navigation';
-  import type { DateRange } from 'bits-ui';
+  import { Button } from 'shadcn-ui/button';
+  import { PhPlugsConnected } from '#components/icons.js';
 
   let dateRange: DateRange | undefined = undefined;
-
-  $: console.log('>>>> dateRange:', dateRange);
 
   function onTabChange(value?: string) {
     if (!value) return;
@@ -60,6 +61,19 @@
       <Metric title="Average hourly rate" value="$50" trend="up" trendValue={10} icon={PhCoins} />
 
       <Metric title="Tasks completed" value="12" trend="down" trendValue={3} icon={PhCheckSquare} />
+    </div>
+
+    <div id="integrations" class="mt-10">
+      <h2 class="text-3xl font-semibold">Integrations</h2>
+      <p class="text-muted-foreground">
+        Connect your favourite apps and we'll pull in issues and merge requests as they're assigned
+        to you.
+      </p>
+
+      <div class="grid grid-cols-3 mt-7 gap-5">
+        <Integration app="GitHub" />
+        <Integration app="GitLab" isConnected />
+      </div>
     </div>
   </Container>
 </main>
