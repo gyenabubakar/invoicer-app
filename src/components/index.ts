@@ -1,4 +1,3 @@
-export { default as Logo } from './Logo.svelte';
 export { default as PasswordInput } from './PasswordInput.svelte';
 export { default as Divider } from './Divider.svelte';
 export { default as Container } from './Container.svelte';

@@ -1,10 +1,10 @@
 <!--suppress CssUnusedSymbol -->
 <script lang="ts">
-  import { Logo } from '#components';
+  import { AppLogo } from '#components/logos';
 </script>
 
 <main class="w-screen h-screen flex items-center justify-center flex-col">
-  <Logo class="mx-auto mb-4 w-10" href={undefined} />
+  <AppLogo class="mx-auto mb-4 w-10" href={undefined} />
   <slot />
 </main>
 

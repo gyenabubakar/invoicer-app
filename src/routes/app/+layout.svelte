@@ -11,7 +11,7 @@
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
   import { Input } from 'shadcn-ui/input';
   import { page } from '$app/stores';
-  import { Combobox, Logo } from '#components';
+  import { Combobox } from '#components';
   import {
     PhBell,
     PhUsers,
@@ -24,6 +24,7 @@
   } from '#components/icons';
   import { fakeAvatar } from '#lib/fakes';
   import type { ComboboxOption } from '#components/types';
+  import { AppLogo } from '#components/logos';
 
   let activeClientId: string;
   let activeProjectId: string;
@@ -52,7 +53,7 @@
   <aside data-desktops class="bg-muted/40 hidden border-r lg:block">
     <div class="flex h-full max-h-screen flex-col gap-2">
       <div class="flex h-14 items-center border-b px-4 lg:h-[60px]">
-        <Logo class="w-7" href="/app" withText />
+        <AppLogo class="w-7" href="/app" withText />
 
         <Button variant="outline" size="icon" class="ml-auto h-8 w-8">
           <PhBell class="h-4 w-4" />
@@ -108,7 +109,7 @@
         <SheetContent side="left" class="flex flex-col">
           <nav class="items-start text-sm font-medium pt-8">
             <div class="flex h-14 items-center">
-              <Logo class="w-7" href="/app" withText />
+              <AppLogo class="w-7" href="/app" withText />
 
               <Button variant="outline" size="icon" class="ml-auto h-8 w-8">
                 <PhBell class="h-4 w-4" />
@@ -171,7 +172,7 @@
       </div>
 
       <div class="block lg:hidden">
-        <Logo class="w-7" href="/app" withText hideTextOnExtraSmall />
+        <AppLogo class="w-7" href="/app" withText hideTextOnExtraSmall />
       </div>
 
       <DropdownMenu preventScroll={true}>
