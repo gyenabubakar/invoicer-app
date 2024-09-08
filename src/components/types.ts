@@ -4,3 +4,5 @@ export type ComboboxOption = {
 };
 
 export type IntegratedApp = 'GitHub' | 'GitLab';
+
+export type InvoiceStatus = 'Draft' | 'Sent' | 'Paid' | 'Pending' | 'Overdue';

@@ -1,13 +1,13 @@
 <script lang="ts">
   import type { DateRange } from 'bits-ui';
   import * as Tabs from 'shadcn-ui/tabs';
-  import { Card } from 'shadcn-ui/card';
-  import { Integration, Metric } from '#components/dashboard';
+  import * as Avatar from 'shadcn-ui/avatar';
+  import { Integration, Metric, RecentInvoice } from '#components/dashboard';
   import { PhCurrencyDollar, PhCoins, PhTimer, PhCheckSquare } from '#components/icons';
   import { Container, DateRangePicker } from '#components';
   import { goto } from '$app/navigation';
+  import { Badge } from 'shadcn-ui/badge';
   import { Button } from 'shadcn-ui/button';
-  import { PhPlugsConnected } from '#components/icons.js';
 
   let dateRange: DateRange | undefined = undefined;
 
@@ -63,16 +63,59 @@
       <Metric title="Tasks completed" value="12" trend="down" trendValue={3} icon={PhCheckSquare} />
     </div>
 
-    <div id="integrations" class="mt-10">
-      <h2 class="text-3xl font-semibold">Integrations</h2>
-      <p class="text-muted-foreground">
-        Connect your favourite apps and we'll pull in issues and merge requests as they're assigned
-        to you.
-      </p>
+    <div class="grid grid-cols-12 gap-14 mt-10">
+      <div class="col-span-7">
+        <section id="integrations" class="">
+          <h2 class="text-3xl font-semibold">Integrations</h2>
+          <p class="text-muted-foreground">
+            Connect your favourite apps and we'll pull in issues and merge requests as they're
+            assigned to you.
+          </p>
 
-      <div class="grid grid-cols-3 mt-7 gap-5">
-        <Integration app="GitHub" />
-        <Integration app="GitLab" isConnected />
+          <div class="grid grid-cols-2 mt-7 gap-5">
+            <Integration app="GitHub" />
+            <Integration app="GitLab" isConnected />
+          </div>
+        </section>
+
+        <section id="graphs"></section>
+      </div>
+
+      <div class="col-span-5">
+        <section id="recent-invoices">
+          <h2 class="text-3xl font-semibold">Recent invoices</h2>
+          <p class="text-muted-foreground">Here are the invoices you've sent out recently.</p>
+
+          <div class="mt-7">
+            <RecentInvoice
+              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              client="Gyen Abubakar"
+              invoiceNumber="INV-0TG39"
+              invoiceStatus="Overdue"
+            />
+
+            <RecentInvoice
+              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              client="Gyen Abubakar"
+              invoiceNumber="INV-0TG39"
+              invoiceStatus="Paid"
+            />
+
+            <RecentInvoice
+              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              client="Gyen Abubakar"
+              invoiceNumber="INV-0TG39"
+              invoiceStatus="Pending"
+            />
+
+            <RecentInvoice
+              avatar="https://avatars.githubusercontent.com/u/26672526?v=4"
+              client="Gyen Abubakar"
+              invoiceNumber="INV-0TG39"
+              invoiceStatus="Sent"
+            />
+          </div>
+        </section>
       </div>
     </div>
   </Container>
