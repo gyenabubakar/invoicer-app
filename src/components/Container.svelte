@@ -1,7 +1,7 @@
 <!--suppress JSUnusedGlobalSymbols, CssUnusedSymbol, ReservedWordAsName -->
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   type SizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 

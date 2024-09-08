@@ -4,7 +4,7 @@
   import { Eye, EyeSlash } from 'phosphor-svelte';
   import { Input } from 'shadcn-ui/input';
   import type { InputEvents } from 'shadcn-ui/input';
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   type $$Props = HTMLInputAttributes & {
     class?: string;

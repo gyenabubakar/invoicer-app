@@ -1,6 +1,6 @@
 <!--suppress ReservedWordAsName -->
 <script lang="ts">
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   let className = '';
   export { className as class };

@@ -6,7 +6,7 @@
     type DateValue,
     getLocalTimeZone,
   } from '@internationalized/date';
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
   import { Button } from 'shadcn-ui/button';
   import { RangeCalendar } from 'shadcn-ui/range-calendar';
   import * as Popover from 'shadcn-ui/popover';

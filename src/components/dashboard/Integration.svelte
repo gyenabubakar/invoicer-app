@@ -1,11 +1,10 @@
 <script lang="ts">
   import { Card } from 'shadcn-ui/card';
   import { Button } from 'shadcn-ui/button';
+  import { Badge } from 'shadcn-ui/badge';
   import { PhPlugs, PhPlugsConnected } from '#components/icons';
   import type { IntegratedApp } from '#components/types';
-  import { cn } from '#components/shadcn/utils';
-  import { Badge } from 'shadcn-ui/badge';
-  import { PhCheck } from '#components/icons.js';
+  import { cn } from '#shadcn/utils';
 
   export let app: IntegratedApp;
   export let isConnected: boolean = false;
@@ -44,7 +43,9 @@
   </p>
 
   {#if isConnected}
-    <Badge class="bg-invoicer-dark rounded-full absolute right-4 -top-3.5 shadow-none">
+    <Badge
+      class="bg-invoicer-dark rounded-full absolute right-4 -top-3.5 shadow-none hover:bg-invoicer-dark"
+    >
       <PhPlugsConnected size="18px" weight="fill" class="mr-1" />
       Connected
     </Badge>
@@ -56,12 +57,12 @@
         variant="outline"
         class="border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white"
       >
-        <PhPlugs class="mr-2" size="20px" />
+        <PhPlugs class="mr-2" size="20px" weight="fill" />
         Disconnect
       </Button>
     {:else}
       <Button class="mt-4">
-        <PhPlugsConnected class="mr-2" size="20px" />
+        <PhPlugsConnected class="mr-2" size="20px" weight="fill" />
         Connect
       </Button>
     {/if}

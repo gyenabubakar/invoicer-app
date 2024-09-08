@@ -2,7 +2,7 @@
   import { Badge } from 'shadcn-ui/badge';
   import { Card } from 'shadcn-ui/card';
   import { PhArrowUp, PhArrowDown } from '#components/icons';
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   export let title: string;
   export let value: string;

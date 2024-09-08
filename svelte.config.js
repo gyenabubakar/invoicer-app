@@ -17,7 +17,8 @@ const config = {
       '#lib': 'src/lib',
       '#assets': 'src/assets',
       '#components': 'src/components',
-      'shadcn-ui': 'src/components/shadcn/ui',
+      '#shadcn': 'src/_shadcn',
+      'shadcn-ui': 'src/_shadcn/ui',
     },
     csrf: {
       checkOrigin: process.env.ENV !== 'development',

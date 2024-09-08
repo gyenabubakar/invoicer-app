@@ -5,7 +5,7 @@
   import * as Popover from 'shadcn-ui/popover';
   import * as Command from 'shadcn-ui/command';
   import type { ComboboxOption } from '#components/types';
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   let className = '';
   export { className as class };

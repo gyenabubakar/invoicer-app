@@ -1,7 +1,7 @@
 <!--suppress JSUnusedGlobalSymbols, ReservedWordAsName -->
 
 <script lang="ts">
-  import { cn } from '#components/shadcn/utils';
+  import { cn } from '#shadcn/utils';
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   type $$Props = {
