@@ -25,9 +25,9 @@
     style="width: calc(100% - (50px + 12px));"
   >
     <div class="truncate">
-      <Badge data-invoice-status class={cn('shadow-none', invoiceStatus.toLowerCase())}
-        >{invoiceStatus}</Badge
-      >
+      <Badge data-invoice-status class={cn('shadow-none', invoiceStatus.toLowerCase())}>
+        {invoiceStatus}
+      </Badge>
       <p
         class="text-base items-center leading-5 text-muted-foreground text-ellipsis mt-0.5 overflow-clip"
       >

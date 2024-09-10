@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import type ApexCharts from 'apexcharts';
   import { format } from 'date-fns';
   import { Card, CardContent } from 'shadcn-ui/card';
@@ -62,6 +62,10 @@
     const ApexCharts = (await import('apexcharts')).default;
     chart = new ApexCharts(element, options);
     await chart.render();
+  });
+
+  onDestroy(() => {
+    chart?.destroy();
   });
 </script>
 
