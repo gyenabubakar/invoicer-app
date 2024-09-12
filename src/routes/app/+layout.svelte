@@ -11,7 +11,7 @@
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
   import { Input } from 'shadcn-ui/input';
   import { page } from '$app/stores';
-  import { Combobox } from '#components';
+  import { Combobox, Container } from '#components';
   import {
     PhBell,
     PhUsers,
@@ -220,7 +220,9 @@
     </div>
 
     <div id="main" class="flex-grow p-10 pb-52 overflow-y-scroll">
-      <slot />
+      <Container>
+        <slot />
+      </Container>
     </div>
   </div>
 </div>
