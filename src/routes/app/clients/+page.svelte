@@ -3,11 +3,11 @@
   import { derived } from 'svelte/store';
   import { Input } from 'shadcn-ui/input';
   import { PhMagnifyingGlass } from '#components/icons';
-  import { SourceFilters, FluidClientCard } from '#components/clients';
+  import { SourceFilter, FluidClientCard, DatesOrder } from '#components/clients';
   import { FAKE_CLIENTS } from '#lib/fakes';
   import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
   import { page } from '$app/stores';
-  import type { FilterSource } from '#components/clients/types';
+  import type { DatesOrderType, FilterSource } from '#components/clients/types';
 
   const selectedSource = derived(page, (__page) => {
     return {
@@ -15,7 +15,11 @@
     };
   });
 
-  setContext(CLIENTS_PAGE_CTX, { selectedSource });
+  const datesOrder = derived(page, (__page) => {
+    return (__page.url.searchParams.get('order') || 'reset') as DatesOrderType;
+  });
+
+  setContext(CLIENTS_PAGE_CTX, { selectedSource, datesOrder });
 </script>
 
 <svelte:head>
@@ -36,8 +40,9 @@
       <PhMagnifyingGlass class="w-5 h-5 absolute left-2 top-2" />
     </div>
 
-    <div class="relative">
-      <SourceFilters />
+    <div class="flex gap-4">
+      <DatesOrder />
+      <SourceFilter />
     </div>
   </div>
 

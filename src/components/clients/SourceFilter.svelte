@@ -3,28 +3,14 @@
   import * as Select from 'shadcn-ui/select';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import { PhSquaresFour } from '#components/icons';
-  import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
-  import type { ClientsPageContext, FilterSource } from '#components/clients/types';
-  import { goto } from '$app/navigation';
+  import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
+  import type { ClientsPageContext } from '#components/clients/types';
 
   const { selectedSource } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
-
-  function onSelectedChange(option: any) {
-    const value = option.value as FilterSource;
-    const url = new URL(location.href);
-
-    if (value === 'all') {
-      url.searchParams.delete('source');
-    } else {
-      url.searchParams.set('source', value);
-    }
-
-    goto(url);
-  }
 </script>
 
-<Select.Root selected={$selectedSource} {onSelectedChange}>
-  <Select.Trigger class="w-[150px] flex">
+<Select.Root selected={$selectedSource} onSelectedChange={onSelectedChange('source', 'all')}>
+  <Select.Trigger class="w-[150px] flex shadow-none">
     {#if $selectedSource.value === 'all'}
       <div class="flex items-center gap-1.5">
         <PhSquaresFour class="w-6 h-6 text-muted-foreground" />

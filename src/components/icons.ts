@@ -20,4 +20,8 @@ export {
   Funnel as PhFunnel,
   X as PhX,
   SquaresFour as PhSquaresFour,
+  SortAscending as PhSortAscending,
+  SortDescending as PhSortDescending,
+  Broom as PhBroom,
+  ArrowsDownUp as PhArrowsDownUp,
 } from 'phosphor-svelte';

@@ -1,2 +1,3 @@
 export { default as FluidClientCard } from './FluidClientCard.svelte';
-export { default as SourceFilters } from './SourceFilters.svelte';
+export { default as SourceFilter } from './SourceFilter.svelte';
+export { default as DatesOrder } from './DatesOrder.svelte';
