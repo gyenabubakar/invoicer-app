@@ -95,4 +95,11 @@
     color: var(--fg);
     background-color: var(--bg) !important;
   }
+
+  [data-dot] {
+    @apply absolute -left-0.5 -top-0.5 z-[3] hidden h-2 w-2 rounded-full bg-red-500;
+    &.visible {
+      @apply block;
+    }
+  }
 }

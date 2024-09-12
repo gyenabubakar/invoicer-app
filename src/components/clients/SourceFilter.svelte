@@ -9,24 +9,29 @@
   const { selectedSource } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
 </script>
 
-<Select.Root selected={$selectedSource} onSelectedChange={onSelectedChange('source', 'all')}>
-  <Select.Trigger class="w-[150px] flex shadow-none">
-    {#if $selectedSource.value === 'all'}
+<Select.Root
+  selected={{ value: $selectedSource }}
+  onSelectedChange={onSelectedChange('source', 'all')}
+>
+  <Select.Trigger class="w-[150px] flex shadow-none relative">
+    <div data-dot class:visible={$selectedSource !== 'all'} />
+
+    {#if $selectedSource === 'all'}
       <div class="flex items-center gap-1.5">
         <PhSquaresFour class="w-6 h-6 text-muted-foreground" />
         <span>All sources</span>
       </div>
-    {:else if $selectedSource.value === 'internal'}
+    {:else if $selectedSource === 'internal'}
       <div class="flex items-center gap-1.5">
         <AppLogo href={null} class="w-5" />
         <span>Internal</span>
       </div>
-    {:else if $selectedSource.value === 'github'}
+    {:else if $selectedSource === 'github'}
       <div class="flex items-center gap-1.5">
         <GitHubLogo class="w-5" />
         <span>GitHub</span>
       </div>
-    {:else if $selectedSource.value === 'gitlab'}
+    {:else if $selectedSource === 'gitlab'}
       <div class="flex items-center gap-1.5">
         <GitLabLogo class="w-5" />
         <span>GitLab</span>

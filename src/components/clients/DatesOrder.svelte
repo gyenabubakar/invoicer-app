@@ -12,7 +12,9 @@
   selected={{ value: $datesOrder }}
   onSelectedChange={onSelectedChange('order', 'reset')}
 >
-  <Select.Trigger class="w-[225px] flex shadow-none">
+  <Select.Trigger class="w-[225px] flex shadow-none relative">
+    <div data-dot class:visible={$datesOrder !== 'reset'} />
+
     <div class="flex items-center gap-1.5">
       {#if $datesOrder === 'reset'}
         <PhArrowsDownUp class="w-6 h-6 text-muted-foreground" />

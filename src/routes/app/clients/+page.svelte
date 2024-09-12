@@ -7,19 +7,17 @@
   import { FAKE_CLIENTS } from '#lib/fakes';
   import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
   import { page } from '$app/stores';
-  import type { DatesOrderType, FilterSource } from '#components/clients/types';
+  import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
 
   const selectedSource = derived(page, (__page) => {
-    return {
-      value: (__page.url.searchParams.get('source') || 'all') as FilterSource,
-    };
+    return (__page.url.searchParams.get('source') || 'all') as FilterSource;
   });
 
   const datesOrder = derived(page, (__page) => {
     return (__page.url.searchParams.get('order') || 'reset') as DatesOrderType;
   });
 
-  setContext(CLIENTS_PAGE_CTX, { selectedSource, datesOrder });
+  setContext<ClientsPageContext>(CLIENTS_PAGE_CTX, { selectedSource, datesOrder });
 </script>
 
 <svelte:head>

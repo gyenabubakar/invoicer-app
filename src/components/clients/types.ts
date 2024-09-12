@@ -4,6 +4,6 @@ export type FilterSource = 'all' | 'internal' | 'github' | 'gitlab';
 export type DatesOrderType = 'ascending' | 'descending' | 'reset';
 
 export type ClientsPageContext = {
-  selectedSource: Readable<{ value: FilterSource }>;
+  selectedSource: Readable<FilterSource>;
   datesOrder: Readable<DatesOrderType>;
 };
