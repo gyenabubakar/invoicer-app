@@ -1,13 +1,16 @@
 <script lang="ts">
   import type { DateRange } from 'bits-ui';
   import * as Tabs from 'shadcn-ui/tabs';
+  import { Separator } from 'shadcn-ui/separator';
   import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
   import { Container, DateRangePicker } from '#components';
-  import { goto } from '$app/navigation';
   import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
-  import { Separator } from 'shadcn-ui/separator';
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
 
   let dateRange: DateRange | undefined = undefined;
+
+  $: defaultTab = $page.url.searchParams.get('numberOfDays') || '30';
 
   function onTabChange(value?: string) {
     if (!value) return;
@@ -34,7 +37,7 @@
 
     <!-- METRICS FILTERS -->
     <div id="metrics-filter" class="mb-5 flex items-center justify-between">
-      <Tabs.Root value="30" onValueChange={onTabChange}>
+      <Tabs.Root value={defaultTab} onValueChange={onTabChange}>
         <Tabs.List>
           <Tabs.Trigger value="7">7 days</Tabs.Trigger>
           <Tabs.Trigger value="30">30 days</Tabs.Trigger>
