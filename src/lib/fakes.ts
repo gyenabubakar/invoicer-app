@@ -1,4 +1,5 @@
 import type { Metric } from '#components/dashboard/constants';
+import type { ClientSource } from '#lib/types';
 
 export const FAKE_AVATAR =
   'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
@@ -56,3 +57,48 @@ export const FAKE_GRAPH_DATA: Record<Metric, { dates: Date[]; values: number[] }
     values: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
   },
 };
+
+export const FAKE_CLIENTS = [
+  {
+    id: crypto.randomUUID(),
+    name: 'Acme Corp',
+    avatar: FAKE_AVATAR,
+    products: 5,
+    tasks: {
+      ongoing: 3,
+      completed: 9,
+    },
+    invoices: 3,
+    source: 'GitHub' as ClientSource,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Globex Corp',
+    avatar: FAKE_AVATAR,
+    products: 5,
+    tasks: {
+      ongoing: 4,
+      completed: 8,
+    },
+    invoices: 3,
+    source: 'GitLab' as ClientSource,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Initech',
+    avatar: FAKE_AVATAR,
+    products: 5,
+    tasks: {
+      ongoing: 0,
+      completed: 10,
+    },
+    invoices: 3,
+    source: 'Internal' as ClientSource,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+];
