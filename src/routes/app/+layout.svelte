@@ -219,7 +219,7 @@
       />
     </div>
 
-    <div id="main" class="flex-grow p-10 pb-52 overflow-y-scroll">
+    <div id="main" class="flex-grow p-10 pb-52 overflow-y-auto">
       <Container>
         <slot />
       </Container>

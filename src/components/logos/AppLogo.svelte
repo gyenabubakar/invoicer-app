@@ -7,8 +7,6 @@
   export let withText = false;
   export let href: string | undefined | null = '/';
   export let hideTextOnExtraSmall = false;
-
-  console.log('AppLogo component loaded:', href);
 </script>
 
 <a data-logo {href} class="flex items-center no-underline" aria-label="Gyen's Invoicer logo">

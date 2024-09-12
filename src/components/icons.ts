@@ -17,4 +17,7 @@ export {
   CalendarBlank as PhCalendarBlank,
   Plugs as PhPlugs,
   PlugsConnected as PhPlugsConnected,
+  Funnel as PhFunnel,
+  X as PhX,
+  SquaresFour as PhSquaresFour,
 } from 'phosphor-svelte';

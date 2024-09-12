@@ -1,8 +1,21 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { derived } from 'svelte/store';
   import { Input } from 'shadcn-ui/input';
   import { PhMagnifyingGlass } from '#components/icons';
+  import { SourceFilters, FluidClientCard } from '#components/clients';
   import { FAKE_CLIENTS } from '#lib/fakes';
-  import { FluidClient } from '#components/clients';
+  import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
+  import { page } from '$app/stores';
+  import type { FilterSource } from '#components/clients/types';
+
+  const selectedSource = derived(page, (__page) => {
+    return {
+      value: (__page.url.searchParams.get('source') || 'all') as FilterSource,
+    };
+  });
+
+  setContext(CLIENTS_PAGE_CTX, { selectedSource });
 </script>
 
 <svelte:head>
@@ -17,19 +30,21 @@
     </p>
   </header>
 
-  <div data-filters>
+  <div data-filters class="flex items-center justify-between">
     <div class="relative">
-      <Input placeholder="Search clients..." class="max-w-80 pl-8" />
+      <Input placeholder="Search clients..." class="w-72 pl-8" />
       <PhMagnifyingGlass class="w-5 h-5 absolute left-2 top-2" />
     </div>
 
-    <div class=""></div>
+    <div class="relative">
+      <SourceFilters />
+    </div>
   </div>
 
   <section class="mt-10">
     <div class="grid grid-cols-12 gap-4">
       {#each FAKE_CLIENTS as client (client.id)}
-        <FluidClient {client} />
+        <FluidClientCard {client} />
       {/each}
     </div>
   </section>
