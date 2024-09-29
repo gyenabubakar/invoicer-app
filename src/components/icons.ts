@@ -2,6 +2,7 @@ export {
   Bell as PhBell,
   House as PhHouse,
   Users as PhUsers,
+  UserPlus as PhUserPlus,
   List as PhList,
   MagnifyingGlass as PhMagnifyingGlass,
   SignOut as PhSignOut,

@@ -8,6 +8,8 @@
   import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
   import { page } from '$app/stores';
   import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
+  import { Button } from 'shadcn-ui/button';
+  import { PhUserPlus } from '#components/icons.js';
 
   const selectedSource = derived(page, (__page) => {
     return (__page.url.searchParams.get('source') || 'all') as FilterSource;
@@ -39,8 +41,15 @@
     </div>
 
     <div class="flex gap-4">
-      <DatesOrder />
-      <SourceFilter />
+      <div class="flex gap-2">
+        <DatesOrder />
+        <SourceFilter />
+      </div>
+
+      <Button href="/app/clients/new">
+        <PhUserPlus weight="bold" class="w-5 h-5 mr-2" />
+        Add client
+      </Button>
     </div>
   </div>
 
