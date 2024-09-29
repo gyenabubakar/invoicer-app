@@ -25,4 +25,5 @@ export {
   SortDescending as PhSortDescending,
   Broom as PhBroom,
   ArrowsDownUp as PhArrowsDownUp,
+  Pen as PhPen,
 } from 'phosphor-svelte';
