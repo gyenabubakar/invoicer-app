@@ -13,7 +13,10 @@
     name: 'Acme Corp',
     avatar: FAKE_AVATAR,
     email: 'info@acmecorp.com',
-    phone: '+1 (234) 567-890',
+    phone: {
+      readable: '+1 (234) 567-890',
+      raw: '+1234567890',
+    },
     source: 'GitLab' as 'Internal' | 'GitHub' | 'GitLab',
     address: '1234 Acme St, Acmeville, AC 12345',
   };
@@ -67,14 +70,14 @@
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Email:</span>
           <span role="definition" class="mb-2">
-            <a href="mailto:info@acmecorp.com">{client.email}</a>
+            <a href="mailto:{client.email}">{client.email}</a>
           </span>
         </div>
 
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Phone:</span>
           <span role="definition" class="mb-2">
-            <a href="tel:+1234567890">{client.phone}</a>
+            <a href="tel:{client.phone.raw}">{client.phone.readable}</a>
           </span>
         </div>
 
