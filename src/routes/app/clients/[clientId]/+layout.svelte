@@ -13,6 +13,7 @@
   import { clientsContextKey } from '#lib/clients/utils';
   import { goto } from '$app/navigation';
   import type { Client } from '#lib/types';
+  import { ObjectSource } from '#components';
 
   type Tab = 'projects' | 'tasks' | 'invoices';
 
@@ -64,24 +65,7 @@
       <h1 class="">
         <span class="mr-1">{$client.name}</span>
 
-        <Tooltip>
-          <TooltipTrigger class="ml-2">
-            {#if $client.source === 'Internal'}
-              <AppLogo href={null} class="w-5 inline-block" />
-            {:else if $client.source === 'GitHub'}
-              <GitHubLogo class="w-5 inline-block" />
-            {:else if $client.source === 'GitLab'}
-              <GitLabLogo class="w-5 inline-block" />
-            {/if}
-          </TooltipTrigger>
-          <TooltipContent>
-            {#if $client.source !== 'Internal'}
-              Imported from {$client.source}
-            {:else}
-              Added internally
-            {/if}
-          </TooltipContent>
-        </Tooltip>
+        <ObjectSource source={$client.source} />
 
         <Tooltip>
           <TooltipTrigger class="ml-2">

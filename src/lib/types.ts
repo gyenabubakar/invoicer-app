@@ -1,4 +1,4 @@
-export type ClientSource = 'GitHub' | 'GitLab' | 'Internal';
+export type Integration = 'GitHub' | 'GitLab' | 'Internal';
 
 export type Client = {
   id: string;
@@ -19,6 +19,8 @@ export type ClientProject = {
   color: string;
   description: string;
   status: 'Active' | 'Inactive';
+  source: Integration;
+  sourceURL: string | null;
   tasks: {
     total: number;
     completed: number;

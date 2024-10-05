@@ -10,6 +10,8 @@ export {
   Kanban as PhKanban,
   ArrowUp as PhArrowUp,
   ArrowDown as PhArrowDown,
+  ArrowSquareOut as PhArrowSquareOut,
+  ArrowsDownUp as PhArrowsDownUp,
   CurrencyDollar as PhCurrencyDollar,
   Coins as PhCoins,
   CheckSquare as PhCheckSquare,
@@ -24,7 +26,6 @@ export {
   SortAscending as PhSortAscending,
   SortDescending as PhSortDescending,
   Broom as PhBroom,
-  ArrowsDownUp as PhArrowsDownUp,
   Pen as PhPen,
   Plus as PhPlus,
 } from 'phosphor-svelte';
