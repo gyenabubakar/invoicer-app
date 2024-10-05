@@ -26,4 +26,5 @@ export {
   Broom as PhBroom,
   ArrowsDownUp as PhArrowsDownUp,
   Pen as PhPen,
+  Plus as PhPlus,
 } from 'phosphor-svelte';

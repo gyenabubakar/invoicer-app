@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
   import { Button } from 'shadcn-ui/button';
@@ -6,13 +7,14 @@
   import * as Tabs from 'shadcn-ui/tabs';
   import { FAKE_AVATAR } from '#lib/fakes';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
-  import { PhPen } from '#components/icons';
+  import { PhPen, PhPlus } from '#components/icons';
   import { page } from '$app/stores';
   import { getInitials } from '#lib/utils';
-  import type { Client } from '#lib/types';
-  import { setContext } from 'svelte';
   import { clientsContextKey } from '#lib/clients/utils';
   import { goto } from '$app/navigation';
+  import type { Client } from '#lib/types';
+
+  type Tab = 'projects' | 'tasks' | 'invoices';
 
   const client = writable<Client>({
     id: $page.params.clientId,
@@ -27,9 +29,16 @@
     address: '1234 Acme St, Acmeville, AC 12345',
   });
 
-  $: currentTab = $page.params.activeTab ?? 'projects';
+  $: currentTab = (() => {
+    const pathSegments = $page.url.href.split('/').filter(Boolean);
+    const lastSegment = pathSegments.pop();
+    if (lastSegment === 'tasks' || lastSegment === 'invoices') {
+      return lastSegment as Tab;
+    }
+    return 'projects';
+  })();
 
-  function onTabChange(value: 'projects' | 'tasks' | 'invoices' | undefined) {
+  function onTabChange(value: Tab | undefined) {
     let path = `/app/clients/${$page.params.clientId}/`;
     if (value !== 'projects') {
       path += value;
@@ -107,13 +116,34 @@
     </div>
   </div>
 
-  <Tabs.Root value={currentTab} onValueChange={onTabChange} class="mt-8">
-    <Tabs.List>
-      <Tabs.Trigger value="projects">Projects</Tabs.Trigger>
-      <Tabs.Trigger value="tasks">Tasks</Tabs.Trigger>
-      <Tabs.Trigger value="invoices">Invoices</Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
+  <div class="flex items-center justify-between">
+    <Tabs.Root value={currentTab} onValueChange={onTabChange} class="mt-8">
+      <Tabs.List>
+        <Tabs.Trigger value="projects">Projects</Tabs.Trigger>
+        <Tabs.Trigger value="tasks">Tasks</Tabs.Trigger>
+        <Tabs.Trigger value="invoices">Invoices</Tabs.Trigger>
+      </Tabs.List>
+    </Tabs.Root>
+
+    <div class="">
+      {#if currentTab === 'projects'}
+        <Button class="flex gap-1">
+          <PhPlus class="w-4 h-4" weight="bold" />
+          <span>New Project</span>
+        </Button>
+      {:else if currentTab === 'tasks'}
+        <Button class="flex gap-1">
+          <PhPlus class="w-4 h-4" weight="bold" />
+          <span>New Task</span>
+        </Button>
+      {:else if currentTab === 'invoices'}
+        <Button class="flex gap-1">
+          <PhPlus class="w-4 h-4" weight="bold" />
+          <span>New Invoice</span>
+        </Button>
+      {/if}
+    </div>
+  </div>
 
   <div class="pt-8">
     <slot />

@@ -25,7 +25,7 @@
     style="width: calc(100% - (50px + 12px));"
   >
     <div class="truncate">
-      <Badge data-invoice-status class={cn('shadow-none', invoiceStatus.toLowerCase())}>
+      <Badge data-invoice-status class={cn(invoiceStatus.toLowerCase())}>
         {invoiceStatus}
       </Badge>
       <p
@@ -41,7 +41,7 @@
 
 <style lang="postcss">
   :global([data-invoice-status]) {
-    @apply rounded-full border font-medium;
+    @apply rounded-full border font-medium shadow-none;
   }
 
   :global([data-invoice-status].overdue) {

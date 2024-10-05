@@ -1,5 +1,5 @@
 import type { Metric } from '#components/dashboard/constants';
-import type { ClientSource } from '#lib/types';
+import type { ClientProject, ClientSource } from '#lib/types';
 
 export const FAKE_AVATAR =
   'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
@@ -100,5 +100,61 @@ export const FAKE_CLIENTS = [
     source: 'Internal' as ClientSource,
     createdAt: new Date(),
     updatedAt: new Date(),
+  },
+];
+
+export const FAKE_PROJECTS: ClientProject[] = [
+  {
+    id: crypto.randomUUID(),
+    name: "Gyen's Invoicer",
+    color: '#FF0000',
+    description: 'Description for project 1',
+    status: 'Inactive',
+    startDate: new Date('2021-09-01'),
+    endDate: new Date('2024-12-31'),
+    tasks: {
+      total: 10,
+      completed: 5,
+    },
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Survie',
+    color: '#6DBC45',
+    description: 'Description for project 2',
+    status: 'Active',
+    startDate: null,
+    endDate: null,
+    tasks: {
+      total: 10,
+      completed: 5,
+    },
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Linear',
+    color: '#0000FF',
+    description: 'Description for project 3',
+    status: 'Inactive',
+    startDate: new Date('2024-03-01'),
+    endDate: new Date('2025-08-31'),
+    tasks: {
+      total: 10,
+      completed: 5,
+    },
+  },
+  {
+    // generate great project names and mix the colours
+    id: crypto.randomUUID(),
+    name: 'Survie API',
+    color: '#FF00FF',
+    description: 'Description for project 4',
+    status: 'Active',
+    startDate: new Date('2024-09-01'),
+    endDate: new Date('2025-12-31'),
+    tasks: {
+      total: 10,
+      completed: 5,
+    },
   },
 ];
