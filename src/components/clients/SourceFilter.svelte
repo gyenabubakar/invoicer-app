@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
-  import * as Select from 'shadcn-ui/select';
+  import * as Select from 'shadcn/select';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import { PhSquaresFour } from '#components/icons';
   import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
@@ -10,15 +10,17 @@
 </script>
 
 <Select.Root
-  selected={{ value: $selectedSource }}
-  onSelectedChange={onSelectedChange('source', 'all')}
+  type="single"
+  controlledValue
+  value={$selectedSource}
+  onValueChange={onSelectedChange('source', 'all')}
 >
-  <Select.Trigger class="w-[150px] flex shadow-none relative">
-    <div data-dot class:visible={$selectedSource !== 'all'} />
+  <Select.Trigger class="relative flex w-[150px] shadow-none">
+    <div data-dot class:visible={$selectedSource !== 'all'}></div>
 
     {#if $selectedSource === 'all'}
       <div class="flex items-center gap-1.5">
-        <PhSquaresFour class="w-6 h-6 text-muted-foreground" />
+        <PhSquaresFour class="h-6 w-6 text-muted-foreground" />
         <span>All sources</span>
       </div>
     {:else if $selectedSource === 'internal'}
@@ -41,7 +43,7 @@
 
   <Select.Content>
     <Select.Item value="all" class="gap-1">
-      <PhSquaresFour class="w-6 h-6 text-muted-foreground" />
+      <PhSquaresFour class="h-6 w-6 text-muted-foreground" />
       <span>All sources</span>
     </Select.Item>
 

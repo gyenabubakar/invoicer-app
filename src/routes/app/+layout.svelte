@@ -1,15 +1,9 @@
 <script lang="ts">
-  import {
-    DropdownMenu,
-    DropdownMenuTrigger,
-    DropdownMenuGroup,
-    DropdownMenuContent,
-    DropdownMenuItem,
-  } from 'shadcn-ui/dropdown-menu';
-  import { Sheet, SheetContent, SheetTrigger } from 'shadcn-ui/sheet';
-  import { Button } from 'shadcn-ui/button';
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
-  import { Input } from 'shadcn-ui/input';
+  import * as DropdownMenu from 'shadcn/dropdown-menu';
+  import { Sheet, SheetContent, SheetTrigger } from 'shadcn/sheet';
+  import { Button } from 'shadcn/button';
+  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+  import { Input } from 'shadcn/input';
   import { page } from '$app/stores';
   import { Combobox, Container } from '#components';
   import {
@@ -26,8 +20,10 @@
   import type { ComboboxOption } from '#components/types';
   import { AppLogo } from '#components/logos';
 
-  let activeClientId: string;
-  let activeProjectId: string;
+  let { children } = $props();
+
+  let activeClientId: string = $state('');
+  let activeProjectId: string = $state('');
 
   const clients: ComboboxOption[] = [
     { value: crypto.randomUUID(), label: 'Some client with a long ass name' },
@@ -36,10 +32,10 @@
     { value: crypto.randomUUID(), label: 'Some project with a long name' },
   ];
 
-  $: isDashboardPage = $page.url.pathname === '/app';
-  $: isClientsPage = /\/app\/clients(\/.*)?$/.test($page.url.pathname);
-  $: isInvoicesPage = /\/app\/invoices(\/.*)?$/.test($page.url.pathname);
-  $: isTasksPage = /\/app\/tasks(\/.*)?$/.test($page.url.pathname);
+  let isDashboardPage = $derived($page.url.pathname === '/app');
+  let isClientsPage = $derived(/\/app\/clients(\/.*)?$/.test($page.url.pathname));
+  let isInvoicesPage = $derived(/\/app\/invoices(\/.*)?$/.test($page.url.pathname));
+  let isTasksPage = $derived(/\/app\/tasks(\/.*)?$/.test($page.url.pathname));
 
   function addClient() {
     console.log('Adding a new client...');
@@ -50,7 +46,7 @@
 <!-- <UnverifiedEmailNotice /> -->
 
 <div class="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
-  <aside data-desktops class="bg-muted/40 hidden border-r lg:block">
+  <aside data-desktops class="hidden border-r bg-muted/40 lg:block">
     <div class="flex h-full max-h-screen flex-col gap-2">
       <div class="flex h-14 items-center border-b px-4 lg:h-[60px]">
         <AppLogo class="w-7" href="/app" withText />
@@ -62,13 +58,13 @@
       </div>
 
       <div class="flex-1">
-        <form class="w-full flex-1 px-2 lg:px-4 mb-4">
+        <form class="mb-4 w-full flex-1 px-2 lg:px-4">
           <div class="relative">
-            <PhMagnifyingGlass class="text-muted-foreground absolute left-2.5 top-2.5 h-4 w-4" />
+            <PhMagnifyingGlass class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search through clients, invoices, tasks..."
-              class="bg-background w-full appearance-none pl-8"
+              class="w-full appearance-none bg-background pl-8"
             />
           </div>
         </form>
@@ -95,19 +91,21 @@
     </div>
   </aside>
 
-  <div class="grid grid-cols-1 grid-rows-[60px,calc(100vh-60px)] flex-col flex-1">
+  <div class="grid flex-1 grid-cols-1 grid-rows-[60px,calc(100vh-60px)] flex-col">
     <header
-      class="bg-muted/40 flex h-14 items-center justify-between border-b px-4 lg:h-[60px] lg:px-6"
+      class="flex h-14 items-center justify-between border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6"
     >
-      <Sheet preventScroll>
-        <SheetTrigger asChild let:builder>
-          <Button variant="outline" size="icon" class="shrink-0 lg:hidden" builders={[builder]}>
-            <PhList class="h-5 w-5" />
-            <span class="sr-only">Toggle navigation menu</span>
-          </Button>
+      <Sheet>
+        <SheetTrigger>
+          {#snippet child({ props })}
+            <Button variant="outline" size="icon" class="shrink-0 lg:hidden" {...props}>
+              <PhList class="h-5 w-5" />
+              <span class="sr-only">Toggle navigation menu</span>
+            </Button>
+          {/snippet}
         </SheetTrigger>
-        <SheetContent side="left" class="flex flex-col">
-          <nav class="items-start text-sm font-medium pt-8">
+        <SheetContent preventScroll side="left" class="flex flex-col">
+          <nav class="items-start pt-8 text-sm font-medium">
             <div class="flex h-14 items-center">
               <AppLogo class="w-7" href="/app" withText />
 
@@ -117,15 +115,15 @@
               </Button>
             </div>
 
-            <form class="w-full flex-1 mt-4">
+            <form class="mt-4 w-full flex-1">
               <div class="relative">
                 <PhMagnifyingGlass
-                  class="text-muted-foreground absolute left-2.5 top-2.5 h-4 w-4"
+                  class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"
                 />
                 <Input
                   type="search"
                   placeholder="Search through clients, invoices, tasks..."
-                  class="bg-background w-full appearance-none pl-8"
+                  class="w-full appearance-none bg-background pl-8"
                 />
               </div>
             </form>
@@ -150,7 +148,7 @@
         </SheetContent>
       </Sheet>
 
-      <div data-clients-projects-combo class="items-center hidden lg:flex">
+      <div data-clients-projects-combo class="hidden items-center lg:flex">
         <Combobox
           bind:value={activeClientId}
           options={clients}
@@ -161,7 +159,7 @@
           onAdd={addClient}
           class="max-w-[200px]"
         />
-        <span class="text-gray-300 px-2">/</span>
+        <span class="px-2 text-gray-300">/</span>
         <Combobox
           bind:value={activeProjectId}
           options={projects}
@@ -175,32 +173,30 @@
         <AppLogo class="w-7" href="/app" withText hideTextOnExtraSmall />
       </div>
 
-      <DropdownMenu preventScroll={true}>
-        <DropdownMenuTrigger>
-          <button class="flex items-center justify-center">
-            <Avatar class="w-[30px] h-[30px]">
-              <AvatarImage src={FAKE_AVATAR} alt="Avatar" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          </button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent id="user-menu" class="h-max no-underline">
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <Avatar class="h-[30px] w-[30px]">
+            <AvatarImage src={FAKE_AVATAR} alt="Avatar" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content preventScroll={false} id="user-menu" class="h-max no-underline">
+          <DropdownMenu.Group>
+            <DropdownMenu.Item>
               <a href="/app/settings">My account</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem id="logout-link">
-              <a href="/app/log-out" class="flex items-center justify-between w-full">
+            </DropdownMenu.Item>
+            <DropdownMenu.Item id="logout-link">
+              <a href="/app/log-out" class="flex w-full items-center justify-between">
                 <span>Log out</span>
                 <PhSignOut weight="bold" />
               </a>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
+            </DropdownMenu.Item>
+          </DropdownMenu.Group>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
     </header>
 
-    <div class="flex items-center pt-5 px-4 mx-auto lg:hidden flex-wrap">
+    <div class="mx-auto flex flex-wrap items-center px-4 pt-5 lg:hidden">
       <Combobox
         bind:value={activeClientId}
         options={clients}
@@ -210,7 +206,7 @@
         addLabel="New client"
         onAdd={addClient}
       />
-      <span class="text-gray-300 px-2 hidden xs:block">/</span>
+      <span class="hidden px-2 text-gray-300 xs:block">/</span>
       <Combobox
         bind:value={activeProjectId}
         options={projects}
@@ -219,9 +215,9 @@
       />
     </div>
 
-    <div id="main" class="flex-grow p-10 pb-52 overflow-y-auto">
+    <div id="main" class="flex-grow overflow-y-auto p-10 pb-52">
       <Container>
-        <slot />
+        {@render children?.()}
       </Container>
     </div>
   </div>

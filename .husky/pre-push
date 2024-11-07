@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-# run svelte checks
-
-# TODO: add svelte checks on pre-push hook
-# bun run check

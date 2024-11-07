@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { DateRange } from 'bits-ui';
-  import * as Tabs from 'shadcn-ui/tabs';
-  import { Separator } from 'shadcn-ui/separator';
+  import * as Tabs from 'shadcn/tabs';
+  import { Separator } from 'shadcn/separator';
   import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
-  import { Container, DateRangePicker } from '#components';
+  import { DateRangePicker, DEFAULT_DATE_RANGE } from '#components';
   import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
 
-  let dateRange: DateRange | undefined = undefined;
+  let dateRange = $state(DEFAULT_DATE_RANGE);
 
-  $: defaultTab = $page.url.searchParams.get('numberOfDays') || '30';
+  let defaultTab = $derived($page.url.searchParams.get('numberOfDays') || '30');
 
   function onTabChange(value?: string) {
     if (!value) return;
@@ -57,7 +57,7 @@
   </div>
 
   <!-- INTEGRATIONS, GRAPHS, AND RECENT INVOICES -->
-  <div class="grid grid-cols-12 mt-14">
+  <div class="mt-14 grid grid-cols-12">
     <div class="col-span-6">
       <section id="integrations" class="">
         <h2 class="text-3xl font-semibold">Integrations</h2>
@@ -66,7 +66,7 @@
           assigned to you.
         </p>
 
-        <div class="flex flex-col mt-7 gap-8">
+        <div class="mt-7 flex flex-col gap-8">
           <Integration app="GitHub" />
           <Integration app="GitLab" isConnected />
         </div>

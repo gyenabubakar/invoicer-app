@@ -1,18 +1,15 @@
-<!--suppress JSUnusedGlobalSymbols, CssUnusedSymbol, ReservedWordAsName -->
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
-  import { cn } from '#shadcn/utils';
+  import { cn } from 'shadcn/utils';
 
   type SizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
-  type $$Props = HTMLAttributes<HTMLDivElement> & {
+  type Props = HTMLAttributes<HTMLDivElement> & {
     class?: string;
     size?: SizeType;
   };
 
-  let className: string | undefined = undefined;
-  export { className as class };
-  export let size: SizeType = 'xl';
+  let { class: className, size, children, ...restProps }: Props = $props();
 </script>
 
 <div
@@ -22,9 +19,9 @@
   class:lg={size === 'lg'}
   class:xl={size === 'xl'}
   class:xxl={size === '2xl'}
-  {...$$restProps}
+  {...restProps}
 >
-  <slot />
+  {@render children?.()}
 </div>
 
 <style lang="postcss">

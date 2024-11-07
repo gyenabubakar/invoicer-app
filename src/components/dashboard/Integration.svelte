@@ -1,17 +1,21 @@
 <script lang="ts">
-  import { Card } from 'shadcn-ui/card';
-  import { Button } from 'shadcn-ui/button';
-  import { Badge } from 'shadcn-ui/badge';
-  import * as AlertDialog from 'shadcn-ui/alert-dialog';
+  import { Card } from 'shadcn/card';
+  import { Button } from 'shadcn/button';
+  import { Badge } from 'shadcn/badge';
+  import * as AlertDialog from 'shadcn/alert-dialog';
   import { PhPlugs, PhPlugsConnected } from '#components/icons';
   import type { IntegratedApp } from '#components/types';
-  import { cn } from '#shadcn/utils';
+  import { cn } from 'shadcn/utils';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
 
-  export let app: IntegratedApp;
-  export let isConnected: boolean = false;
+  type Props = {
+    app: IntegratedApp;
+    isConnected?: boolean;
+  };
 
-  $: Logo = (() => {
+  let { app, isConnected = false }: Props = $props();
+
+  let Logo = $derived.by(() => {
     switch (app) {
       case 'GitHub':
         return GitHubLogo;
@@ -20,21 +24,21 @@
       default:
         return null;
     }
-  })();
+  });
 </script>
 
 <Card
   class={cn(
-    'shadow-none border-slate-300 p-4',
-    isConnected && 'border-invoicer bg-invoicer/5 relative'
+    'border-slate-300 p-4 shadow-none',
+    isConnected && 'relative border-invoicer bg-invoicer/5',
   )}
 >
-  <div class="flex items-center gap-2 !mt-0">
-    <svelte:component this={Logo} />
+  <div class="!mt-0 flex items-center gap-2">
+    <Logo />
     <p class="text-2xl font-bold">{app}</p>
   </div>
 
-  <p class="text-muted-foreground my-2">
+  <p class="my-2 text-muted-foreground">
     {#if isConnected}
       We're listening for new issues and merge requests on your {app} account.
     {:else}
@@ -44,7 +48,7 @@
 
   {#if isConnected}
     <Badge
-      class="bg-invoicer-dark rounded-full absolute right-4 -top-3.5 shadow-none hover:bg-invoicer-dark"
+      class="absolute -top-3.5 right-4 rounded-full bg-invoicer-dark shadow-none hover:bg-invoicer-dark"
     >
       <PhPlugsConnected size="18px" weight="fill" class="mr-1" />
       Connected
@@ -66,9 +70,9 @@
         <AlertDialog.Content class="">
           <AlertDialog.Header>
             <AlertDialog.Title>
-              <div class="flex items-center gap-4 mb-2">
+              <div class="mb-2 flex items-center gap-4">
                 <AppLogo />
-                <PhPlugs size="18px" weight="fill" class="text-gray-400 transform rotate-45" />
+                <PhPlugs size="18px" weight="fill" class="rotate-45 transform text-gray-400" />
                 <Logo />
               </div>
               Disconnect {app}

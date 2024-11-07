@@ -28,4 +28,6 @@ export {
   Broom as PhBroom,
   Pen as PhPen,
   Plus as PhPlus,
+  Eye as PhEye,
+  EyeSlash as PhEyeSlash,
 } from 'phosphor-svelte';

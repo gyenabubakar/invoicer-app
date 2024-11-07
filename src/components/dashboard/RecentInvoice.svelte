@@ -1,16 +1,19 @@
-<!--suppress CssUnusedSymbol -->
 <script lang="ts">
-  import { Badge } from 'shadcn-ui/badge';
-  import { Button } from 'shadcn-ui/button';
-  import * as Avatar from 'shadcn-ui/avatar';
+  import { Badge } from 'shadcn/badge';
+  import { Button } from 'shadcn/button';
+  import * as Avatar from 'shadcn/avatar';
   import type { InvoiceStatus } from '#components/types';
   import { getInitials } from '#lib/utils';
-  import { cn } from '#shadcn/utils';
+  import { cn } from 'shadcn/utils';
 
-  export let avatar: string | null;
-  export let client: string;
-  export let invoiceNumber: string;
-  export let invoiceStatus: InvoiceStatus;
+  type Props = {
+    avatar: string | null;
+    client: string;
+    invoiceNumber: string;
+    invoiceStatus: InvoiceStatus;
+  };
+
+  let { avatar, client, invoiceNumber, invoiceStatus }: Props = $props();
 </script>
 
 <div data-recent-invoice class="flex gap-3 [&:not(:last-child)]:mb-3">
@@ -21,7 +24,7 @@
 
   <div
     data-recent-invoice-details
-    class="pb-2 flex-grow flex items-center justify-between"
+    class="flex flex-grow items-center justify-between pb-2"
     style="width: calc(100% - (50px + 12px));"
   >
     <div class="truncate">
@@ -29,9 +32,9 @@
         {invoiceStatus}
       </Badge>
       <p
-        class="text-base items-center leading-5 text-muted-foreground text-ellipsis mt-0.5 overflow-clip"
+        class="mt-0.5 items-center overflow-clip text-ellipsis text-base leading-5 text-muted-foreground"
       >
-        &nbsp;<span class="font-medium text-black inline">#{invoiceNumber}</span>&nbsp;&nbsp;sent to {client}.
+        &nbsp;<span class="inline font-medium text-black">#{invoiceNumber}</span>&nbsp;&nbsp;sent to {client}.
       </p>
     </div>
 

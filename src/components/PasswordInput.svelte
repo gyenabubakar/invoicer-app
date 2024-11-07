@@ -1,24 +1,21 @@
 <!--suppress ReservedWordAsName -->
 <script lang="ts">
   import type { HTMLInputAttributes } from 'svelte/elements';
-  import { Eye, EyeSlash } from 'phosphor-svelte';
-  import { Input } from 'shadcn-ui/input';
-  import type { InputEvents } from 'shadcn-ui/input';
-  import { cn } from '#shadcn/utils';
+  import type { WithElementRef } from 'bits-ui';
+  import { Input } from 'shadcn/input';
+  import { cn } from 'shadcn/utils';
+  import { PhEye, PhEyeSlash } from '#components/icons';
 
-  type $$Props = HTMLInputAttributes & {
-    class?: string;
-    value?: string;
-  };
-  type $$Events = InputEvents;
+  let {
+    class: className,
+    value = $bindable(),
+    ...restProps
+  }: WithElementRef<HTMLInputAttributes> = $props();
 
-  let className: $$Props['class'] = undefined;
-  export { className as class };
-  export let value: $$Props['value'] = undefined;
+  let inputElement: HTMLInputElement | null = $state(null);
+  let showingPassword = $state(false);
 
-  let inputElement: HTMLInputElement | undefined;
-
-  let showingPassword = false;
+  let EyeComponent = $derived(showingPassword ? PhEyeSlash : PhEye);
 
   function togglePasswordVisibility() {
     const currentType = inputElement!.getAttribute('type') as HTMLInputAttributes['type'];
@@ -33,18 +30,18 @@
   <button
     type="button"
     aria-label={showingPassword ? 'Hide password' : 'Show password'}
-    class="absolute top-1/2 right-3 transform -translate-y-1/2"
-    on:click={togglePasswordVisibility}
+    class="absolute right-3 top-1/2 -translate-y-1/2 transform"
+    onclick={togglePasswordVisibility}
   >
-    <svelte:component this={showingPassword ? EyeSlash : Eye} class="w-5 h-5" />
+    <EyeComponent class="h-5 w-5" />
   </button>
 
   <Input
     type="password"
     class={cn('pr-10', className)}
     bind:value
-    bind:element={inputElement}
-    {...$$restProps}
+    bind:ref={inputElement}
+    {...restProps}
   />
 </div>
 

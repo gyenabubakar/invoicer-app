@@ -1,14 +1,14 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import { derived } from 'svelte/store';
-  import { Input } from 'shadcn-ui/input';
+  import { Input } from 'shadcn/input';
   import { PhMagnifyingGlass } from '#components/icons';
   import { SourceFilter, FluidClientCard, DatesOrder } from '#components/clients';
   import { FAKE_CLIENTS } from '#lib/fakes';
   import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
   import { page } from '$app/stores';
   import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
-  import { Button } from 'shadcn-ui/button';
+  import { Button } from 'shadcn/button';
   import { PhUserPlus } from '#components/icons.js';
 
   const selectedSource = derived(page, (__page) => {

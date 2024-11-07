@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
-  import * as Select from 'shadcn-ui/select';
+  import * as Select from 'shadcn/select';
   import type { ClientsPageContext } from '#components/clients/types';
   import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
   import { PhBroom, PhSortAscending, PhSortDescending, PhArrowsDownUp } from '#components/icons';
@@ -9,21 +9,23 @@
 </script>
 
 <Select.Root
-  selected={{ value: $datesOrder }}
-  onSelectedChange={onSelectedChange('order', 'reset')}
+  type="single"
+  controlledValue
+  value={$datesOrder ?? 'descending'}
+  onValueChange={onSelectedChange('order', 'reset')}
 >
-  <Select.Trigger class="w-[225px] flex shadow-none relative">
-    <div data-dot class:visible={$datesOrder !== 'reset'} />
+  <Select.Trigger class="relative flex w-[225px] shadow-none">
+    <div data-dot class:visible={$datesOrder !== 'reset'}></div>
 
     <div class="flex items-center gap-1.5">
       {#if $datesOrder === 'reset'}
-        <PhArrowsDownUp class="w-6 h-6 text-muted-foreground" />
+        <PhArrowsDownUp class="h-6 w-6 text-muted-foreground" />
         <span>Order by dates added</span>
       {:else if $datesOrder === 'ascending'}
-        <PhSortAscending class="w-6 h-6 text-muted-foreground" />
+        <PhSortAscending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Ascending</span>
       {:else if $datesOrder === 'descending'}
-        <PhSortDescending class="w-6 h-6 text-muted-foreground" />
+        <PhSortDescending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Descending</span>
       {/if}
     </div>
@@ -31,17 +33,17 @@
 
   <Select.Content>
     <Select.Item value="reset" class="gap-1.5">
-      <PhBroom class="w-6 h-6 text-muted-foreground" />
+      <PhBroom class="h-6 w-6 text-muted-foreground" />
       <span>None</span>
     </Select.Item>
 
     <Select.Item value="ascending" class="gap-1.5">
-      <PhSortAscending class="w-6 h-6 text-muted-foreground" />
+      <PhSortAscending class="h-6 w-6 text-muted-foreground" />
       <span>Ascending</span>
     </Select.Item>
 
     <Select.Item value="descending" class="gap-1.5">
-      <PhSortDescending class="w-6 h-6 text-muted-foreground" />
+      <PhSortDescending class="h-6 w-6 text-muted-foreground" />
       <span>Descending</span>
     </Select.Item>
   </Select.Content>

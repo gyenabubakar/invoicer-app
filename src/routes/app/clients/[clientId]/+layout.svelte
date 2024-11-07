@@ -1,12 +1,10 @@
 <script lang="ts">
   import { setContext } from 'svelte';
-  import { writable } from 'svelte/store';
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
-  import { Button } from 'shadcn-ui/button';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn-ui/tooltip';
-  import * as Tabs from 'shadcn-ui/tabs';
+  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+  import { Button } from 'shadcn/button';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+  import * as Tabs from 'shadcn/tabs';
   import { FAKE_AVATAR } from '#lib/fakes';
-  import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import { PhPen, PhPlus } from '#components/icons';
   import { page } from '$app/stores';
   import { getInitials } from '#lib/utils';
@@ -16,8 +14,11 @@
   import { ObjectSource } from '#components';
 
   type Tab = 'projects' | 'tasks' | 'invoices';
+  const TABS: Tab[] = ['projects', 'tasks', 'invoices'];
 
-  const client = writable<Client>({
+  let { children } = $props();
+
+  const client: Client = $state({
     id: $page.params.clientId,
     name: 'Acme Corp',
     avatar: FAKE_AVATAR,
@@ -30,71 +31,81 @@
     address: '1234 Acme St, Acmeville, AC 12345',
   });
 
-  $: currentTab = (() => {
+  let currentTab = $derived.by(() => {
     const pathSegments = $page.url.href.split('/').filter(Boolean);
     const lastSegment = pathSegments.pop();
     if (lastSegment === 'tasks' || lastSegment === 'invoices') {
       return lastSegment as Tab;
     }
     return 'projects';
-  })();
+  });
 
-  function onTabChange(value: Tab | undefined) {
+  function onTabChange(value: string) {
+    if (!TABS.includes(value as Tab)) return;
+
     let path = `/app/clients/${$page.params.clientId}/`;
-    if (value !== 'projects') {
-      path += value;
+
+    const tab = value as Tab;
+    if (tab !== 'projects') {
+      path += tab;
     }
+
     goto(path);
   }
 
-  setContext(clientsContextKey, { client });
+  // noinspection JSUnusedGlobalSymbols
+  setContext(clientsContextKey, {
+    get client() {
+      return client;
+    },
+  });
 </script>
 
 <svelte:head>
-  <title>{$client.name} — Clients | Gyen's Invoicer</title>
+  <title>{client.name} — Clients | Gyen's Invoicer</title>
 </svelte:head>
 
 <main>
   <div class="flex items-center gap-6">
-    <Avatar class="rounded-lg w-36 h-36">
-      <AvatarImage src={$client.avatar} alt="{$client.name} logo/image" />
-      <AvatarFallback class="rounded-lg">{getInitials($client.name)}</AvatarFallback>
+    <Avatar class="h-36 w-36 rounded-lg">
+      <AvatarImage src={client.avatar} alt="{client.name} logo/image" />
+      <AvatarFallback class="rounded-lg">{getInitials(client.name)}</AvatarFallback>
     </Avatar>
 
     <div class="details">
       <h1 class="">
-        <span class="mr-1">{$client.name}</span>
+        <span class="mr-1">{client.name}</span>
 
-        <ObjectSource source={$client.source} />
+        <ObjectSource source={client.source} />
 
         <Tooltip>
           <TooltipTrigger class="ml-2">
-            <Button href="/app/clients/{$client.id}/edit" variant="outline" size="icon">
-              <PhPen class="w-5 h-5" />
+            <Button href="/app/clients/{client.id}/edit" variant="outline" size="icon">
+              <PhPen class="h-5 w-5" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Edit details</TooltipContent>
         </Tooltip>
       </h1>
 
-      <div role="list" class="text-[16px] mt-2">
+      <div role="list" class="mt-2 text-[16px]">
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Email:</span>
           <span role="definition" class="mb-2">
-            <a href="mailto:{$client.email}">{$client.email}</a>
+            <a href="mailto:{client.email}">{client.email}</a>
           </span>
         </div>
 
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Phone:</span>
           <span role="definition" class="mb-2">
-            <a href="tel:{$client.phone.raw}">{$client.phone.readable}</a>
+            <a href="tel:{client.phone.raw}">{client.phone.readable}</a>
           </span>
         </div>
 
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Address:</span>
-          <span role="definition" class="mb-2">{$client.address}</span>
+          <span role="definition" class="mb-2">{client.address}</span>
         </div>
       </div>
     </div>
@@ -112,17 +123,17 @@
     <div class="">
       {#if currentTab === 'projects'}
         <Button class="flex gap-1">
-          <PhPlus class="w-4 h-4" weight="bold" />
+          <PhPlus class="h-4 w-4" weight="bold" />
           <span>New Project</span>
         </Button>
       {:else if currentTab === 'tasks'}
         <Button class="flex gap-1">
-          <PhPlus class="w-4 h-4" weight="bold" />
+          <PhPlus class="h-4 w-4" weight="bold" />
           <span>New Task</span>
         </Button>
       {:else if currentTab === 'invoices'}
         <Button class="flex gap-1">
-          <PhPlus class="w-4 h-4" weight="bold" />
+          <PhPlus class="h-4 w-4" weight="bold" />
           <span>New Invoice</span>
         </Button>
       {/if}
@@ -130,7 +141,7 @@
   </div>
 
   <div class="pt-8">
-    <slot />
+    {@render children?.()}
   </div>
 </main>
 

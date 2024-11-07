@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { Button } from 'shadcn-ui/button';
+  import { Button } from 'shadcn/button';
 </script>
 
 <div class="w-screen h-screen flex justify-center items-center">

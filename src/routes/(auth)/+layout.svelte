@@ -1,11 +1,13 @@
-<!--suppress CssUnusedSymbol -->
 <script lang="ts">
   import { AppLogo } from '#components/logos';
+
+  let { children } = $props();
 </script>
 
-<main class="w-screen h-screen flex items-center justify-center flex-col">
+<main class="flex h-screen w-screen flex-col items-center justify-center">
   <AppLogo class="mx-auto mb-4 w-10" href={undefined} />
-  <slot />
+
+  {@render children?.()}
 </main>
 
 <style lang="postcss">

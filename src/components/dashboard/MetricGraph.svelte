@@ -2,7 +2,7 @@
   import { onDestroy, onMount } from 'svelte';
   import type ApexCharts from 'apexcharts';
   import { format } from 'date-fns';
-  import { Card, CardContent } from 'shadcn-ui/card';
+  import { Card, CardContent } from 'shadcn/card';
   import {
     METRICS_COLOURS,
     METRICS_TITLES,
@@ -10,20 +10,24 @@
     METRICS_ICONS,
   } from '#components/dashboard/constants';
 
-  export let key: keyof typeof METRICS_COLOURS;
-  export let dates: Date[];
-  export let values: number[];
+  type Props = {
+    key: keyof typeof METRICS_COLOURS;
+    dates: Date[];
+    values: number[];
+  };
 
-  let chart: ApexCharts | undefined;
-  let element: HTMLDivElement | undefined;
+  let { key, dates, values }: Props = $props();
 
-  $: MetricIcon = METRICS_ICONS[key];
-  $: colour = METRICS_COLOURS[key];
-  $: title = METRICS_TITLES[key];
-  $: yAxisLabel = METRICS_Y_AXIS_LABELS[key];
-  $: datesFormatted = dates.map((date) => format(date, 'yyyy MMM do'));
+  let chart: ApexCharts | undefined = $state();
+  let element: HTMLDivElement | undefined = $state();
 
-  $: options = {
+  let MetricIcon = $derived(METRICS_ICONS[key]);
+  let colour = $derived(METRICS_COLOURS[key]);
+  let title = $derived(METRICS_TITLES[key]);
+  let yAxisLabel = $derived(METRICS_Y_AXIS_LABELS[key]);
+  let datesFormatted = $derived(dates.map((date) => format(date, 'yyyy MMM do')));
+
+  let options = $derived({
     chart: {
       type: 'area',
       height: 350,
@@ -56,7 +60,7 @@
         color: colour.foreground,
       },
     ],
-  } satisfies ApexCharts.ApexOptions;
+  } satisfies ApexCharts.ApexOptions);
 
   onMount(async () => {
     const ApexCharts = (await import('apexcharts')).default;
@@ -73,7 +77,7 @@
   <CardContent class="py-4">
     <div
       data-metric-icon
-      class="p-1.5 rounded-full bg-gray-200 max-w-max text-primary-background mb-2"
+      class="text-primary-background mb-2 max-w-max rounded-full bg-gray-200 p-1.5"
       style:--fg={colour.foreground}
       style:--bg={colour.background}
     >

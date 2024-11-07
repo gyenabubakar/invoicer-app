@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn-ui/tooltip';
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn-ui/avatar';
-  import { Badge } from 'shadcn-ui/badge';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+  import { Badge } from 'shadcn/badge';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import { getInitials } from '#lib/utils';
   import type { FAKE_CLIENTS } from '#lib/fakes';

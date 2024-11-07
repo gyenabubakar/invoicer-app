@@ -1,19 +1,25 @@
 <script lang="ts">
-  import { Button } from 'shadcn-ui/button';
-  import * as Dialog from 'shadcn-ui/dialog';
+  import { Button } from 'shadcn/button';
+  import * as Dialog from 'shadcn/dialog';
   import { page } from '$app/stores';
   import { get } from 'svelte/store';
   import { goto } from '$app/navigation';
   import type { ClientProject } from '#lib/types';
-  import { Badge } from 'shadcn-ui/badge';
-  import { cn } from '#shadcn/utils';
+  import { Badge } from 'shadcn/badge';
+  import { cn } from 'shadcn/utils';
   import { ObjectSource } from '#components';
   import { PhArrowSquareOut, PhPen } from '#components/icons';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn-ui/tooltip';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+  import type { Snippet } from 'svelte';
 
-  export let modalOpen = false;
-  export let project: ClientProject;
-  export let statusClass: 'success' | 'neutral';
+  type Props = {
+    project: ClientProject;
+    modalOpen: boolean;
+    statusClass: 'success' | 'neutral';
+    children?: Snippet<[Record<string, unknown>]>;
+  };
+
+  let { project, modalOpen = $bindable(false), statusClass, children }: Props = $props();
 
   function onOpenChange(open: boolean) {
     if (!open) {
@@ -30,40 +36,43 @@
 
 <Dialog.Root open={modalOpen} {onOpenChange}>
   <Dialog.Trigger>
-    <slot />
+    {#snippet child({ props })}
+      {@render children?.(props)}
+    {/snippet}
   </Dialog.Trigger>
 
   <Dialog.Content
-    class="max-w-[95vw] md:max-w-[90vw] lg:max-w-[70vw] xl:max-w-[50vw] 2xl:max-w-[45vw] h-[90vh] block"
+    class="block h-[90vh] max-w-[95vw] md:max-w-[90vw] lg:max-w-[70vw] xl:max-w-[50vw] 2xl:max-w-[45vw]"
   >
     <Dialog.Header>
       <div class="flex items-center gap-4">
         <Badge data-badge class={cn(statusClass)}>{project.status}</Badge>
-        <!-- svelte-ignore a11y-invalid-attribute -->
         <a
           href={project.sourceURL}
           target="_blank"
-          class="text-[15px] leading-6 flex items-center gap-1 hover:opacity-50"
+          class="flex items-center gap-1 text-[15px] leading-6 hover:opacity-50"
         >
           <span class="font-medium">View on {project.source}</span>
-          <PhArrowSquareOut class="w-5 h-5 inline-block" />
+          <PhArrowSquareOut class="inline-block h-5 w-5" />
         </a>
       </div>
 
-      <Dialog.Title class="text-3xl font-bold space-x-1">
+      <Dialog.Title class="space-x-1 text-3xl font-bold">
         <span>{project.name}</span>
         <ObjectSource source={project.source} class="ml-2" />
         <Tooltip>
-          <TooltipTrigger asChild class="ml-2">
-            <Button variant="outline" size="icon" on:click={onEdit}>
-              <PhPen class="w-5 h-5" />
-            </Button>
+          <TooltipTrigger class="ml-2">
+            {#snippet child({ props })}
+              <Button variant="outline" size="icon" {...props} onclick={onEdit}>
+                <PhPen class="h-5 w-5" />
+              </Button>
+            {/snippet}
           </TooltipTrigger>
           <TooltipContent>Edit details</TooltipContent>
         </Tooltip>
       </Dialog.Title>
 
-      <Dialog.Description class="text-base !mt-4 block">
+      <Dialog.Description class="!mt-4 block text-base">
         {project.description}
       </Dialog.Description>
     </Dialog.Header>
