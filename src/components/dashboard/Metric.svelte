@@ -27,7 +27,7 @@
     style:--fg={colour.foreground}
     style:--bg={colour.background}
   >
-    <Icon class="h-5 w-5" />
+    <Icon class="h-5 w-5" weight="fill" />
   </div>
 
   <p>{title}</p>
