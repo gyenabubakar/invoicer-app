@@ -1,27 +1,30 @@
 <script lang="ts">
-	import '../app.pcss';
-	import { ModeWatcher } from 'mode-watcher';
-	import { Toaster } from 'shadcn/sonner';
+  import '../app.pcss';
+  import { ModeWatcher } from 'mode-watcher';
+  import { Toaster } from 'shadcn/sonner';
+  import { TooltipProvider } from 'shadcn/tooltip';
 
-	let { children } = $props();
+  let { children } = $props();
 
-	// $: if (browser) {
-	//   $mode;
-	//   const isDark = document.documentElement.classList.contains('dark');
-	//   const logo = isDark ? '/logo-light.svg' : '/logo-dark.svg';
-	//   const linkElement = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
-	//   if (linkElement) {
-	//     linkElement.href = logo;
-	//   }
-	// }
+  // $: if (browser) {
+  //   $mode;
+  //   const isDark = document.documentElement.classList.contains('dark');
+  //   const logo = isDark ? '/logo-light.svg' : '/logo-dark.svg';
+  //   const linkElement = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+  //   if (linkElement) {
+  //     linkElement.href = logo;
+  //   }
+  // }
 </script>
 
 <svelte:head>
-	<title>Gyen's Invoicer</title>
+  <title>Gyen's Invoicer</title>
 </svelte:head>
 
-<Toaster richColors closeButton toastOptions={{ duration: 5000 }} />
+<Toaster richColors closeButton toastOptions={{ duration: 5_000 }} />
 
 <ModeWatcher defaultMode="light" themeColors={{ dark: 'black', light: 'white' }} />
 
-{@render children()}
+<TooltipProvider>
+  {@render children()}
+</TooltipProvider>
