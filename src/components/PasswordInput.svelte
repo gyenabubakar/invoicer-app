@@ -6,7 +6,7 @@
   import { Input } from 'shadcn/input';
   import { cn } from 'shadcn/utils';
 
-  import { PhEye, PhEyeSlash } from '#components/icons';
+  import { Ph } from '#components/icons';
 
   let {
     class: className,
@@ -17,7 +17,7 @@
   let inputElement: HTMLInputElement | null = $state(null);
   let showingPassword = $state(false);
 
-  let EyeComponent = $derived(showingPassword ? PhEyeSlash : PhEye);
+  let EyeComponent = $derived(showingPassword ? Ph.EyeSlash : Ph.Eye);
 
   function togglePasswordVisibility() {
     const currentType = inputElement!.getAttribute('type') as HTMLInputAttributes['type'];

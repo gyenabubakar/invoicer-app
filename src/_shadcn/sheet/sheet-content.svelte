@@ -25,8 +25,8 @@
 <script lang="ts">
   import Cross2 from 'svelte-radix/Cross2.svelte';
   import { Dialog as SheetPrimitive } from 'bits-ui';
-  import type { WithoutChildrenOrChild } from 'bits-ui';
   import type { Snippet } from 'svelte';
+  import type { WithoutChildrenOrChild } from 'bits-ui';
 
   import { cn } from 'shadcn/utils.js';
 

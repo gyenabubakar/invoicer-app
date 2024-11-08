@@ -8,16 +8,7 @@
   import { Sheet, SheetContent, SheetTrigger } from 'shadcn/sheet';
 
   import { Combobox, Container } from '#components';
-  import {
-    PhBell,
-    PhHouse,
-    PhKanban,
-    PhList,
-    PhMagnifyingGlass,
-    PhReceipt,
-    PhSignOut,
-    PhUsers,
-  } from '#components/icons';
+  import { Ph } from '#components/icons';
   import { AppLogo } from '#components/logos';
   import { FAKE_AVATAR } from '#lib/fakes';
   import type { ComboboxOption } from '#components/types';
@@ -54,7 +45,7 @@
         <AppLogo class="w-7" href="/app" withText />
 
         <Button variant="outline" size="icon" class="ml-auto h-8 w-8">
-          <PhBell class="h-4 w-4" />
+          <Ph.Bell class="h-4 w-4" />
           <span class="sr-only">Toggle notifications</span>
         </Button>
       </div>
@@ -62,7 +53,7 @@
       <div class="flex-1">
         <form class="mb-4 w-full flex-1 px-2 lg:px-4">
           <div class="relative">
-            <PhMagnifyingGlass class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Ph.MagnifyingGlass class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder="Search through clients, invoices, tasks..."
@@ -73,19 +64,19 @@
 
         <nav class="items-start px-2 text-sm font-medium lg:px-4">
           <a href="/app/" class="" class:active={isDashboardPage}>
-            <PhHouse class="h-5 w-5" weight={isDashboardPage ? 'fill' : 'bold'} />
+            <Ph.House class="h-5 w-5" weight={isDashboardPage ? 'fill' : 'bold'} />
             <span>Dashboard</span>
           </a>
           <a href="/app/clients" class="" class:active={isClientsPage}>
-            <PhUsers class="h-5 w-5" weight={isClientsPage ? 'fill' : 'bold'} />
+            <Ph.Users class="h-5 w-5" weight={isClientsPage ? 'fill' : 'bold'} />
             <span>Clients</span>
           </a>
           <a href="/app/invoices" class="" class:active={isInvoicesPage}>
-            <PhReceipt class="h-5 w-5" weight={isInvoicesPage ? 'fill' : 'bold'} />
+            <Ph.Receipt class="h-5 w-5" weight={isInvoicesPage ? 'fill' : 'bold'} />
             <span>Invoices</span>
           </a>
           <a href="/app/tasks" class="" class:active={isTasksPage}>
-            <PhKanban class="h-5 w-5" weight={isTasksPage ? 'fill' : 'bold'} />
+            <Ph.Kanban class="h-5 w-5" weight={isTasksPage ? 'fill' : 'bold'} />
             <span>Tasks</span>
           </a>
         </nav>
@@ -101,7 +92,7 @@
         <SheetTrigger>
           {#snippet child({ props })}
             <Button variant="outline" size="icon" class="shrink-0 lg:hidden" {...props}>
-              <PhList class="h-5 w-5" />
+              <Ph.List class="h-5 w-5" />
               <span class="sr-only">Toggle navigation menu</span>
             </Button>
           {/snippet}
@@ -112,14 +103,14 @@
               <AppLogo class="w-7" href="/app" withText />
 
               <Button variant="outline" size="icon" class="ml-auto h-8 w-8">
-                <PhBell class="h-4 w-4" />
+                <Ph.Bell class="h-4 w-4" />
                 <span class="sr-only">Toggle notifications</span>
               </Button>
             </div>
 
             <form class="mt-4 w-full flex-1">
               <div class="relative">
-                <PhMagnifyingGlass
+                <Ph.MagnifyingGlass
                   class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"
                 />
                 <Input
@@ -131,19 +122,19 @@
             </form>
 
             <a href="/app/" class="mt-6" class:active={isDashboardPage}>
-              <PhHouse class="h-5 w-5" weight={isDashboardPage ? 'fill' : 'bold'} />
+              <Ph.House class="h-5 w-5" weight={isDashboardPage ? 'fill' : 'bold'} />
               <span>Dashboard</span>
             </a>
             <a href="/app/clients" class="" class:active={isClientsPage}>
-              <PhUsers class="h-5 w-5" weight={isClientsPage ? 'fill' : 'bold'} />
+              <Ph.Users class="h-5 w-5" weight={isClientsPage ? 'fill' : 'bold'} />
               <span>Clients</span>
             </a>
             <a href="/app/invoices" class="" class:active={isInvoicesPage}>
-              <PhReceipt class="h-5 w-5" weight={isInvoicesPage ? 'fill' : 'bold'} />
+              <Ph.Receipt class="h-5 w-5" weight={isInvoicesPage ? 'fill' : 'bold'} />
               <span>Invoices</span>
             </a>
             <a href="/app/tasks" class="" class:active={isTasksPage}>
-              <PhKanban class="h-5 w-5" weight={isTasksPage ? 'fill' : 'bold'} />
+              <Ph.Kanban class="h-5 w-5" weight={isTasksPage ? 'fill' : 'bold'} />
               <span>Tasks</span>
             </a>
           </nav>
@@ -190,7 +181,7 @@
             <DropdownMenu.Item id="logout-link">
               <a href="/app/log-out" class="flex w-full items-center justify-between">
                 <span>Log out</span>
-                <PhSignOut weight="bold" />
+                <Ph.SignOut weight="bold" />
               </a>
             </DropdownMenu.Item>
           </DropdownMenu.Group>

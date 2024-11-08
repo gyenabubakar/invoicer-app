@@ -17,7 +17,7 @@
   import { RangeCalendar } from 'shadcn/range-calendar';
   import { cn } from 'shadcn/utils';
 
-  import { PhCalendarBlank } from '#components/icons';
+  import { Ph } from '#components/icons';
 
   const df = new DateFormatter('en-US', {
     dateStyle: 'medium',
@@ -44,7 +44,7 @@
           )}
           {...props}
         >
-          <PhCalendarBlank class="mr-2 h-4 w-4" />
+          <Ph.CalendarBlank class="mr-2 h-4 w-4" />
           {#if value && value.start}
             {#if value.end}
               {df.format(value.start.toDate(getLocalTimeZone()))} - {df.format(

@@ -8,8 +8,7 @@
 
   import { DatesOrder, FluidClientCard, SourceFilter } from '#components/clients';
   import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
-  import { PhMagnifyingGlass } from '#components/icons';
-  import { PhUserPlus } from '#components/icons.js';
+  import { Ph } from '#components/icons';
   import { FAKE_CLIENTS } from '#lib/fakes';
   import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
 
@@ -39,7 +38,7 @@
   <div data-filters class="flex items-center justify-between">
     <div class="relative">
       <Input placeholder="Search clients..." class="w-72 pl-8" />
-      <PhMagnifyingGlass class="absolute left-2 top-2 h-5 w-5" />
+      <Ph.MagnifyingGlass class="absolute left-2 top-2 h-5 w-5" />
     </div>
 
     <div class="flex gap-4">
@@ -49,7 +48,7 @@
       </div>
 
       <Button href="/app/clients/new">
-        <PhUserPlus weight="bold" class="mr-2 h-5 w-5" />
+        <Ph.UserPlus weight="bold" class="mr-2 h-5 w-5" />
         Add client
       </Button>
     </div>

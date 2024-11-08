@@ -1,7 +1,10 @@
 <script lang="ts">
-  import type { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
-  import type { WithoutChildrenOrChild } from 'bits-ui';
   import type { Snippet } from 'svelte';
+  import type {
+    Command as CommandPrimitive,
+    Dialog as DialogPrimitive,
+    WithoutChildrenOrChild,
+  } from 'bits-ui';
 
   import * as Dialog from 'shadcn/dialog/index.js';
 

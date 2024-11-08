@@ -4,7 +4,7 @@
   import { cn } from 'shadcn/utils';
 
   import { METRICS_COLOURS, METRICS_ICONS, METRICS_TITLES } from '#components/dashboard/constants';
-  import { PhArrowDown, PhArrowUp } from '#components/icons';
+  import { Ph } from '#components/icons';
 
   type MetricProps = {
     key: keyof typeof METRICS_COLOURS;
@@ -18,7 +18,7 @@
   let colour = $derived(METRICS_COLOURS[key]);
   let title = $derived(METRICS_TITLES[key]);
   let Icon = $derived(METRICS_ICONS[key]);
-  let TrendIcon = $derived(trend === 'up' ? PhArrowUp : PhArrowDown);
+  let TrendIcon = $derived(trend === 'up' ? Ph.ArrowUp : Ph.ArrowDown);
 </script>
 
 <Card data-metric class="shadow-none">

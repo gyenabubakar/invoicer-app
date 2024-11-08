@@ -4,7 +4,7 @@
   import * as Select from 'shadcn/select';
 
   import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
-  import { PhSquaresFour } from '#components/icons';
+  import { Ph } from '#components/icons';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import type { ClientsPageContext } from '#components/clients/types';
 
@@ -22,7 +22,7 @@
 
     {#if $selectedSource === 'all'}
       <div class="flex items-center gap-1.5">
-        <PhSquaresFour class="h-6 w-6 text-muted-foreground" />
+        <Ph.SquaresFour class="h-6 w-6 text-muted-foreground" />
         <span>All sources</span>
       </div>
     {:else if $selectedSource === 'internal'}
@@ -45,7 +45,7 @@
 
   <Select.Content>
     <Select.Item value="all" class="gap-1">
-      <PhSquaresFour class="h-6 w-6 text-muted-foreground" />
+      <Ph.SquaresFour class="h-6 w-6 text-muted-foreground" />
       <span>All sources</span>
     </Select.Item>
 

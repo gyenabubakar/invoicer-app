@@ -9,7 +9,7 @@
   import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
 
   import { ObjectSource } from '#components';
-  import { PhPen, PhPlus } from '#components/icons';
+  import { Ph } from '#components/icons';
   import { clientsContextKey } from '#lib/clients/utils';
   import { FAKE_AVATAR } from '#lib/fakes';
   import { getInitials } from '#lib/utils';
@@ -83,7 +83,7 @@
         <Tooltip>
           <TooltipTrigger class="ml-2">
             <Button href="/app/clients/{client.id}/edit" variant="outline" size="icon">
-              <PhPen class="h-5 w-5" />
+              <Ph.Pen class="h-5 w-5" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Edit details</TooltipContent>
@@ -125,17 +125,17 @@
     <div class="">
       {#if currentTab === 'projects'}
         <Button class="flex gap-1">
-          <PhPlus class="h-4 w-4" weight="bold" />
+          <Ph.Plus class="h-4 w-4" weight="bold" />
           <span>New Project</span>
         </Button>
       {:else if currentTab === 'tasks'}
         <Button class="flex gap-1">
-          <PhPlus class="h-4 w-4" weight="bold" />
+          <Ph.Plus class="h-4 w-4" weight="bold" />
           <span>New Task</span>
         </Button>
       {:else if currentTab === 'invoices'}
         <Button class="flex gap-1">
-          <PhPlus class="h-4 w-4" weight="bold" />
+          <Ph.Plus class="h-4 w-4" weight="bold" />
           <span>New Invoice</span>
         </Button>
       {/if}

@@ -5,7 +5,7 @@
   import { Card } from 'shadcn/card';
   import { cn } from 'shadcn/utils';
 
-  import { PhPlugs, PhPlugsConnected } from '#components/icons';
+  import { Ph } from '#components/icons';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import type { IntegratedApp } from '#components/types';
 
@@ -51,7 +51,7 @@
     <Badge
       class="absolute -top-3.5 right-4 rounded-full bg-invoicer-dark shadow-none hover:bg-invoicer-dark"
     >
-      <PhPlugsConnected size="18px" weight="fill" class="mr-1" />
+      <Ph.PlugsConnected size="18px" weight="fill" class="mr-1" />
       Connected
     </Badge>
   {/if}
@@ -66,7 +66,7 @@
               class="border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white"
               {...props}
             >
-              <PhPlugs class="mr-2" size="20px" weight="fill" />
+              <Ph.Plugs class="mr-2" size="20px" weight="fill" />
               Disconnect
             </Button>
           {/snippet}
@@ -76,7 +76,7 @@
             <AlertDialog.Title>
               <div class="mb-2 flex items-center gap-4">
                 <AppLogo />
-                <PhPlugs size="18px" weight="fill" class="rotate-45 transform text-gray-400" />
+                <Ph.Plugs size="18px" weight="fill" class="rotate-45 transform text-gray-400" />
                 <Logo />
               </div>
               Disconnect {app}
@@ -96,7 +96,7 @@
       </AlertDialog.Root>
     {:else}
       <Button>
-        <PhPlugsConnected class="mr-2 shadow-none" size="20px" weight="fill" />
+        <Ph.PlugsConnected class="mr-2 shadow-none" size="20px" weight="fill" />
         Connect
       </Button>
     {/if}

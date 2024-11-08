@@ -11,7 +11,7 @@
   import { cn } from 'shadcn/utils';
 
   import { ObjectSource } from '#components';
-  import { PhArrowSquareOut, PhPen } from '#components/icons';
+  import { Ph } from '#components/icons';
   import type { ClientProject } from '#lib/types';
 
   type Props = {
@@ -55,7 +55,7 @@
           class="flex items-center gap-1 text-[15px] leading-6 hover:opacity-50"
         >
           <span class="font-medium">View on {project.source}</span>
-          <PhArrowSquareOut class="inline-block h-5 w-5" />
+          <Ph.ArrowSquareOut class="inline-block h-5 w-5" />
         </a>
       </div>
 
@@ -66,7 +66,7 @@
           <TooltipTrigger class="ml-2">
             {#snippet child({ props })}
               <Button variant="outline" size="icon" {...props} onclick={onEdit}>
-                <PhPen class="h-5 w-5" />
+                <Ph.Pen class="h-5 w-5" />
               </Button>
             {/snippet}
           </TooltipTrigger>

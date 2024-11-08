@@ -4,7 +4,7 @@
   import * as Select from 'shadcn/select';
 
   import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
-  import { PhArrowsDownUp, PhBroom, PhSortAscending, PhSortDescending } from '#components/icons';
+  import { Ph } from '#components/icons';
   import type { ClientsPageContext } from '#components/clients/types';
 
   const { datesOrder } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
@@ -21,13 +21,13 @@
 
     <div class="flex items-center gap-1.5">
       {#if $datesOrder === 'reset'}
-        <PhArrowsDownUp class="h-6 w-6 text-muted-foreground" />
+        <Ph.ArrowsDownUp class="h-6 w-6 text-muted-foreground" />
         <span>Order by dates added</span>
       {:else if $datesOrder === 'ascending'}
-        <PhSortAscending class="h-6 w-6 text-muted-foreground" />
+        <Ph.SortAscending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Ascending</span>
       {:else if $datesOrder === 'descending'}
-        <PhSortDescending class="h-6 w-6 text-muted-foreground" />
+        <Ph.SortDescending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Descending</span>
       {/if}
     </div>
@@ -35,17 +35,17 @@
 
   <Select.Content>
     <Select.Item value="reset" class="gap-1.5">
-      <PhBroom class="h-6 w-6 text-muted-foreground" />
+      <Ph.Broom class="h-6 w-6 text-muted-foreground" />
       <span>None</span>
     </Select.Item>
 
     <Select.Item value="ascending" class="gap-1.5">
-      <PhSortAscending class="h-6 w-6 text-muted-foreground" />
+      <Ph.SortAscending class="h-6 w-6 text-muted-foreground" />
       <span>Ascending</span>
     </Select.Item>
 
     <Select.Item value="descending" class="gap-1.5">
-      <PhSortDescending class="h-6 w-6 text-muted-foreground" />
+      <Ph.SortDescending class="h-6 w-6 text-muted-foreground" />
       <span>Descending</span>
     </Select.Item>
   </Select.Content>

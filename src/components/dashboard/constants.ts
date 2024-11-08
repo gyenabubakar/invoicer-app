@@ -1,4 +1,5 @@
-import { PhCheckSquare, PhCoins, PhCurrencyDollar, PhTimer } from '#components/icons';
+import { Ph } from '#components/icons';
+import type { PhosphorIcon } from '#components/icons';
 
 export const METRICS_COLOURS = {
   totalRevenue: {
@@ -35,9 +36,9 @@ export const METRICS_Y_AXIS_LABELS: Record<Metric, string> = {
   tasksCompleted: 'Tasks',
 };
 
-export const METRICS_ICONS: Record<Metric, any> = {
-  totalRevenue: PhCurrencyDollar,
-  billableHours: PhTimer,
-  avgHourlyRate: PhCoins,
-  tasksCompleted: PhCheckSquare,
+export const METRICS_ICONS: Record<Metric, PhosphorIcon> = {
+  totalRevenue: Ph.CurrencyDollar,
+  billableHours: Ph.Timer,
+  avgHourlyRate: Ph.Coins,
+  tasksCompleted: Ph.CheckSquare,
 };
