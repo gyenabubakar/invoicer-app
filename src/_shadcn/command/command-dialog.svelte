@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
+  import type { Command as CommandPrimitive, Dialog as DialogPrimitive } from 'bits-ui';
   import type { WithoutChildrenOrChild } from 'bits-ui';
   import type { Snippet } from 'svelte';
 

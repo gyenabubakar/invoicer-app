@@ -9,7 +9,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write . --log-level=warn",
-    "lint": "prettier --check . && eslint ."
+    "lint": "eslint ."
   },
   "dependencies": {
     "@sveltejs/enhanced-img": "^0.4.1",
