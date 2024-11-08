@@ -1,12 +1,13 @@
 <script lang="ts">
-  import type { DateRange } from 'bits-ui';
-  import * as Tabs from 'shadcn/tabs';
-  import { Separator } from 'shadcn/separator';
-  import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
-  import { DateRangePicker, DEFAULT_DATE_RANGE } from '#components';
-  import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+
+  import { Separator } from 'shadcn/separator';
+  import * as Tabs from 'shadcn/tabs';
+
+  import { DateRangePicker, DEFAULT_DATE_RANGE } from '#components';
+  import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
+  import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
 
   let dateRange = $state(DEFAULT_DATE_RANGE);
 

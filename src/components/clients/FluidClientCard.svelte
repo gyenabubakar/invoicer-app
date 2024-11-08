@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+  import { format } from 'date-fns';
+
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
   import { Badge } from 'shadcn/badge';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
   import { getInitials } from '#lib/utils';
   import type { FAKE_CLIENTS } from '#lib/fakes';
-  import { format } from 'date-fns';
 
   export let client: (typeof FAKE_CLIENTS)[0];
 
@@ -14,7 +16,7 @@
 
 <div
   data-client-card
-  class="col-span-12 flex justify-between items-center gap-4 w-full p-3 border border-slate-100 rounded-lg"
+  class="col-span-12 flex w-full items-center justify-between gap-4 rounded-lg border border-slate-100 p-3"
 >
   <a href="/app/clients/{client.id}" class="flex items-center gap-4 hover:opacity-70">
     <Avatar class="relative rounded-md">
@@ -24,7 +26,7 @@
 
     <div class="flex flex-col">
       <p class="leading-5">{client.name}</p>
-      <small class="text-muted-foreground/80 leading-4">
+      <small class="leading-4 text-muted-foreground/80">
         Added on {dateAdded}
       </small>
     </div>
@@ -34,7 +36,7 @@
     <a href="/app/clients/{client.id}/#projects" class="flex items-center gap-1 hover:opacity-70">
       <Badge
         variant="outline"
-        class="bg-slate-100 text-slate-500 border-slate-300 rounded-full hover:bg-slate-100 shadow-none"
+        class="rounded-full border-slate-300 bg-slate-100 text-slate-500 shadow-none hover:bg-slate-100"
       >
         {client.tasks.ongoing}
       </Badge>
@@ -47,7 +49,7 @@
     >
       <Badge
         variant="outline"
-        class="bg-orange-100 text-orange-500 border-orange-300 rounded-full hover:bg-orange-100 shadow-none"
+        class="rounded-full border-orange-300 bg-orange-100 text-orange-500 shadow-none hover:bg-orange-100"
       >
         {client.tasks.ongoing}
       </Badge>
@@ -60,7 +62,7 @@
     >
       <Badge
         variant="outline"
-        class="bg-invoicer/5 text-invoicer-dark border-invoicer rounded-full hover:bg-invoicer/5 shadow-none"
+        class="rounded-full border-invoicer bg-invoicer/5 text-invoicer-dark shadow-none hover:bg-invoicer/5"
       >
         {client.tasks.completed}
       </Badge>

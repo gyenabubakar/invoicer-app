@@ -6,7 +6,8 @@
   "printWidth": 100,
   "plugins": [
     "prettier-plugin-svelte",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-tailwindcss",
+    "@ianvs/prettier-plugin-sort-imports"
   ],
   "overrides": [
     {
@@ -15,5 +16,33 @@
         "parser": "svelte"
       }
     }
+  ],
+  "importOrder": [
+    "^svelte(/.+)?",
+    "^@sveltejs/.+",
+    "^bits-ui(/.+)?",
+    "<THIRD_PARTY_MODULES>",
+    "^$env",
+    "^$app",
+    "^$service-worker",
+    "<TYPES>^svelte(/.+?)",
+    "<TYPES>^@sveltejs/.+",
+    "<TYPES>^bits-ui/.+",
+    "<TYPES><THIRD_PARTY_MODULES>",
+    "<TYPES>^$(env|app|service-worker)",
+    "<TYPES>",
+    "",
+    "shadcn/(?!(utils(.(j|t)s)?)|(hooks(/.*)?)b).+",
+    "shadcn/hooks(/.*)?",
+    "shadcn/utils(.(j|t)s)?",
+    "<TYPES>^shadcn",
+    "",
+    "^#components",
+    "^#lib",
+    "^[.]",
+    "<TYPES>^#components",
+    "<TYPES>^#lib",
+    "<TYPES>^[.]",
+    ""
   ]
 }

@@ -8,12 +8,15 @@
 </script>
 
 <script lang="ts">
+  import { DateFormatter, getLocalTimeZone } from '@internationalized/date';
+  import type { DateValue } from '@internationalized/date';
   import type { DateRange } from 'bits-ui';
-  import { DateFormatter, type DateValue, getLocalTimeZone } from '@internationalized/date';
-  import { cn } from 'shadcn/utils';
+
   import { Button } from 'shadcn/button';
-  import { RangeCalendar } from 'shadcn/range-calendar';
   import * as Popover from 'shadcn/popover';
+  import { RangeCalendar } from 'shadcn/range-calendar';
+  import { cn } from 'shadcn/utils';
+
   import { PhCalendarBlank } from '#components/icons';
 
   const df = new DateFormatter('en-US', {

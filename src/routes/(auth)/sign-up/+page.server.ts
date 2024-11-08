@@ -1,4 +1,5 @@
 import { fail } from '@sveltejs/kit';
+
 import { formSchema } from '#lib/form-schemas/signup';
 
 export const actions = {

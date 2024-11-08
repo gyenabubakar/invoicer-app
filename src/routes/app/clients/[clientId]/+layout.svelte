@@ -1,17 +1,19 @@
 <script lang="ts">
   import { setContext } from 'svelte';
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
+
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
   import { Button } from 'shadcn/button';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
   import * as Tabs from 'shadcn/tabs';
-  import { FAKE_AVATAR } from '#lib/fakes';
-  import { PhPen, PhPlus } from '#components/icons';
-  import { page } from '$app/stores';
-  import { getInitials } from '#lib/utils';
-  import { clientsContextKey } from '#lib/clients/utils';
-  import { goto } from '$app/navigation';
-  import type { Client } from '#lib/types';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+
   import { ObjectSource } from '#components';
+  import { PhPen, PhPlus } from '#components/icons';
+  import { clientsContextKey } from '#lib/clients/utils';
+  import { FAKE_AVATAR } from '#lib/fakes';
+  import { getInitials } from '#lib/utils';
+  import type { Client } from '#lib/types';
 
   type Tab = 'projects' | 'tasks' | 'invoices';
   const TABS: Tab[] = ['projects', 'tasks', 'invoices'];

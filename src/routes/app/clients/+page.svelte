@@ -1,15 +1,17 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import { derived } from 'svelte/store';
-  import { Input } from 'shadcn/input';
-  import { PhMagnifyingGlass } from '#components/icons';
-  import { SourceFilter, FluidClientCard, DatesOrder } from '#components/clients';
-  import { FAKE_CLIENTS } from '#lib/fakes';
-  import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
   import { page } from '$app/stores';
-  import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
+
   import { Button } from 'shadcn/button';
+  import { Input } from 'shadcn/input';
+
+  import { DatesOrder, FluidClientCard, SourceFilter } from '#components/clients';
+  import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
+  import { PhMagnifyingGlass } from '#components/icons';
   import { PhUserPlus } from '#components/icons.js';
+  import { FAKE_CLIENTS } from '#lib/fakes';
+  import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
 
   const selectedSource = derived(page, (__page) => {
     return (__page.url.searchParams.get('source') || 'all') as FilterSource;
@@ -37,7 +39,7 @@
   <div data-filters class="flex items-center justify-between">
     <div class="relative">
       <Input placeholder="Search clients..." class="w-72 pl-8" />
-      <PhMagnifyingGlass class="w-5 h-5 absolute left-2 top-2" />
+      <PhMagnifyingGlass class="absolute left-2 top-2 h-5 w-5" />
     </div>
 
     <div class="flex gap-4">
@@ -47,7 +49,7 @@
       </div>
 
       <Button href="/app/clients/new">
-        <PhUserPlus weight="bold" class="w-5 h-5 mr-2" />
+        <PhUserPlus weight="bold" class="mr-2 h-5 w-5" />
         Add client
       </Button>
     </div>

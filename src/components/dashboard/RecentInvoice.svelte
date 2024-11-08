@@ -1,10 +1,11 @@
 <script lang="ts">
+  import * as Avatar from 'shadcn/avatar';
   import { Badge } from 'shadcn/badge';
   import { Button } from 'shadcn/button';
-  import * as Avatar from 'shadcn/avatar';
-  import type { InvoiceStatus } from '#components/types';
-  import { getInitials } from '#lib/utils';
   import { cn } from 'shadcn/utils';
+
+  import { getInitials } from '#lib/utils';
+  import type { InvoiceStatus } from '#components/types';
 
   type Props = {
     avatar: string | null;

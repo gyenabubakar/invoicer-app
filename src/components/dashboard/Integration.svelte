@@ -1,12 +1,13 @@
 <script lang="ts">
-  import { Card } from 'shadcn/card';
-  import { Button } from 'shadcn/button';
-  import { Badge } from 'shadcn/badge';
   import * as AlertDialog from 'shadcn/alert-dialog';
-  import { PhPlugs, PhPlugsConnected } from '#components/icons';
-  import type { IntegratedApp } from '#components/types';
+  import { Badge } from 'shadcn/badge';
+  import { Button } from 'shadcn/button';
+  import { Card } from 'shadcn/card';
   import { cn } from 'shadcn/utils';
+
+  import { PhPlugs, PhPlugsConnected } from '#components/icons';
   import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
+  import type { IntegratedApp } from '#components/types';
 
   type Props = {
     app: IntegratedApp;

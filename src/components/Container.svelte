@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
+
   import { cn } from 'shadcn/utils';
 
   type SizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';

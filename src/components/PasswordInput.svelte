@@ -2,8 +2,10 @@
 <script lang="ts">
   import type { HTMLInputAttributes } from 'svelte/elements';
   import type { WithElementRef } from 'bits-ui';
+
   import { Input } from 'shadcn/input';
   import { cn } from 'shadcn/utils';
+
   import { PhEye, PhEyeSlash } from '#components/icons';
 
   let {

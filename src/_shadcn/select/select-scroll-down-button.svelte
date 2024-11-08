@@ -1,19 +1,21 @@
 <script lang="ts">
-	import ChevronDown from "svelte-radix/ChevronDown.svelte";
-	import { Select as SelectPrimitive, type WithoutChildrenOrChild } from "bits-ui";
-	import { cn } from "shadcn/utils.js";
+  import ChevronDown from 'svelte-radix/ChevronDown.svelte';
+  import { Select as SelectPrimitive } from 'bits-ui';
+  import type { WithoutChildrenOrChild } from 'bits-ui';
 
-	let {
-		ref = $bindable(null),
-		class: className,
-		...restProps
-	}: WithoutChildrenOrChild<SelectPrimitive.ScrollDownButtonProps> = $props();
+  import { cn } from 'shadcn/utils.js';
+
+  let {
+    ref = $bindable(null),
+    class: className,
+    ...restProps
+  }: WithoutChildrenOrChild<SelectPrimitive.ScrollDownButtonProps> = $props();
 </script>
 
 <SelectPrimitive.ScrollDownButton
-	bind:ref
-	class={cn("flex cursor-default items-center justify-center py-1", className)}
-	{...restProps}
+  bind:ref
+  class={cn('flex cursor-default items-center justify-center py-1', className)}
+  {...restProps}
 >
-	<ChevronDown class="size-4" />
+  <ChevronDown class="size-4" />
 </SelectPrimitive.ScrollDownButton>

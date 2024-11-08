@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { Card, CardContent, CardHeader } from 'shadcn/card';
-  import { Progress } from 'shadcn/progress';
-  import type { ClientProject } from '#lib/types';
-  import { Badge } from 'shadcn/badge';
-  import { cn } from 'shadcn/utils';
-  import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
-  import { ProjectDetailsModal } from '#components/clients/index';
   import { onMount } from 'svelte';
   import { get } from 'svelte/store';
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores';
+
+  import { Badge } from 'shadcn/badge';
+  import { Card, CardContent, CardHeader } from 'shadcn/card';
+  import { Progress } from 'shadcn/progress';
+  import { cn } from 'shadcn/utils';
+
+  import { ProjectDetailsModal } from '#components/clients/index';
+  import type { ClientProject } from '#lib/types';
 
   type Props = {
     project: ClientProject;

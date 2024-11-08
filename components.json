@@ -1,17 +1,17 @@
 {
-	"$schema": "https://next.shadcn-svelte.com/schema.json",
-	"style": "new-york",
-	"tailwind": {
-		"config": "tailwind.config.ts",
-		"css": "src/app.pcss",
-		"baseColor": "slate"
-	},
-	"aliases": {
-		"components": "shadcn",
-		"utils": "shadcn/utils",
-		"ui": "shadcn",
-		"hooks": "shadcn/_hooks"
-	},
-	"typescript": true,
-	"registry": "https://next.shadcn-svelte.com/registry"
+  "$schema": "https://next.shadcn-svelte.com/schema.json",
+  "style": "new-york",
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/app.pcss",
+    "baseColor": "slate"
+  },
+  "aliases": {
+    "components": "shadcn",
+    "utils": "shadcn/utils",
+    "ui": "shadcn",
+    "hooks": "shadcn/_hooks"
+  },
+  "typescript": true,
+  "registry": "https://next.shadcn-svelte.com/registry"
 }

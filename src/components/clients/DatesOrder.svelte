@@ -1,9 +1,11 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+
   import * as Select from 'shadcn/select';
-  import type { ClientsPageContext } from '#components/clients/types';
+
   import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
-  import { PhBroom, PhSortAscending, PhSortDescending, PhArrowsDownUp } from '#components/icons';
+  import { PhArrowsDownUp, PhBroom, PhSortAscending, PhSortDescending } from '#components/icons';
+  import type { ClientsPageContext } from '#components/clients/types';
 
   const { datesOrder } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
 </script>

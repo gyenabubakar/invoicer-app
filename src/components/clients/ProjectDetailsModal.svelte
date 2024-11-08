@@ -1,16 +1,18 @@
 <script lang="ts">
-  import { Button } from 'shadcn/button';
-  import * as Dialog from 'shadcn/dialog';
-  import { page } from '$app/stores';
   import { get } from 'svelte/store';
   import { goto } from '$app/navigation';
-  import type { ClientProject } from '#lib/types';
+  import { page } from '$app/stores';
+  import type { Snippet } from 'svelte';
+
   import { Badge } from 'shadcn/badge';
+  import { Button } from 'shadcn/button';
+  import * as Dialog from 'shadcn/dialog';
+  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
   import { cn } from 'shadcn/utils';
+
   import { ObjectSource } from '#components';
   import { PhArrowSquareOut, PhPen } from '#components/icons';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
-  import type { Snippet } from 'svelte';
+  import type { ClientProject } from '#lib/types';
 
   type Props = {
     project: ClientProject;

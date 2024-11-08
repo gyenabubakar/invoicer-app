@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { useClientsContext } from '#lib/clients/utils';
   import { Project } from '#components/clients';
+  import { useClientsContext } from '#lib/clients/utils';
   import { FAKE_PROJECTS } from '#lib/fakes';
 
   const { client } = useClientsContext();

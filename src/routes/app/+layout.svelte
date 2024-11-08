@@ -1,24 +1,26 @@
 <script lang="ts">
-  import * as DropdownMenu from 'shadcn/dropdown-menu';
-  import { Sheet, SheetContent, SheetTrigger } from 'shadcn/sheet';
-  import { Button } from 'shadcn/button';
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
-  import { Input } from 'shadcn/input';
   import { page } from '$app/stores';
+
+  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+  import { Button } from 'shadcn/button';
+  import * as DropdownMenu from 'shadcn/dropdown-menu';
+  import { Input } from 'shadcn/input';
+  import { Sheet, SheetContent, SheetTrigger } from 'shadcn/sheet';
+
   import { Combobox, Container } from '#components';
   import {
     PhBell,
-    PhUsers,
     PhHouse,
-    PhList,
-    PhSignOut,
-    PhReceipt,
     PhKanban,
+    PhList,
     PhMagnifyingGlass,
+    PhReceipt,
+    PhSignOut,
+    PhUsers,
   } from '#components/icons';
+  import { AppLogo } from '#components/logos';
   import { FAKE_AVATAR } from '#lib/fakes';
   import type { ComboboxOption } from '#components/types';
-  import { AppLogo } from '#components/logos';
 
   let { children } = $props();
 

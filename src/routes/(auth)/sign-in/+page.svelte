@@ -1,11 +1,12 @@
 <script lang="ts">
   import { Button } from 'shadcn/button';
-  import { Label } from 'shadcn/label';
   import { Input } from 'shadcn/input';
-  import { Container, FormFieldError, PasswordInput } from '#components';
-  import { fieldIsValid } from '#lib/form-schemas/utils';
-  import { formSchema, formFieldErrors } from '#lib/form-schemas/signup';
+  import { Label } from 'shadcn/label';
   import { Separator } from 'shadcn/separator';
+
+  import { Container, FormFieldError, PasswordInput } from '#components';
+  import { formFieldErrors, formSchema } from '#lib/form-schemas/signup';
+  import { fieldIsValid } from '#lib/form-schemas/utils';
 
   let email = $state('');
   let password = $state('');

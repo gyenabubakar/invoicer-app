@@ -1,13 +1,15 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
-  import type ApexCharts from 'apexcharts';
   import { format } from 'date-fns';
+  import type ApexCharts from 'apexcharts';
+
   import { Card, CardContent } from 'shadcn/card';
+
   import {
     METRICS_COLOURS,
+    METRICS_ICONS,
     METRICS_TITLES,
     METRICS_Y_AXIS_LABELS,
-    METRICS_ICONS,
   } from '#components/dashboard/constants';
 
   type Props = {

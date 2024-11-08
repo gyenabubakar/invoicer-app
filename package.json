@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --write .",
+    "format": "prettier --write . --log-level=warn",
     "lint": "prettier --check . && eslint ."
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "@internationalized/date": "^3.5.6"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",

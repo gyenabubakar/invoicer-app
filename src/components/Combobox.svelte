@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { CaretUpDown, Check, Plus } from 'phosphor-svelte';
-  import { Button } from 'shadcn/button';
-  import * as Popover from 'shadcn/popover';
-  import * as Command from 'shadcn/command';
-  import type { ComboboxOption } from '#components/types';
-  import { cn } from 'shadcn/utils';
   import { tick } from 'svelte';
+  import { CaretUpDown, Check, Plus } from 'phosphor-svelte';
+
+  import { Button } from 'shadcn/button';
+  import * as Command from 'shadcn/command';
+  import * as Popover from 'shadcn/popover';
+  import { cn } from 'shadcn/utils';
+
+  import type { ComboboxOption } from '#components/types';
 
   type Props = {
     class?: string;

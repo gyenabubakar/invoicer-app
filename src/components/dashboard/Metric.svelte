@@ -1,9 +1,10 @@
 <script lang="ts">
   import { Badge } from 'shadcn/badge';
   import { Card } from 'shadcn/card';
-  import { PhArrowUp, PhArrowDown } from '#components/icons';
   import { cn } from 'shadcn/utils';
-  import { METRICS_COLOURS, METRICS_TITLES, METRICS_ICONS } from '#components/dashboard/constants';
+
+  import { METRICS_COLOURS, METRICS_ICONS, METRICS_TITLES } from '#components/dashboard/constants';
+  import { PhArrowDown, PhArrowUp } from '#components/icons';
 
   type MetricProps = {
     key: keyof typeof METRICS_COLOURS;

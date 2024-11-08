@@ -1,4 +1,5 @@
 import { getContext } from 'svelte';
+
 import type { Client } from '#lib/types';
 
 type ClientsContext = {
