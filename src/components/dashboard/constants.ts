@@ -1,3 +1,5 @@
+import type { IconProps, SvelteComponent } from 'phosphor-svelte/lib/shared';
+
 import { PhCheckSquare, PhCoins, PhCurrencyDollar, PhTimer } from '#components/icons';
 
 export const METRICS_COLOURS = {
@@ -35,9 +37,9 @@ export const METRICS_Y_AXIS_LABELS: Record<Metric, string> = {
   tasksCompleted: 'Tasks',
 };
 
-export const METRICS_ICONS: Record<Metric, any> = {
-  totalRevenue: PhCurrencyDollar,
-  billableHours: PhTimer,
-  avgHourlyRate: PhCoins,
-  tasksCompleted: PhCheckSquare,
+export const METRICS_ICONS: Record<Metric, SvelteComponent<IconProps>> = {
+  totalRevenue: PhCurrencyDollar as unknown as SvelteComponent<IconProps>,
+  billableHours: PhTimer as unknown as SvelteComponent<IconProps>,
+  avgHourlyRate: PhCoins as unknown as SvelteComponent<IconProps>,
+  tasksCompleted: PhCheckSquare as unknown as SvelteComponent<IconProps>,
 };
