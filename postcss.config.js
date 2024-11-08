@@ -1,6 +1,9 @@
+import postcssComment from 'postcss-comment';
+
 export default {
-	plugins: {
-		tailwindcss: {},
-		autoprefixer: {}
-	}
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+  parser: postcssComment,
 };

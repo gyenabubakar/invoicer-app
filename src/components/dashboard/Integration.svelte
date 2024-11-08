@@ -59,13 +59,16 @@
     {#if isConnected}
       <AlertDialog.Root>
         <AlertDialog.Trigger>
-          <Button
-            variant="outline"
-            class="border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white"
-          >
-            <PhPlugs class="mr-2" size="20px" weight="fill" />
-            Disconnect
-          </Button>
+          {#snippet child({ props })}
+            <Button
+              variant="outline"
+              class="border-red-500 bg-red-50 text-red-500 hover:bg-red-500 hover:text-white"
+              {...props}
+            >
+              <PhPlugs class="mr-2" size="20px" weight="fill" />
+              Disconnect
+            </Button>
+          {/snippet}
         </AlertDialog.Trigger>
         <AlertDialog.Content class="">
           <AlertDialog.Header>

@@ -5,6 +5,7 @@
   import * as Command from 'shadcn/command';
   import type { ComboboxOption } from '#components/types';
   import { cn } from 'shadcn/utils';
+  import { tick } from 'svelte';
 
   type Props = {
     class?: string;
@@ -19,7 +20,6 @@
     onAdd?: () => void;
   };
 
-  // assign the defaults
   let {
     class: className,
     open = $bindable(false),
@@ -33,22 +33,24 @@
     onAdd,
   }: Props = $props();
 
+  let triggerRef = $state<HTMLButtonElement>(null!);
+
   let selectedOption = $derived(options.find((o) => o.value === value));
   let selectedValue = $derived(selectedOption?.label ?? placeholder);
 
   // We want to refocus the trigger button when the user selects
   // an item from the list so users can continue navigating the
   // rest of the form with the keyboard.
-  // async function closeAndFocusTrigger(triggerId: string) {
-  //   open = false;
-  //   await tick();
-  //   document.getElementById(triggerId)?.focus();
-  // }
+  async function closeAndFocusTrigger() {
+    open = false;
+    await tick();
+    triggerRef.focus();
+  }
 </script>
 
 <div class="combobox">
   <Popover.Root bind:open>
-    <Popover.Trigger>
+    <Popover.Trigger bind:ref={triggerRef}>
       {#snippet child({ props })}
         <Button
           variant="outline"
@@ -71,7 +73,13 @@
         <Command.Empty class="text-gray-600">{fallback}</Command.Empty>
         <Command.Group>
           {#each options as option (option.value)}
-            <Command.Item value={option.value} onSelect={() => (value = option.value)}>
+            <Command.Item
+              value={option.value}
+              onSelect={() => {
+                value = option.value;
+                closeAndFocusTrigger();
+              }}
+            >
               <Check class={cn('mr-2 h-4 w-4', value !== option.value && 'text-transparent')} />
               {option.label}
             </Command.Item>

@@ -165,7 +165,7 @@
           options={projects}
           placeholder="Select a project..."
           searchPlaceholder="Search projects..."
-          class="w-[200px]"
+          class="max-w-[200px]"
         />
       </div>
 
