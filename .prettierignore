@@ -1,8 +1,38 @@
-# Package Managers
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
 node_modules
+.husky
+
+# Output
+.output
+.vercel
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# IDE
 .idea
-.svelte-kit
-build/
+
+# lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lockb
+
+# misc
+.prettierignore
+.eslintignore
+.gitignore
+.npmrc
+

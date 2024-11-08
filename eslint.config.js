@@ -28,7 +28,7 @@ export default ts.config(
     },
   },
   {
-    ignores: ['build/', '.svelte-kit/', 'dist/', 'storybook-static/'],
+    ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/', '.husky/'],
   },
   {
     rules: {
