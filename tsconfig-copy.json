@@ -18,17 +18,17 @@
     "noEmit": true,
     "target": "esnext",
     "paths": {
-      "*": ["node_modules/*"],
-      "#lib": ["src/lib"],
-      "#lib/*": ["src/lib/*"],
-      "#assets": ["src/assets"],
-      "#assets/*": ["src/assets/*"],
-      "#components": ["src/components"],
-      "#components/*": ["src/components/*"],
-      "shadcn": ["src/_shadcn"],
-      "shadcn/*": ["src/_shadcn/*"],
-      "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "*": ["./node_modules/*"],
+      "#lib": ["./src/lib"],
+      "#lib/*": ["./src/lib/*"],
+      "#assets": ["./src/assets"],
+      "#assets/*": ["./src/assets/*"],
+      "#components": ["./src/components"],
+      "#components/*": ["./src/components/*"],
+      "shadcn": ["./src/_shadcn"],
+      "shadcn/*": ["./src/_shadcn/*"],
+      "$lib": ["./src/lib"],
+      "$lib/*": ["./src/lib/*"]
     }
   },
   "include": [
