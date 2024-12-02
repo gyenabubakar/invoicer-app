@@ -36,3 +36,5 @@ bun.lockb
 .gitignore
 .npmrc
 
+*.png
+*.jpg

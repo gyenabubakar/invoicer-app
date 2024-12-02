@@ -10,7 +10,7 @@
   import { cn } from 'shadcn/utils';
 
   import { ProjectDetailsModal } from '#components/clients/index';
-  import type { ClientProject } from '#lib/types';
+  import type { ClientProject } from '#lib/clients/types';
 
   type Props = {
     project: ClientProject;

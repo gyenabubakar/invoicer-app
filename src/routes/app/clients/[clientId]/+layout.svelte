@@ -11,9 +11,9 @@
   import { ObjectSource } from '#components';
   import { Ph } from '#components/icons';
   import { clientsContextKey } from '#lib/clients/utils';
-  import { FAKE_AVATAR } from '#lib/fakes';
+  import { FAKE_CLIENTS } from '#lib/fakes';
   import { getInitials } from '#lib/utils';
-  import type { Client } from '#lib/types';
+  import type { Client } from '#lib/clients/types';
 
   type Tab = 'projects' | 'tasks' | 'invoices';
   const TABS: Tab[] = ['projects', 'tasks', 'invoices'];
@@ -21,16 +21,7 @@
   let { children } = $props();
 
   const client: Client = $state({
-    id: $page.params.clientId,
-    name: 'Acme Corp',
-    avatar: FAKE_AVATAR,
-    email: 'info@acmecorp.com',
-    phone: {
-      readable: '+1 (234) 567-890',
-      raw: '+1234567890',
-    },
-    source: 'GitLab' as 'Internal' | 'GitHub' | 'GitLab',
-    address: '1234 Acme St, Acmeville, AC 12345',
+    ...FAKE_CLIENTS[0],
   });
 
   let currentTab = $derived.by(() => {
@@ -98,12 +89,14 @@
           </span>
         </div>
 
-        <div role="listitem">
-          <span role="term" class="text-muted-foreground">Phone:</span>
-          <span role="definition" class="mb-2">
-            <a href="tel:{client.phone.raw}">{client.phone.readable}</a>
-          </span>
-        </div>
+        {#if client.phone}
+          <div role="listitem">
+            <span role="term" class="text-muted-foreground">Phone:</span>
+            <span role="definition" class="mb-2">
+              <a href="tel:{client.phone.raw}">{client.phone.readable}</a>
+            </span>
+          </div>
+        {/if}
 
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Address:</span>

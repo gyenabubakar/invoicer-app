@@ -10,7 +10,7 @@
     size?: SizeType;
   };
 
-  let { class: className, size, children, ...restProps }: Props = $props();
+  let { class: className, size = 'xl', children, ...restProps }: Props = $props();
 </script>
 
 <div

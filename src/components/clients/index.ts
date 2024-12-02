@@ -1,5 +1,5 @@
-export { default as FluidClientCard } from './FluidClientCard.svelte';
-export { default as SourceFilter } from './SourceFilter.svelte';
-export { default as DatesOrder } from './DatesOrder.svelte';
-export { default as Project } from './Project.svelte';
-export { default as ProjectDetailsModal } from './ProjectDetailsModal.svelte';
+export { default as FluidClientCard } from './fluid-client-card.svelte';
+export { default as SourceFilter } from './source-filter.svelte';
+export { default as DatesOrder } from './dates-order.svelte';
+export { default as Project } from './project.svelte';
+export { default as ProjectDetailsModal } from './project-details-modal.svelte';

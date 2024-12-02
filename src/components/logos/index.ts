@@ -1,3 +1,3 @@
-export { default as AppLogo } from './AppLogo.svelte';
-export { default as GitLabLogo } from './GitLabLogo.svelte';
-export { default as GitHubLogo } from './GitHubLogo.svelte';
+export { default as AppLogo } from './app-logo.svelte';
+export { default as GitLabLogo } from './gitlab-logo.svelte';
+export { default as GitHubLogo } from './github-logo.svelte';

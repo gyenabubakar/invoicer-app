@@ -1,6 +1,6 @@
 import { getContext } from 'svelte';
 
-import type { Client } from '#lib/types';
+import type { Client } from '#lib/clients/types';
 
 type ClientsContext = {
   client: Readonly<Client>;

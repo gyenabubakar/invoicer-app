@@ -12,7 +12,7 @@
 
   import { ObjectSource } from '#components';
   import { Ph } from '#components/icons';
-  import type { ClientProject } from '#lib/types';
+  import type { ClientProject } from '#lib/clients/types';
 
   type Props = {
     project: ClientProject;
