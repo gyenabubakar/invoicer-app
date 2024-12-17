@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   import { Separator } from 'shadcn/separator';
   import * as Tabs from 'shadcn/tabs';
@@ -11,7 +11,7 @@
 
   let dateRange = $state(DEFAULT_DATE_RANGE);
 
-  let defaultTab = $derived($page.url.searchParams.get('numberOfDays') || '30');
+  let defaultTab = $derived(page.url.searchParams.get('numberOfDays') || '30');
 
   function onTabChange(value?: string) {
     if (!value) return;

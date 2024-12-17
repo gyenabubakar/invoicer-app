@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { get } from 'svelte/store';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import type { Snippet } from 'svelte';
 
   import { Badge } from 'shadcn/badge';
@@ -25,7 +24,7 @@
 
   function onOpenChange(open: boolean) {
     if (!open) {
-      const currentURL = new URL(get(page).url);
+      const currentURL = new URL(page.url);
       currentURL.searchParams.delete('projectId');
       goto(currentURL);
     }

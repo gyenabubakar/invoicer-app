@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { get } from 'svelte/store';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   import { Badge } from 'shadcn/badge';
   import { Card, CardContent, CardHeader } from 'shadcn/card';
@@ -25,11 +25,11 @@
   );
 
   function handleOpenProject() {
-    goto(`${$page.url.href}?projectId=${project.id}`);
+    goto(`${page.url.href}?projectId=${project.id}`);
   }
 
   onMount(() => {
-    const projectId = get(page).url.searchParams.get('projectId');
+    const projectId = page.url.searchParams.get('projectId');
     if (projectId === project.id) {
       modalOpen = true;
     }

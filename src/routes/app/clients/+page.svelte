@@ -1,7 +1,6 @@
 <script lang="ts">
   import { setContext } from 'svelte';
-  import { derived } from 'svelte/store';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   import { Button } from 'shadcn/button';
   import { Input } from 'shadcn/input';
@@ -12,15 +11,22 @@
   import { FAKE_CLIENTS } from '#lib/fakes';
   import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
 
-  const selectedSource = derived(page, (__page) => {
-    return (__page.url.searchParams.get('source') || 'all') as FilterSource;
+  const selectedSource = $derived.by(() => {
+    return (page.url.searchParams.get('source') || 'all') as FilterSource;
   });
 
-  const datesOrder = derived(page, (__page) => {
-    return (__page.url.searchParams.get('order') || 'reset') as DatesOrderType;
+  const datesOrder = $derived.by(() => {
+    return (page.url.searchParams.get('order') || 'reset') as DatesOrderType;
   });
 
-  setContext<ClientsPageContext>(CLIENTS_PAGE_CTX, { selectedSource, datesOrder });
+  setContext<ClientsPageContext>(CLIENTS_PAGE_CTX, {
+    get selectedSource() {
+      return selectedSource;
+    },
+    get datesOrder() {
+      return datesOrder;
+    },
+  });
 </script>
 
 <svelte:head>

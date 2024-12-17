@@ -14,28 +14,28 @@
 <Select.Root
   type="single"
   controlledValue
-  value={$selectedSource}
+  value={selectedSource}
   onValueChange={onSelectedChange('source', 'all')}
 >
   <Select.Trigger class="relative flex w-[150px] shadow-none">
-    <div data-dot class:visible={$selectedSource !== 'all'}></div>
+    <div data-dot class:visible={selectedSource !== 'all'}></div>
 
-    {#if $selectedSource === 'all'}
+    {#if selectedSource === 'all'}
       <div class="flex items-center gap-1.5">
         <Ph.SquaresFour class="h-6 w-6 text-muted-foreground" />
         <span>All sources</span>
       </div>
-    {:else if $selectedSource === 'internal'}
+    {:else if selectedSource === 'internal'}
       <div class="flex items-center gap-1.5">
         <AppLogo href={null} class="w-5" />
         <span>Internal</span>
       </div>
-    {:else if $selectedSource === 'github'}
+    {:else if selectedSource === 'github'}
       <div class="flex items-center gap-1.5">
         <GitHubLogo class="w-5" />
         <span>GitHub</span>
       </div>
-    {:else if $selectedSource === 'gitlab'}
+    {:else if selectedSource === 'gitlab'}
       <div class="flex items-center gap-1.5">
         <GitLabLogo class="w-5" />
         <span>GitLab</span>

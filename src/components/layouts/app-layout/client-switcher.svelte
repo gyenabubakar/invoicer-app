@@ -16,14 +16,12 @@
   };
 
   const context = AppLayoutContext.use();
-
-  $inspect('>>>', context.activeClient?.avatar);
 </script>
 
 {#snippet avatar({ client, isListItem = false }: AvatarSnippetProps)}
   <Avatar class={cn('rounded-md', isListItem ? 'size-7' : 'size-5')}>
-    <AvatarImage src={client?.avatar ?? '--'} alt={client?.name} />
-    <AvatarFallback class="rounded-md font-bold text-muted-foreground">
+    <AvatarImage src={client?.avatar ?? ''} alt={client?.name} />
+    <AvatarFallback class="rounded-md border-0 font-bold text-muted-foreground">
       {#if client?.name}
         {getInitials(client.name)}
       {:else}

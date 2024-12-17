@@ -1,8 +1,6 @@
 import { getContext, setContext } from 'svelte';
-import { get } from 'svelte/store';
 import Cookies from 'js-cookie';
-import { page } from '$app/stores';
-import type { Unsubscriber } from 'svelte/store';
+import { page } from '$app/state';
 
 import { ACTIVE_CLIENT_COOKIE_NAME } from '#lib/constants';
 import type { MiniClient, MiniProject } from '#lib/clients/types';
@@ -16,21 +14,15 @@ type ContextConfig = {
 const APP_LAYOUT_CONTEXT_KEY = 'APP_LAYOUT_CONTEXT';
 
 export class AppLayoutContext {
-  private path = $state(get(page).url.pathname);
+  private path = $derived(page.url.pathname);
   private activeClientId = $state<string | null>(null);
   readonly clients: MiniClient[] = $state([]);
   readonly projects: MiniProject[] = $state([]);
-
-  private readonly pageStoreUnsubscribe: Unsubscriber;
 
   constructor(init: ContextConfig) {
     this.activeClientId = init.activeClientId;
     this.clients = init.clients;
     this.projects = init.projects;
-
-    this.pageStoreUnsubscribe = page.subscribe((newPage) => {
-      this.path = newPage.url.pathname;
-    });
 
     setContext(APP_LAYOUT_CONTEXT_KEY, this);
   }
@@ -63,9 +55,5 @@ export class AppLayoutContext {
   setActiveClientId(id: string) {
     Cookies.set(ACTIVE_CLIENT_COOKIE_NAME, id);
     this.activeClientId = id;
-  }
-
-  destroy() {
-    this.pageStoreUnsubscribe();
   }
 }

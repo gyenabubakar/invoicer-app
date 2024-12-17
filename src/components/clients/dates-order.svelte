@@ -13,20 +13,20 @@
 <Select.Root
   type="single"
   controlledValue
-  value={$datesOrder ?? 'descending'}
+  value={datesOrder ?? 'descending'}
   onValueChange={onSelectedChange('order', 'reset')}
 >
   <Select.Trigger class="relative flex w-[225px] shadow-none">
-    <div data-dot class:visible={$datesOrder !== 'reset'}></div>
+    <div data-dot class:visible={datesOrder !== 'reset'}></div>
 
     <div class="flex items-center gap-1.5">
-      {#if $datesOrder === 'reset'}
+      {#if datesOrder === 'reset'}
         <Ph.ArrowsDownUp class="h-6 w-6 text-muted-foreground" />
         <span>Order by dates added</span>
-      {:else if $datesOrder === 'ascending'}
+      {:else if datesOrder === 'ascending'}
         <Ph.SortAscending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Ascending</span>
-      {:else if $datesOrder === 'descending'}
+      {:else if datesOrder === 'descending'}
         <Ph.SortDescending class="h-6 w-6 text-muted-foreground" />
         <span>Date added — Descending</span>
       {/if}

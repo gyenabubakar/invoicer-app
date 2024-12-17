@@ -1,7 +1,7 @@
 <script lang="ts">
   import { setContext } from 'svelte';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
 
   import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
   import { Button } from 'shadcn/button';
@@ -25,7 +25,7 @@
   });
 
   let currentTab = $derived.by(() => {
-    const pathSegments = $page.url.href.split('/').filter(Boolean);
+    const pathSegments = page.url.href.split('/').filter(Boolean);
     const lastSegment = pathSegments.pop();
     if (lastSegment === 'tasks' || lastSegment === 'invoices') {
       return lastSegment as Tab;
@@ -36,7 +36,7 @@
   function onTabChange(value: string) {
     if (!TABS.includes(value as Tab)) return;
 
-    let path = `/app/clients/${$page.params.clientId}/`;
+    let path = `/app/clients/${page.params.clientId}/`;
 
     const tab = value as Tab;
     if (tab !== 'projects') {

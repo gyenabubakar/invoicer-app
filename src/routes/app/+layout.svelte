@@ -18,11 +18,7 @@
 
   let { children, data }: Props = $props();
 
-  const layoutContext = new AppLayoutContext(data);
-
-  onDestroy(() => {
-    layoutContext.destroy();
-  });
+  const _layoutContext = new AppLayoutContext(data);
 </script>
 
 <!-- TODO: Show this notice only if the user is not verified -->
