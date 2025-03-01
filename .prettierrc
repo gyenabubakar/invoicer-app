@@ -17,6 +17,9 @@
       }
     }
   ],
+  "svelteSortOrder": "options-scripts-markup-styles",
+  "svelteAllowShorthand": true,
+  "svelteIndentScriptAndStyle": false,
   "importOrder": [
     "^svelte(/.+)?",
     "^@sveltejs/.+",

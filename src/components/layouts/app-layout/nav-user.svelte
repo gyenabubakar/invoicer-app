@@ -1,22 +1,22 @@
 <script lang="ts">
-  import * as Avatar from 'shadcn/avatar';
-  import * as DropdownMenu from 'shadcn/dropdown-menu';
-  import * as Sidebar from 'shadcn/sidebar';
-  import { useSidebar } from 'shadcn/sidebar';
+import * as Avatar from 'shadcn/avatar';
+import * as DropdownMenu from 'shadcn/dropdown-menu';
+import * as Sidebar from 'shadcn/sidebar';
+import { useSidebar } from 'shadcn/sidebar';
 
-  import { Ph } from '#components/icons';
+import { Ph } from '#components/icons';
 
-  type Props = {
-    user: {
-      name: string;
-      email: string;
-      avatar: string;
-    };
+type Props = {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
   };
+};
 
-  let { user }: Props = $props();
+let { user }: Props = $props();
 
-  const sidebar = useSidebar();
+const sidebar = useSidebar();
 </script>
 
 <Sidebar.Menu>

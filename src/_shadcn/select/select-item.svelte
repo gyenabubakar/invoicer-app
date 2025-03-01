@@ -1,18 +1,18 @@
 <script lang="ts">
-  import Check from 'svelte-radix/Check.svelte';
-  import { Select as SelectPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import Check from 'svelte-radix/Check.svelte';
+import { Select as SelectPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    value,
-    label,
-    children: childrenProp,
-    ...restProps
-  }: WithoutChild<SelectPrimitive.ItemProps> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  value,
+  label,
+  children: childrenProp,
+  ...restProps
+}: WithoutChild<SelectPrimitive.ItemProps> = $props();
 </script>
 
 <SelectPrimitive.Item

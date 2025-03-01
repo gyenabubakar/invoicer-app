@@ -1,20 +1,20 @@
 <script lang="ts">
-  import * as Avatar from 'shadcn/avatar';
-  import { Badge } from 'shadcn/badge';
-  import { Button } from 'shadcn/button';
-  import { cn } from 'shadcn/utils';
+import * as Avatar from 'shadcn/avatar';
+import { Badge } from 'shadcn/badge';
+import { Button } from 'shadcn/button';
+import { cn } from 'shadcn/utils';
 
-  import { getInitials } from '#lib/utils';
-  import type { InvoiceStatus } from '#components/types';
+import { getInitials } from '#lib/utils';
+import type { InvoiceStatus } from '#components/types';
 
-  type Props = {
-    avatar: string | null;
-    client: string;
-    invoiceNumber: string;
-    invoiceStatus: InvoiceStatus;
-  };
+type Props = {
+  avatar: string | null;
+  client: string;
+  invoiceNumber: string;
+  invoiceStatus: InvoiceStatus;
+};
 
-  let { avatar, client, invoiceNumber, invoiceStatus }: Props = $props();
+let { avatar, client, invoiceNumber, invoiceStatus }: Props = $props();
 </script>
 
 <div data-recent-invoice class="flex gap-3 [&:not(:last-child)]:mb-3">
@@ -44,27 +44,27 @@
 </div>
 
 <style lang="postcss">
-  :global([data-invoice-status]) {
-    @apply rounded-full border font-medium shadow-none;
-  }
+:global([data-invoice-status]) {
+  @apply rounded-full border font-medium shadow-none;
+}
 
-  :global([data-invoice-status].overdue) {
-    @apply bg-red-50 text-red-500 hover:bg-red-50;
-  }
+:global([data-invoice-status].overdue) {
+  @apply bg-red-50 text-red-500 hover:bg-red-50;
+}
 
-  :global([data-invoice-status].paid) {
-    @apply bg-green-50 text-green-500 hover:bg-green-50;
-  }
+:global([data-invoice-status].paid) {
+  @apply bg-green-50 text-green-500 hover:bg-green-50;
+}
 
-  :global([data-invoice-status].pending) {
-    @apply bg-yellow-50 text-yellow-500 hover:bg-yellow-50;
-  }
+:global([data-invoice-status].pending) {
+  @apply bg-yellow-50 text-yellow-500 hover:bg-yellow-50;
+}
 
-  :global([data-invoice-status].sent) {
-    @apply bg-blue-50 text-blue-500 hover:bg-blue-50;
-  }
+:global([data-invoice-status].sent) {
+  @apply bg-blue-50 text-blue-500 hover:bg-blue-50;
+}
 
-  :global([data-recent-invoice]:not(:last-child) > [data-recent-invoice-details]) {
-    @apply border-b border-b-gray-100;
-  }
+:global([data-recent-invoice]:not(:last-child) > [data-recent-invoice-details]) {
+  @apply border-b border-b-gray-100;
+}
 </style>

@@ -1,57 +1,57 @@
 <script lang="ts">
-  import Command from 'lucide-svelte/icons/command';
-  import type { ComponentProps } from 'svelte';
+import Command from 'lucide-svelte/icons/command';
+import type { ComponentProps } from 'svelte';
 
-  import { Input } from 'shadcn/input';
-  import * as Sidebar from 'shadcn/sidebar';
+import { Input } from 'shadcn/input';
+import * as Sidebar from 'shadcn/sidebar';
 
-  import { Ph } from '#components/icons';
-  import NavMain from '#components/layouts/app-layout/nav-main.svelte';
-  import NavPinnedItems from '#components/layouts/app-layout/nav-pinned.svelte';
-  import NavUser from '#components/layouts/app-layout/nav-user.svelte';
-  import { FAKE_AVATAR } from '#lib/fakes';
-  import type { PinnedItem } from '#components/layouts/app-layout/nav-pinned.svelte';
+import { Ph } from '#components/icons';
+import NavMain from '#components/layouts/app-layout/nav-main.svelte';
+import NavPinnedItems from '#components/layouts/app-layout/nav-pinned.svelte';
+import NavUser from '#components/layouts/app-layout/nav-user.svelte';
+import { FAKE_AVATAR } from '#lib/fakes';
+import type { PinnedItem } from '#components/layouts/app-layout/nav-pinned.svelte';
 
-  let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
+let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 
-  const user = {
-    name: 'Gyen Abubakar',
-    email: 'gyen@example.com',
-    avatar: FAKE_AVATAR,
-  };
+const user = {
+  name: 'Gyen Abubakar',
+  email: 'gyen@example.com',
+  avatar: FAKE_AVATAR,
+};
 
-  const pinnedItems: PinnedItem[] = [
-    {
-      id: '1',
-      title: "Gyen's Invoicer",
-      type: 'Project',
-      emoji: '🎨',
-    },
-    {
-      id: '2',
-      title: 'Google',
-      type: 'Client',
-      emoji: '🚀',
-    },
-    {
-      id: '3',
-      title: 'fix: ensure the correct value is returned',
-      type: 'Task',
-      emoji: '🔧',
-    },
-    {
-      id: '4',
-      title: 'Invoice #123',
-      type: 'Invoice',
-      emoji: '💵',
-    },
-    {
-      id: '5',
-      title: 'Acme Corp',
-      type: 'Client',
-      emoji: '🏢',
-    },
-  ];
+const pinnedItems: PinnedItem[] = [
+  {
+    id: '1',
+    title: "Gyen's Invoicer",
+    type: 'Project',
+    emoji: '🎨',
+  },
+  {
+    id: '2',
+    title: 'Google',
+    type: 'Client',
+    emoji: '🚀',
+  },
+  {
+    id: '3',
+    title: 'fix: ensure the correct value is returned',
+    type: 'Task',
+    emoji: '🔧',
+  },
+  {
+    id: '4',
+    title: 'Invoice #123',
+    type: 'Invoice',
+    emoji: '💵',
+  },
+  {
+    id: '5',
+    title: 'Acme Corp',
+    type: 'Client',
+    emoji: '🏢',
+  },
+];
 </script>
 
 <Sidebar.Root bind:ref variant="inset" {...restProps}>

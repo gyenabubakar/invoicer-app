@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { Avatar as AvatarPrimitive } from 'bits-ui';
+import { Avatar as AvatarPrimitive } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    class: className,
-    ref = $bindable(null),
-    loadingStatus = $bindable('loading'),
-    ...restProps
-  }: AvatarPrimitive.RootProps = $props();
+let {
+  class: className,
+  ref = $bindable(null),
+  loadingStatus = $bindable('loading'),
+  ...restProps
+}: AvatarPrimitive.RootProps = $props();
 </script>
 
 <AvatarPrimitive.Root

@@ -1,78 +1,78 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte';
-  import { format } from 'date-fns';
-  import type ApexCharts from 'apexcharts';
+import { onDestroy, onMount } from 'svelte';
+import { format } from 'date-fns';
+import type ApexCharts from 'apexcharts';
 
-  import { Card, CardContent } from 'shadcn/card';
+import { Card, CardContent } from 'shadcn/card';
 
-  import {
-    METRICS_COLOURS,
-    METRICS_ICONS,
-    METRICS_TITLES,
-    METRICS_Y_AXIS_LABELS,
-  } from '#components/dashboard/constants';
+import {
+  METRICS_COLOURS,
+  METRICS_ICONS,
+  METRICS_TITLES,
+  METRICS_Y_AXIS_LABELS,
+} from '#components/dashboard/constants';
 
-  type Props = {
-    key: keyof typeof METRICS_COLOURS;
-    dates: Date[];
-    values: number[];
-  };
+type Props = {
+  key: keyof typeof METRICS_COLOURS;
+  dates: Date[];
+  values: number[];
+};
 
-  let { key, dates, values }: Props = $props();
+let { key, dates, values }: Props = $props();
 
-  let chart: ApexCharts | undefined = $state();
-  let element: HTMLDivElement | undefined = $state();
+let chart: ApexCharts | undefined = $state();
+let element: HTMLDivElement | undefined = $state();
 
-  let MetricIcon = $derived(METRICS_ICONS[key]);
-  let colour = $derived(METRICS_COLOURS[key]);
-  let title = $derived(METRICS_TITLES[key]);
-  let yAxisLabel = $derived(METRICS_Y_AXIS_LABELS[key]);
-  let datesFormatted = $derived(dates.map((date) => format(date, 'yyyy MMM do')));
+let MetricIcon = $derived(METRICS_ICONS[key]);
+let colour = $derived(METRICS_COLOURS[key]);
+let title = $derived(METRICS_TITLES[key]);
+let yAxisLabel = $derived(METRICS_Y_AXIS_LABELS[key]);
+let datesFormatted = $derived(dates.map((date) => format(date, 'yyyy MMM do')));
 
-  let options = $derived({
-    chart: {
-      type: 'area',
-      height: 350,
-      toolbar: {
-        show: false,
-      },
+let options = $derived({
+  chart: {
+    type: 'area',
+    height: 350,
+    toolbar: {
+      show: false,
     },
-    fill: {
-      colors: [colour.foreground],
+  },
+  fill: {
+    colors: [colour.foreground],
+  },
+  dataLabels: {
+    enabled: true,
+  },
+  stroke: {
+    curve: 'smooth',
+  },
+  xaxis: {
+    type: 'datetime',
+    categories: datesFormatted,
+  },
+  yaxis: {
+    title: {
+      text: yAxisLabel,
     },
-    dataLabels: {
-      enabled: true,
+  },
+  series: [
+    {
+      name: yAxisLabel,
+      data: values,
+      color: colour.foreground,
     },
-    stroke: {
-      curve: 'smooth',
-    },
-    xaxis: {
-      type: 'datetime',
-      categories: datesFormatted,
-    },
-    yaxis: {
-      title: {
-        text: yAxisLabel,
-      },
-    },
-    series: [
-      {
-        name: yAxisLabel,
-        data: values,
-        color: colour.foreground,
-      },
-    ],
-  } satisfies ApexCharts.ApexOptions);
+  ],
+} satisfies ApexCharts.ApexOptions);
 
-  onMount(async () => {
-    const ApexCharts = (await import('apexcharts')).default;
-    chart = new ApexCharts(element, options);
-    await chart.render();
-  });
+onMount(async () => {
+  const ApexCharts = (await import('apexcharts')).default;
+  chart = new ApexCharts(element, options);
+  await chart.render();
+});
 
-  onDestroy(() => {
-    chart?.destroy();
-  });
+onDestroy(() => {
+  chart?.destroy();
+});
 </script>
 
 <Card class="shadow-none">

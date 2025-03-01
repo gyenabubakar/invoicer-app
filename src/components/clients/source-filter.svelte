@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
+import { getContext } from 'svelte';
 
-  import * as Select from 'shadcn/select';
+import * as Select from 'shadcn/select';
 
-  import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
-  import { Ph } from '#components/icons';
-  import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
-  import type { ClientsPageContext } from '#components/clients/types';
+import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
+import { Ph } from '#components/icons';
+import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
+import type { ClientsPageContext } from '#components/clients/types';
 
-  const { selectedSource } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
+const { selectedSource } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
 </script>
 
 <Select.Root

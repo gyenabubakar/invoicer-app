@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Project } from '#components/clients';
-  import { useClientsContext } from '#lib/clients/utils';
-  import { FAKE_PROJECTS } from '#lib/fakes';
+import { Project } from '#components/clients';
+import { useClientsContext } from '#lib/clients/utils';
+import { FAKE_PROJECTS } from '#lib/fakes';
 
-  const { client } = useClientsContext();
+const { client } = useClientsContext();
 </script>
 
 <svelte:head>

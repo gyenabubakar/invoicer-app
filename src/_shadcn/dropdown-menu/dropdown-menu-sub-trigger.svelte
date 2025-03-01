@@ -1,19 +1,19 @@
 <script lang="ts">
-  import ChevronRight from 'svelte-radix/ChevronRight.svelte';
-  import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import ChevronRight from 'svelte-radix/ChevronRight.svelte';
+import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    inset,
-    children,
-    ...restProps
-  }: WithoutChild<DropdownMenuPrimitive.SubTriggerProps> & {
-    inset?: boolean;
-  } = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  inset,
+  children,
+  ...restProps
+}: WithoutChild<DropdownMenuPrimitive.SubTriggerProps> & {
+  inset?: boolean;
+} = $props();
 </script>
 
 <DropdownMenuPrimitive.SubTrigger

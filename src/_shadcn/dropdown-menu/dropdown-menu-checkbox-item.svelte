@@ -1,20 +1,20 @@
 <script lang="ts">
-  import Check from 'svelte-radix/Check.svelte';
-  import Minus from 'svelte-radix/Minus.svelte';
-  import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import Check from 'svelte-radix/Check.svelte';
+import Minus from 'svelte-radix/Minus.svelte';
+import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children: childrenProp,
-    checked = $bindable(false),
-    ...restProps
-  }: WithoutChild<DropdownMenuPrimitive.CheckboxItemProps> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children: childrenProp,
+  checked = $bindable(false),
+  ...restProps
+}: WithoutChild<DropdownMenuPrimitive.CheckboxItemProps> = $props();
 
-  export { className as class };
+export { className as class };
 </script>
 
 <DropdownMenuPrimitive.CheckboxItem

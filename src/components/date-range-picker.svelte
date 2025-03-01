@@ -1,35 +1,35 @@
 <script lang="ts" module>
-  import { CalendarDate } from '@internationalized/date';
+import { CalendarDate } from '@internationalized/date';
 
-  export const DEFAULT_DATE_RANGE: DateRange = {
-    start: new CalendarDate(2022, 1, 20),
-    end: new CalendarDate(2022, 1, 20).add({ days: 20 }),
-  };
+export const DEFAULT_DATE_RANGE: DateRange = {
+  start: new CalendarDate(2022, 1, 20),
+  end: new CalendarDate(2022, 1, 20).add({ days: 20 }),
+};
 </script>
 
 <script lang="ts">
-  import { DateFormatter, getLocalTimeZone } from '@internationalized/date';
-  import type { DateValue } from '@internationalized/date';
-  import type { DateRange } from 'bits-ui';
+import { DateFormatter, getLocalTimeZone } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
+import type { DateRange } from 'bits-ui';
 
-  import { Button } from 'shadcn/button';
-  import * as Popover from 'shadcn/popover';
-  import { RangeCalendar } from 'shadcn/range-calendar';
-  import { cn } from 'shadcn/utils';
+import { Button } from 'shadcn/button';
+import * as Popover from 'shadcn/popover';
+import { RangeCalendar } from 'shadcn/range-calendar';
+import { cn } from 'shadcn/utils';
 
-  import { Ph } from '#components/icons';
+import { Ph } from '#components/icons';
 
-  const df = new DateFormatter('en-US', {
-    dateStyle: 'medium',
-  });
+const df = new DateFormatter('en-US', {
+  dateStyle: 'medium',
+});
 
-  type Props = {
-    value: DateRange;
-  };
+type Props = {
+  value: DateRange;
+};
 
-  let { value = $bindable(DEFAULT_DATE_RANGE) }: Props = $props();
+let { value = $bindable(DEFAULT_DATE_RANGE) }: Props = $props();
 
-  let startValue: DateValue | undefined = $state(value?.start);
+let startValue: DateValue | undefined = $state(value?.start);
 </script>
 
 <div class="grid gap-2">

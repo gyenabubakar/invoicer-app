@@ -1,15 +1,15 @@
 <script lang="ts">
-  import MagnifyingGlass from 'svelte-radix/MagnifyingGlass.svelte';
-  import { Command as CommandPrimitive } from 'bits-ui';
+import MagnifyingGlass from 'svelte-radix/MagnifyingGlass.svelte';
+import { Command as CommandPrimitive } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    value = $bindable(''),
-    ...restProps
-  }: CommandPrimitive.InputProps = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  value = $bindable(''),
+  ...restProps
+}: CommandPrimitive.InputProps = $props();
 </script>
 
 <div class="flex items-center border-b px-3" data-command-input-wrapper="">

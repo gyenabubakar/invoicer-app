@@ -1,17 +1,21 @@
 <script lang="ts">
-  import { format } from 'date-fns';
+import { format } from 'date-fns';
 
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
-  import { Badge } from 'shadcn/badge';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+import { Badge } from 'shadcn/badge';
+import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
 
-  import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
-  import { getInitials } from '#lib/utils';
-  import type { FAKE_CLIENTS } from '#lib/fakes';
+import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
+import { getInitials } from '#lib/utils';
+import type { FAKE_CLIENTS } from '#lib/fakes';
 
-  export let client: (typeof FAKE_CLIENTS)[0];
+type Props = {
+  client: (typeof FAKE_CLIENTS)[0];
+};
 
-  $: dateAdded = format(client.createdAt, 'do MMMM, yyyy');
+let { client }: Props = $props();
+
+let dateAdded = $derived(format(client.createdAt, 'do MMMM, yyyy'));
 </script>
 
 <div

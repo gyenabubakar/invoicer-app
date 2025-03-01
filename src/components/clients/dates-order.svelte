@@ -1,18 +1,17 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
+import { getContext } from 'svelte';
 
-  import * as Select from 'shadcn/select';
+import * as Select from 'shadcn/select';
 
-  import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
-  import { Ph } from '#components/icons';
-  import type { ClientsPageContext } from '#components/clients/types';
+import { CLIENTS_PAGE_CTX, onSelectedChange } from '#components/clients/utils';
+import { Ph } from '#components/icons';
+import type { ClientsPageContext } from '#components/clients/types';
 
-  const { datesOrder } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
+const { datesOrder } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
 </script>
 
 <Select.Root
   type="single"
-  controlledValue
   value={datesOrder ?? 'descending'}
   onValueChange={onSelectedChange('order', 'reset')}
 >

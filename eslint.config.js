@@ -28,7 +28,7 @@ export default ts.config(
     },
   },
   {
-    ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/', '.husky/'],
+    ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/', '.husky/', 'src/_shadcn/'],
   },
   {
     rules: {

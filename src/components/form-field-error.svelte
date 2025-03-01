@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { cn } from 'shadcn/utils';
+import { cn } from 'shadcn/utils';
 
-  type Props = {
-    class?: string;
-    message: string | null | undefined;
-    invalid: boolean;
-  };
+type Props = {
+  class?: string;
+  message: string | null | undefined;
+  invalid: boolean;
+};
 
-  let { message, invalid, class: className }: Props = $props();
+let { message, invalid, class: className }: Props = $props();
 </script>
 
 {#if message && invalid}

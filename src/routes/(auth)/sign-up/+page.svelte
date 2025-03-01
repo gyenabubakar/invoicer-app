@@ -1,28 +1,26 @@
 <script lang="ts">
-  import { Button } from 'shadcn/button';
-  import { Input } from 'shadcn/input';
-  import { Label } from 'shadcn/label';
-  import { Separator } from 'shadcn/separator';
+import { Button } from 'shadcn/button';
+import { Input } from 'shadcn/input';
+import { Label } from 'shadcn/label';
+import { Separator } from 'shadcn/separator';
 
-  import { FormFieldError, PasswordInput } from '#components';
-  import { formFieldErrors as fieldErrors, formSchema } from '#lib/form-schemas/signup';
-  import { fieldIsValid } from '#lib/form-schemas/utils';
+import { FormFieldError, PasswordInput } from '#components';
+import { formFieldErrors as fieldErrors, formSchema } from '#lib/form-schemas/signup';
+import { fieldIsValid } from '#lib/form-schemas/utils';
 
-  let firstName = $state('');
-  let lastName = $state('');
-  let email = $state('');
-  let password = $state('');
+let firstName = $state('');
+let lastName = $state('');
+let email = $state('');
+let password = $state('');
 
-  let submitting = false;
+let submitting = false;
 
-  let firstNameIsValid = $derived(fieldIsValid(formSchema, 'firstName', firstName));
-  let lastNameIsValid = $derived(fieldIsValid(formSchema, 'lastName', lastName));
-  let emailIsValid = $derived(fieldIsValid(formSchema, 'email', email));
-  let passwordIsValid = $derived(fieldIsValid(formSchema, 'password', password));
-  let formIsValid = $derived(
-    firstNameIsValid && lastNameIsValid && emailIsValid && passwordIsValid,
-  );
-  let canSubmit = $derived(formIsValid && !submitting);
+let firstNameIsValid = $derived(fieldIsValid(formSchema, 'firstName', firstName));
+let lastNameIsValid = $derived(fieldIsValid(formSchema, 'lastName', lastName));
+let emailIsValid = $derived(fieldIsValid(formSchema, 'email', email));
+let passwordIsValid = $derived(fieldIsValid(formSchema, 'password', password));
+let formIsValid = $derived(firstNameIsValid && lastNameIsValid && emailIsValid && passwordIsValid);
+let canSubmit = $derived(formIsValid && !submitting);
 </script>
 
 <svelte:head>

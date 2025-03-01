@@ -1,20 +1,20 @@
 <!--suppress ReservedWordAsName -->
 <script lang="ts">
-  import { cn } from 'shadcn/utils';
+import { cn } from 'shadcn/utils';
 
-  type Props = {
-    class?: string;
-    withText?: boolean;
-    href?: string | null;
-    hideTextOnExtraSmall?: boolean;
-  };
+type Props = {
+  class?: string;
+  withText?: boolean;
+  href?: string | null;
+  hideTextOnExtraSmall?: boolean;
+};
 
-  let {
-    class: className,
-    withText = false,
-    href = '/',
-    hideTextOnExtraSmall = false,
-  }: Props = $props();
+let {
+  class: className,
+  withText = false,
+  href = '/',
+  hideTextOnExtraSmall = false,
+}: Props = $props();
 </script>
 
 <a data-logo {href} class="flex items-center no-underline" aria-label="Gyen's Invoicer logo">

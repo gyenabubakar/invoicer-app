@@ -1,32 +1,32 @@
 <script lang="ts">
-  import { setContext } from 'svelte';
-  import { page } from '$app/state';
+import { setContext } from 'svelte';
+import { page } from '$app/state';
 
-  import { Button } from 'shadcn/button';
-  import { Input } from 'shadcn/input';
+import { Button } from 'shadcn/button';
+import { Input } from 'shadcn/input';
 
-  import { DatesOrder, FluidClientCard, SourceFilter } from '#components/clients';
-  import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
-  import { Ph } from '#components/icons';
-  import { FAKE_CLIENTS } from '#lib/fakes';
-  import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
+import { DatesOrder, FluidClientCard, SourceFilter } from '#components/clients';
+import { CLIENTS_PAGE_CTX } from '#components/clients/utils';
+import { Ph } from '#components/icons';
+import { FAKE_CLIENTS } from '#lib/fakes';
+import type { ClientsPageContext, DatesOrderType, FilterSource } from '#components/clients/types';
 
-  const selectedSource = $derived.by(() => {
-    return (page.url.searchParams.get('source') || 'all') as FilterSource;
-  });
+const selectedSource = $derived.by(() => {
+  return (page.url.searchParams.get('source') || 'all') as FilterSource;
+});
 
-  const datesOrder = $derived.by(() => {
-    return (page.url.searchParams.get('order') || 'reset') as DatesOrderType;
-  });
+const datesOrder = $derived.by(() => {
+  return (page.url.searchParams.get('order') || 'reset') as DatesOrderType;
+});
 
-  setContext<ClientsPageContext>(CLIENTS_PAGE_CTX, {
-    get selectedSource() {
-      return selectedSource;
-    },
-    get datesOrder() {
-      return datesOrder;
-    },
-  });
+setContext<ClientsPageContext>(CLIENTS_PAGE_CTX, {
+  get selectedSource() {
+    return selectedSource;
+  },
+  get datesOrder() {
+    return datesOrder;
+  },
+});
 </script>
 
 <svelte:head>
@@ -55,7 +55,7 @@
 
       <Button href="/app/clients/new">
         <Ph.UserPlus weight="bold" class="mr-2 h-5 w-5" />
-        Add client
+        Enroll client
       </Button>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { AppLogo } from '#components/logos';
+import { AppLogo } from '#components/logos';
 
-  let { children } = $props();
+let { children } = $props();
 </script>
 
 <main class="flex h-screen w-screen flex-col items-center justify-center">
@@ -11,11 +11,11 @@
 </main>
 
 <style lang="postcss">
-  :global(form) {
-    @apply mx-auto w-full md:w-[400px];
+:global(form) {
+  @apply mx-auto w-full md:w-[400px];
 
-    :global(.header) {
-      @apply mb-8 text-center;
-    }
+  :global(.header) {
+    @apply mb-8 text-center;
   }
+}
 </style>

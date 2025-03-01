@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    sideOffset = 4,
-    ...restProps
-  }: DropdownMenuPrimitive.ContentProps = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  sideOffset = 4,
+  ...restProps
+}: DropdownMenuPrimitive.ContentProps = $props();
 </script>
 
 <DropdownMenuPrimitive.Content

@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
-  import type { WithoutChildrenOrChild } from 'bits-ui';
+import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
+import type { WithoutChildrenOrChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  import * as RangeCalendar from './index.js';
+import * as RangeCalendar from './index.js';
 
-  let {
-    ref = $bindable(null),
-    value = $bindable(),
-    placeholder = $bindable(),
-    class: className,
-    weekdayFormat = 'short',
-    ...restProps
-  }: WithoutChildrenOrChild<RangeCalendarPrimitive.RootProps> = $props();
+let {
+  ref = $bindable(null),
+  value = $bindable(),
+  placeholder = $bindable(),
+  class: className,
+  weekdayFormat = 'short',
+  ...restProps
+}: WithoutChildrenOrChild<RangeCalendarPrimitive.RootProps> = $props();
 </script>
 
 <RangeCalendarPrimitive.Root

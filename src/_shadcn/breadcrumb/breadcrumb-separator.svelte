@@ -1,16 +1,16 @@
 <script lang="ts">
-  import ChevronRight from 'svelte-radix/ChevronRight.svelte';
-  import type { HTMLLiAttributes } from 'svelte/elements';
-  import type { WithElementRef } from 'bits-ui';
+import ChevronRight from 'svelte-radix/ChevronRight.svelte';
+import type { HTMLLiAttributes } from 'svelte/elements';
+import type { WithElementRef } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    ...restProps
-  }: WithElementRef<HTMLLiAttributes> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
+}: WithElementRef<HTMLLiAttributes> = $props();
 </script>
 
 <li

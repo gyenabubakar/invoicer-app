@@ -1,16 +1,16 @@
 <script lang="ts">
-  import CaretSort from 'svelte-radix/CaretSort.svelte';
-  import { Select as SelectPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import CaretSort from 'svelte-radix/CaretSort.svelte';
+import { Select as SelectPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    ...restProps
-  }: WithoutChild<SelectPrimitive.TriggerProps> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
+}: WithoutChild<SelectPrimitive.TriggerProps> = $props();
 </script>
 
 <SelectPrimitive.Trigger

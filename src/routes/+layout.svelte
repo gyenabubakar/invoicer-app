@@ -1,22 +1,22 @@
 <script lang="ts">
-  import '../app.pcss';
+import '../app.pcss';
 
-  import { ModeWatcher } from 'mode-watcher';
+import { ModeWatcher } from 'mode-watcher';
 
-  import { Toaster } from 'shadcn/sonner';
-  import { TooltipProvider } from 'shadcn/tooltip';
+import { Toaster } from 'shadcn/sonner';
+import { TooltipProvider } from 'shadcn/tooltip';
 
-  let { children } = $props();
+let { children } = $props();
 
-  // $: if (browser) {
-  //   $mode;
-  //   const isDark = document.documentElement.classList.contains('dark');
-  //   const logo = isDark ? '/logo-light.svg' : '/logo-dark.svg';
-  //   const linkElement = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
-  //   if (linkElement) {
-  //     linkElement.href = logo;
-  //   }
-  // }
+// $: if (browser) {
+//   $mode;
+//   const isDark = document.documentElement.classList.contains('dark');
+//   const logo = isDark ? '/logo-light.svg' : '/logo-dark.svg';
+//   const linkElement = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+//   if (linkElement) {
+//     linkElement.href = logo;
+//   }
+// }
 </script>
 
 <svelte:head>

@@ -1,47 +1,47 @@
 <script lang="ts">
-  import { toast } from 'svelte-sonner';
-  import { enhance } from '$app/forms';
-  import type { SubmitFunction } from '@sveltejs/kit';
+import { toast } from 'svelte-sonner';
+import { enhance } from '$app/forms';
+import type { SubmitFunction } from '@sveltejs/kit';
 
-  import { Button } from 'shadcn/button';
+import { Button } from 'shadcn/button';
 
-  let resending = $state(false);
-  let count: number | undefined = $state();
-  let interval: number | undefined = $state();
+let resending = $state(false);
+let count: number | undefined = $state();
+let interval: number | undefined = $state();
 
-  let canResend = $derived(!resending && !count);
+let canResend = $derived(!resending && !count);
 
-  const resend: SubmitFunction = ({ cancel }) => {
-    if (!canResend) return cancel();
-    resending = true;
+const resend: SubmitFunction = ({ cancel }) => {
+  if (!canResend) return cancel();
+  resending = true;
 
-    return async ({ update, result }) => {
-      await update();
-      resending = false;
+  return async ({ update, result }) => {
+    await update();
+    resending = false;
 
-      if (result.type === 'success') {
-        toast.success('Verification email sent successfully', {
-          position: 'top-right',
-          duration: 5000,
-        });
-
-        count = 60;
-        interval = setInterval(() => {
-          count = count ? count - 1 : 59;
-          if (count === 0) {
-            clearInterval(interval);
-            count = undefined;
-          }
-        }, 1000);
-        return;
-      }
-
-      toast.error('Failed to send verification email', {
+    if (result.type === 'success') {
+      toast.success('Verification email sent successfully', {
         position: 'top-right',
         duration: 5000,
       });
-    };
+
+      count = 60;
+      interval = setInterval(() => {
+        count = count ? count - 1 : 59;
+        if (count === 0) {
+          clearInterval(interval);
+          count = undefined;
+        }
+      }, 1000);
+      return;
+    }
+
+    toast.error('Failed to send verification email', {
+      position: 'top-right',
+      duration: 5000,
+    });
   };
+};
 </script>
 
 <div id="unverified-email-notice" class="">
@@ -84,7 +84,7 @@
 </div>
 
 <style lang="postcss">
-  #unverified-email-notice {
-    @apply fixed left-0 right-0 top-0 z-50 h-screen w-screen bg-white;
-  }
+#unverified-email-notice {
+  @apply fixed left-0 right-0 top-0 z-50 h-screen w-screen bg-white;
+}
 </style>

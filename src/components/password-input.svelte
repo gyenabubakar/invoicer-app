@@ -1,31 +1,31 @@
 <!--suppress ReservedWordAsName -->
 <script lang="ts">
-  import type { HTMLInputAttributes } from 'svelte/elements';
-  import type { WithElementRef } from 'bits-ui';
+import type { HTMLInputAttributes } from 'svelte/elements';
+import type { WithElementRef } from 'bits-ui';
 
-  import { Input } from 'shadcn/input';
-  import { cn } from 'shadcn/utils';
+import { Input } from 'shadcn/input';
+import { cn } from 'shadcn/utils';
 
-  import { Ph } from '#components/icons';
+import { Ph } from '#components/icons';
 
-  let {
-    class: className,
-    value = $bindable(),
-    ...restProps
-  }: WithElementRef<HTMLInputAttributes> = $props();
+let {
+  class: className,
+  value = $bindable(),
+  ...restProps
+}: WithElementRef<HTMLInputAttributes> = $props();
 
-  let inputElement: HTMLInputElement | null = $state(null);
-  let showingPassword = $state(false);
+let inputElement: HTMLInputElement | null = $state(null);
+let showingPassword = $state(false);
 
-  let EyeComponent = $derived(showingPassword ? Ph.EyeSlash : Ph.Eye);
+let EyeComponent = $derived(showingPassword ? Ph.EyeSlash : Ph.Eye);
 
-  function togglePasswordVisibility() {
-    const currentType = inputElement!.getAttribute('type') as HTMLInputAttributes['type'];
-    const newType = currentType === 'password' ? 'text' : 'password';
+function togglePasswordVisibility() {
+  const currentType = inputElement!.getAttribute('type') as HTMLInputAttributes['type'];
+  const newType = currentType === 'password' ? 'text' : 'password';
 
-    inputElement!.setAttribute('type', newType);
-    showingPassword = newType === 'text';
-  }
+  inputElement!.setAttribute('type', newType);
+  showingPassword = newType === 'text';
+}
 </script>
 
 <div data-input-wrapper class="relative">
@@ -48,8 +48,8 @@
 </div>
 
 <style>
-  :global(input[type='password']),
-  :global(input[type='password']::placeholder) {
-    font-family: sans-serif;
-  }
+:global(input[type='password']),
+:global(input[type='password']::placeholder) {
+  font-family: sans-serif;
+}
 </style>

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Popover as PopoverPrimitive } from 'bits-ui';
+import { Popover as PopoverPrimitive } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    align = 'center',
-    sideOffset = 4,
-    ...restProps
-  }: PopoverPrimitive.ContentProps = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  align = 'center',
+  sideOffset = 4,
+  ...restProps
+}: PopoverPrimitive.ContentProps = $props();
 </script>
 
 <PopoverPrimitive.Portal>

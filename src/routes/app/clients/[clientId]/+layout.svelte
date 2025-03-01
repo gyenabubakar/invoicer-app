@@ -1,57 +1,59 @@
 <script lang="ts">
-  import { setContext } from 'svelte';
-  import { goto } from '$app/navigation';
-  import { page } from '$app/state';
+import { setContext } from 'svelte';
+import { goto } from '$app/navigation';
+import { page } from '$app/state';
 
-  import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
-  import { Button } from 'shadcn/button';
-  import * as Tabs from 'shadcn/tabs';
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+import { Avatar, AvatarFallback, AvatarImage } from 'shadcn/avatar';
+import { Button } from 'shadcn/button';
+import * as Tabs from 'shadcn/tabs';
+import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
 
-  import { ObjectSource } from '#components';
-  import { Ph } from '#components/icons';
-  import { clientsContextKey } from '#lib/clients/utils';
-  import { FAKE_CLIENTS } from '#lib/fakes';
-  import { getInitials } from '#lib/utils';
-  import type { Client } from '#lib/clients/types';
+import { ObjectSource } from '#components';
+import { Ph } from '#components/icons';
+import { clientsContextKey } from '#lib/clients/utils';
+import { FAKE_CLIENTS } from '#lib/fakes';
+import { getInitials } from '#lib/utils';
+import type { Client } from '#lib/clients/types';
 
-  type Tab = 'projects' | 'tasks' | 'invoices';
-  const TABS: Tab[] = ['projects', 'tasks', 'invoices'];
+type Tab = 'projects' | 'tasks' | 'invoices';
+const TABS: Tab[] = ['projects', 'tasks', 'invoices'];
 
-  let { children } = $props();
+let { children } = $props();
 
-  const client: Client = $state({
-    ...FAKE_CLIENTS[0],
-  });
+const client: Client = $state({
+  ...FAKE_CLIENTS[0],
+});
 
-  let currentTab = $derived.by(() => {
-    const pathSegments = page.url.href.split('/').filter(Boolean);
-    const lastSegment = pathSegments.pop();
-    if (lastSegment === 'tasks' || lastSegment === 'invoices') {
-      return lastSegment as Tab;
-    }
-    return 'projects';
-  });
+console.log(client);
 
-  function onTabChange(value: string) {
-    if (!TABS.includes(value as Tab)) return;
+let currentTab = $derived.by(() => {
+  const pathSegments = page.url.href.split('/').filter(Boolean);
+  const lastSegment = pathSegments.pop();
+  if (lastSegment === 'tasks' || lastSegment === 'invoices') {
+    return lastSegment as Tab;
+  }
+  return 'projects';
+});
 
-    let path = `/app/clients/${page.params.clientId}/`;
+function onTabChange(value: string) {
+  if (!TABS.includes(value as Tab)) return;
 
-    const tab = value as Tab;
-    if (tab !== 'projects') {
-      path += tab;
-    }
+  let path = `/app/clients/${page.params.clientId}/`;
 
-    goto(path);
+  const tab = value as Tab;
+  if (tab !== 'projects') {
+    path += tab;
   }
 
-  // noinspection JSUnusedGlobalSymbols
-  setContext(clientsContextKey, {
-    get client() {
-      return client;
-    },
-  });
+  goto(path);
+}
+
+// noinspection JSUnusedGlobalSymbols
+setContext(clientsContextKey, {
+  get client() {
+    return client;
+  },
+});
 </script>
 
 <svelte:head>
@@ -100,7 +102,7 @@
 
         <div role="listitem">
           <span role="term" class="text-muted-foreground">Address:</span>
-          <span role="definition" class="mb-2">{client.address}</span>
+          <span role="definition" class="mb-2">{client.address.street}</span>
         </div>
       </div>
     </div>
@@ -141,17 +143,17 @@
 </main>
 
 <style lang="postcss">
-  .details {
-    a {
-      @apply text-invoicer hover:text-invoicer-dark;
-    }
+.details {
+  a {
+    @apply text-invoicer hover:text-invoicer-dark;
   }
+}
 
-  :global(.details [data-logo]) {
-    @apply !inline-block;
-  }
+:global(.details [data-logo]) {
+  @apply !inline-block;
+}
 
-  :global(h2) {
-    @apply text-2xl font-bold;
-  }
+:global(h2) {
+  @apply text-2xl font-bold;
+}
 </style>

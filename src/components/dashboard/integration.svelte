@@ -1,31 +1,31 @@
 <script lang="ts">
-  import * as AlertDialog from 'shadcn/alert-dialog';
-  import { Badge } from 'shadcn/badge';
-  import { Button } from 'shadcn/button';
-  import { Card } from 'shadcn/card';
-  import { cn } from 'shadcn/utils';
+import * as AlertDialog from 'shadcn/alert-dialog';
+import { Badge } from 'shadcn/badge';
+import { Button } from 'shadcn/button';
+import { Card } from 'shadcn/card';
+import { cn } from 'shadcn/utils';
 
-  import { Ph } from '#components/icons';
-  import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
-  import type { IntegratedApp } from '#components/types';
+import { Ph } from '#components/icons';
+import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
+import type { IntegratedApp } from '#components/types';
 
-  type Props = {
-    app: IntegratedApp;
-    isConnected?: boolean;
-  };
+type Props = {
+  app: IntegratedApp;
+  isConnected?: boolean;
+};
 
-  let { app, isConnected = false }: Props = $props();
+let { app, isConnected = false }: Props = $props();
 
-  let Logo = $derived.by(() => {
-    switch (app) {
-      case 'GitHub':
-        return GitHubLogo;
-      case 'GitLab':
-        return GitLabLogo;
-      default:
-        return null;
-    }
-  });
+let Logo = $derived.by(() => {
+  switch (app) {
+    case 'GitHub':
+      return GitHubLogo;
+    case 'GitLab':
+      return GitLabLogo;
+    default:
+      return null;
+  }
+});
 </script>
 
 <Card

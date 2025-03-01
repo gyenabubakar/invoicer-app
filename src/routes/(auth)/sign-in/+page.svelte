@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { Button } from 'shadcn/button';
-  import { Input } from 'shadcn/input';
-  import { Label } from 'shadcn/label';
-  import { Separator } from 'shadcn/separator';
+import { Button } from 'shadcn/button';
+import { Input } from 'shadcn/input';
+import { Label } from 'shadcn/label';
+import { Separator } from 'shadcn/separator';
 
-  import { Container, FormFieldError, PasswordInput } from '#components';
-  import { formFieldErrors, formSchema } from '#lib/form-schemas/signup';
-  import { fieldIsValid } from '#lib/form-schemas/utils';
+import { Container, FormFieldError, PasswordInput } from '#components';
+import { formFieldErrors, formSchema } from '#lib/form-schemas/signup';
+import { fieldIsValid } from '#lib/form-schemas/utils';
 
-  let email = $state('');
-  let password = $state('');
+let email = $state('');
+let password = $state('');
 
-  let submitting = false;
+let submitting = false;
 
-  let emailIsValid = $derived(fieldIsValid(formSchema, 'email', email));
-  let passwordIsValid = $derived(fieldIsValid(formSchema, 'password', password));
-  let formIsValid = $derived(emailIsValid && passwordIsValid);
-  let canSubmit = $derived(formIsValid && !submitting);
+let emailIsValid = $derived(fieldIsValid(formSchema, 'email', email));
+let passwordIsValid = $derived(fieldIsValid(formSchema, 'password', password));
+let formIsValid = $derived(emailIsValid && passwordIsValid);
+let canSubmit = $derived(formIsValid && !submitting);
 </script>
 
 <svelte:head>
@@ -62,7 +62,7 @@
 </Container>
 
 <style lang="postcss">
-  form {
-    @apply max-w-[100vw];
-  }
+form {
+  @apply max-w-[100vw];
+}
 </style>

@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
-  import { cn } from 'shadcn/utils';
+import { Tooltip, TooltipContent, TooltipTrigger } from 'shadcn/tooltip';
+import { cn } from 'shadcn/utils';
 
-  import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
-  import type { Integration } from '#lib/types';
+import { AppLogo, GitHubLogo, GitLabLogo } from '#components/logos';
+import type { Integration } from '#lib/types';
 
-  let className = '';
-  export { className as class };
-  export let source: Integration;
+type Props = {
+  class?: string;
+  source: Integration;
+};
+
+let { class: className, source }: Props = $props();
 </script>
 
 <Tooltip>

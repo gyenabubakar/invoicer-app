@@ -1,53 +1,53 @@
 <script lang="ts">
-  import { tick } from 'svelte';
-  import { CaretUpDown, Check, Plus } from 'phosphor-svelte';
+import { tick } from 'svelte';
+import { CaretUpDown, Check, Plus } from 'phosphor-svelte';
 
-  import { Button } from 'shadcn/button';
-  import * as Command from 'shadcn/command';
-  import * as Popover from 'shadcn/popover';
-  import { cn } from 'shadcn/utils';
+import { Button } from 'shadcn/button';
+import * as Command from 'shadcn/command';
+import * as Popover from 'shadcn/popover';
+import { cn } from 'shadcn/utils';
 
-  import type { ComboboxOption } from '#components/types';
+import type { ComboboxOption } from '#components/types';
 
-  type Props = {
-    class?: string;
-    open?: boolean;
-    value?: string;
-    options: ComboboxOption[];
-    showAddButton?: boolean;
-    placeholder?: string;
-    searchPlaceholder?: string;
-    addLabel?: string;
-    fallback?: string;
-    onAdd?: () => void;
-  };
+type Props = {
+  class?: string;
+  open?: boolean;
+  value?: string;
+  options: ComboboxOption[];
+  showAddButton?: boolean;
+  placeholder?: string;
+  searchPlaceholder?: string;
+  addLabel?: string;
+  fallback?: string;
+  onAdd?: () => void;
+};
 
-  let {
-    class: className,
-    open = $bindable(false),
-    value = $bindable(''),
-    options = [],
-    showAddButton = false,
-    placeholder = 'Select an item...',
-    searchPlaceholder = 'Search...',
-    addLabel = 'Add new item',
-    fallback = 'No item selected',
-    onAdd,
-  }: Props = $props();
+let {
+  class: className,
+  open = $bindable(false),
+  value = $bindable(''),
+  options = [],
+  showAddButton = false,
+  placeholder = 'Select an item...',
+  searchPlaceholder = 'Search...',
+  addLabel = 'Add new item',
+  fallback = 'No item selected',
+  onAdd,
+}: Props = $props();
 
-  let triggerRef = $state<HTMLButtonElement>(null!);
+let triggerRef = $state<HTMLButtonElement>(null!);
 
-  let selectedOption = $derived(options.find((o) => o.value === value));
-  let selectedValue = $derived(selectedOption?.label ?? placeholder);
+let selectedOption = $derived(options.find((o) => o.value === value));
+let selectedValue = $derived(selectedOption?.label ?? placeholder);
 
-  // We want to refocus the trigger button when the user selects
-  // an item from the list so users can continue navigating the
-  // rest of the form with the keyboard.
-  async function closeAndFocusTrigger() {
-    open = false;
-    await tick();
-    triggerRef.focus();
-  }
+// We want to refocus the trigger button when the user selects
+// an item from the list so users can continue navigating the
+// rest of the form with the keyboard.
+async function closeAndFocusTrigger() {
+  open = false;
+  await tick();
+  triggerRef.focus();
+}
 </script>
 
 <div class="combobox">
@@ -103,15 +103,15 @@
 </div>
 
 <style lang="postcss">
-  .combobox {
-    @apply h-max w-max;
+.combobox {
+  @apply h-max w-max;
 
-    :global(button[role='combobox']) {
-      @apply px-2;
-    }
+  :global(button[role='combobox']) {
+    @apply px-2;
   }
+}
 
-  :global(div[role='option']) {
-    @apply !cursor-pointer;
-  }
+:global(div[role='option']) {
+  @apply !cursor-pointer;
+}
 </style>

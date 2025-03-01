@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { Select as SelectPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import { Select as SelectPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import * as Select from 'shadcn/select/index.js';
-  import { cn } from 'shadcn/utils.js';
+import * as Select from 'shadcn/select/index.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    sideOffset = 4,
-    children,
-    ...restProps
-  }: WithoutChild<SelectPrimitive.ContentProps> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  sideOffset = 4,
+  children,
+  ...restProps
+}: WithoutChild<SelectPrimitive.ContentProps> = $props();
 </script>
 
 <SelectPrimitive.Portal>

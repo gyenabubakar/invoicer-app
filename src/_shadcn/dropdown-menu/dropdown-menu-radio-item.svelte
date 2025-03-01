@@ -1,16 +1,16 @@
 <script lang="ts">
-  import DotFilled from 'svelte-radix/DotFilled.svelte';
-  import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
-  import type { WithoutChild } from 'bits-ui';
+import DotFilled from 'svelte-radix/DotFilled.svelte';
+import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+import type { WithoutChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children: childrenProp,
-    ...restProps
-  }: WithoutChild<DropdownMenuPrimitive.RadioItemProps> = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children: childrenProp,
+  ...restProps
+}: WithoutChild<DropdownMenuPrimitive.RadioItemProps> = $props();
 </script>
 
 <DropdownMenuPrimitive.RadioItem

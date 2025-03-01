@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    inset,
-    ...restProps
-  }: DropdownMenuPrimitive.GroupHeadingProps & {
-    inset?: boolean;
-  } = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  inset,
+  ...restProps
+}: DropdownMenuPrimitive.GroupHeadingProps & {
+  inset?: boolean;
+} = $props();
 </script>
 
 <DropdownMenuPrimitive.GroupHeading

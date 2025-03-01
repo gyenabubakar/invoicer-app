@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Toaster as Sonner } from 'svelte-sonner';
-  import { mode } from 'mode-watcher';
-  import type { ToasterProps as SonnerProps } from 'svelte-sonner';
+import { Toaster as Sonner } from 'svelte-sonner';
+import { mode } from 'mode-watcher';
+import type { ToasterProps as SonnerProps } from 'svelte-sonner';
 
-  let restProps: SonnerProps = $props();
+let restProps: SonnerProps = $props();
 </script>
 
 <Sonner

@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
-  import { scale } from 'svelte/transition';
+import { onDestroy } from 'svelte';
+import { scale } from 'svelte/transition';
 
-  import { Separator } from 'shadcn/separator';
-  import { SidebarInset, SidebarProvider, SidebarTrigger } from 'shadcn/sidebar';
+import { Separator } from 'shadcn/separator';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from 'shadcn/sidebar';
 
-  import { Container } from '#components';
-  import { AppSidebar } from '#components/layouts/app-layout';
-  import { ClientSwitcher } from '#components/layouts/app-layout/index.js';
-  import { AppLayoutContext } from '#lib/context';
-  import type { PropsWithChildren } from '#lib/types/utils';
-  import type { LayoutData } from './$types';
+import { Container } from '#components';
+import { AppSidebar } from '#components/layouts/app-layout';
+import { ClientSwitcher } from '#components/layouts/app-layout/index.js';
+import { AppLayoutContext } from '#lib/context';
+import type { PropsWithChildren } from '#lib/types/utils';
+import type { LayoutData } from './$types';
 
-  type Props = PropsWithChildren<{
-    data: LayoutData;
-  }>;
+type Props = PropsWithChildren<{
+  data: LayoutData;
+}>;
 
-  let { children, data }: Props = $props();
+let { children, data }: Props = $props();
 
-  const _layoutContext = new AppLayoutContext(data);
+const _layoutContext = new AppLayoutContext(data);
 </script>
 
 <!-- TODO: Show this notice only if the user is not verified -->
@@ -29,10 +29,10 @@
     <AppSidebar />
 
     <SidebarInset class="overflow-hidden" style="height: calc(100svh - 1rem)">
-      <header class="flex h-12 shrink-0 items-center gap-2 border-b">
-        <div class="flex items-center gap-2 px-4">
+      <header class="flex h-12 shrink-0 items-center justify-between border-b pr-4">
+        <div class="flex items-center gap-2 pl-4">
           <SidebarTrigger class="-ml-1" />
-          <Separator orientation="vertical" class="mr-2 h-4" />
+          <Separator orientation="vertical" class="h-4" />
         </div>
 
         <ClientSwitcher />
@@ -48,15 +48,15 @@
 </div>
 
 <style lang="postcss">
-  :global(body) {
-    @apply overflow-hidden;
-  }
+:global(body) {
+  @apply overflow-hidden;
+}
 
-  #main {
-    scrollbar-color: theme(colors.slate.300) transparent;
+#main {
+  scrollbar-color: theme(colors.slate.300) transparent;
 
-    :global(h1) {
-      @apply text-4xl font-semibold;
-    }
+  :global(h1) {
+    @apply text-4xl font-semibold;
   }
+}
 </style>

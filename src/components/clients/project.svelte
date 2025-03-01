@@ -1,39 +1,39 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { get } from 'svelte/store';
-  import { goto } from '$app/navigation';
-  import { page } from '$app/state';
+import { onMount } from 'svelte';
+import { get } from 'svelte/store';
+import { goto } from '$app/navigation';
+import { page } from '$app/state';
 
-  import { Badge } from 'shadcn/badge';
-  import { Card, CardContent, CardHeader } from 'shadcn/card';
-  import { Progress } from 'shadcn/progress';
-  import { cn } from 'shadcn/utils';
+import { Badge } from 'shadcn/badge';
+import { Card, CardContent, CardHeader } from 'shadcn/card';
+import { Progress } from 'shadcn/progress';
+import { cn } from 'shadcn/utils';
 
-  import { ProjectDetailsModal } from '#components/clients/index';
-  import type { ClientProject } from '#lib/clients/types';
+import { ProjectDetailsModal } from '#components/clients/index';
+import type { ClientProject } from '#lib/clients/types';
 
-  type Props = {
-    project: ClientProject;
-  };
+type Props = {
+  project: ClientProject;
+};
 
-  let { project }: Props = $props();
+let { project }: Props = $props();
 
-  let modalOpen = $state(false);
+let modalOpen = $state(false);
 
-  let statusClass: 'success' | 'neutral' = $derived(
-    project.status === 'Active' ? 'success' : 'neutral',
-  );
+let statusClass: 'success' | 'neutral' = $derived(
+  project.status === 'Active' ? 'success' : 'neutral',
+);
 
-  function handleOpenProject() {
-    goto(`${page.url.href}?projectId=${project.id}`);
+function handleOpenProject() {
+  goto(`${page.url.href}?projectId=${project.id}`);
+}
+
+onMount(() => {
+  const projectId = page.url.searchParams.get('projectId');
+  if (projectId === project.id) {
+    modalOpen = true;
   }
-
-  onMount(() => {
-    const projectId = page.url.searchParams.get('projectId');
-    if (projectId === project.id) {
-      modalOpen = true;
-    }
-  });
+});
 </script>
 
 <ProjectDetailsModal {modalOpen} {project} {statusClass}>
@@ -68,7 +68,7 @@
 </ProjectDetailsModal>
 
 <style lang="postcss">
-  :global([data-progress] > div) {
-    background-color: var(--color);
-  }
+:global([data-progress] > div) {
+  background-color: var(--color);
+}
 </style>

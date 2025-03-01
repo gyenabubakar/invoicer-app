@@ -1,21 +1,21 @@
 <script lang="ts">
-  import Cross2 from 'svelte-radix/Cross2.svelte';
-  import { Dialog as DialogPrimitive } from 'bits-ui';
-  import type { Snippet } from 'svelte';
-  import type { WithoutChildrenOrChild } from 'bits-ui';
+import Cross2 from 'svelte-radix/Cross2.svelte';
+import { Dialog as DialogPrimitive } from 'bits-ui';
+import type { Snippet } from 'svelte';
+import type { WithoutChildrenOrChild } from 'bits-ui';
 
-  import { cn } from 'shadcn/utils.js';
+import { cn } from 'shadcn/utils.js';
 
-  import * as Dialog from './index.js';
+import * as Dialog from './index.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    ...restProps
-  }: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {
-    children: Snippet;
-  } = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
+}: WithoutChildrenOrChild<DialogPrimitive.ContentProps> & {
+  children: Snippet;
+} = $props();
 </script>
 
 <Dialog.Portal>

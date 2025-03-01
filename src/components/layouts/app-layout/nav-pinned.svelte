@@ -1,45 +1,45 @@
 <script lang="ts" module>
-  export type PinnedItem = {
-    id: string;
-    title: string;
-    type: 'Project' | 'Client' | 'Task' | 'Invoice';
-    emoji: string;
-  };
+export type PinnedItem = {
+  id: string;
+  title: string;
+  type: 'Project' | 'Client' | 'Task' | 'Invoice';
+  emoji: string;
+};
 </script>
 
 <script lang="ts">
-  import { goto } from '$app/navigation';
+import { goto } from '$app/navigation';
 
-  import * as DropdownMenu from 'shadcn/dropdown-menu';
-  import * as Sidebar from 'shadcn/sidebar';
-  import { useSidebar } from 'shadcn/sidebar';
+import * as DropdownMenu from 'shadcn/dropdown-menu';
+import * as Sidebar from 'shadcn/sidebar';
+import { useSidebar } from 'shadcn/sidebar';
 
-  import { Ph } from '#components/icons';
+import { Ph } from '#components/icons';
 
-  type Props = {
-    items: PinnedItem[];
-  };
+type Props = {
+  items: PinnedItem[];
+};
 
-  let { items }: Props = $props();
+let { items }: Props = $props();
 
-  const sidebar = useSidebar();
+const sidebar = useSidebar();
 
-  function getURL(item: PinnedItem) {
-    switch (item.type) {
-      case 'Project':
-        return `/app/clients?project=${item.id}`;
-      case 'Client':
-        return `/app/clients/${item.id}`;
-      case 'Task':
-        return `/app/tasks/${item.id}`;
-      case 'Invoice':
-        return `/app/invoices/${item.id}`;
-    }
+function getURL(item: PinnedItem) {
+  switch (item.type) {
+    case 'Project':
+      return `/app/clients?project=${item.id}`;
+    case 'Client':
+      return `/app/clients/${item.id}`;
+    case 'Task':
+      return `/app/tasks/${item.id}`;
+    case 'Invoice':
+      return `/app/invoices/${item.id}`;
   }
+}
 
-  function unpin(item: PinnedItem) {
-    console.log('Unpinning item:', item);
-  }
+function unpin(item: PinnedItem) {
+  console.log('Unpinning item:', item);
+}
 </script>
 
 <Sidebar.Group class="group-data-[collapsible=icon]:hidden">

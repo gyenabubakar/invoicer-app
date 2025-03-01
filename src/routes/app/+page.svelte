@@ -1,28 +1,28 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { page } from '$app/state';
+import { goto } from '$app/navigation';
+import { page } from '$app/state';
 
-  import { Separator } from 'shadcn/separator';
-  import * as Tabs from 'shadcn/tabs';
+import { Separator } from 'shadcn/separator';
+import * as Tabs from 'shadcn/tabs';
 
-  import { DateRangePicker, DEFAULT_DATE_RANGE } from '#components';
-  import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
-  import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
+import { DateRangePicker, DEFAULT_DATE_RANGE } from '#components';
+import { Integration, Metric, MetricGraph, RecentInvoice } from '#components/dashboard';
+import { FAKE_AVATAR, FAKE_GRAPH_DATA } from '#lib/fakes';
 
-  let dateRange = $state(DEFAULT_DATE_RANGE);
+let dateRange = $state(DEFAULT_DATE_RANGE);
 
-  let defaultTab = $derived(page.url.searchParams.get('numberOfDays') || '30');
+let defaultTab = $derived(page.url.searchParams.get('numberOfDays') || '30');
 
-  function onTabChange(value?: string) {
-    if (!value) return;
+function onTabChange(value?: string) {
+  if (!value) return;
 
-    const url = new URL(location.href);
-    url.searchParams.set('numberOfDays', value);
+  const url = new URL(location.href);
+  url.searchParams.set('numberOfDays', value);
 
-    if (value === '30') url.searchParams.delete('numberOfDays');
+  if (value === '30') url.searchParams.delete('numberOfDays');
 
-    goto(url.toString(), { replaceState: true });
-  }
+  goto(url.toString(), { replaceState: true });
+}
 </script>
 
 <svelte:head>
@@ -149,5 +149,5 @@
 </main>
 
 <style lang="postcss">
-  /* #metrics {} */
+/* #metrics {} */
 </style>

@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { Badge } from 'shadcn/badge';
-  import { Card } from 'shadcn/card';
-  import { cn } from 'shadcn/utils';
+import { Badge } from 'shadcn/badge';
+import { Card } from 'shadcn/card';
+import { cn } from 'shadcn/utils';
 
-  import { METRICS_COLOURS, METRICS_ICONS, METRICS_TITLES } from '#components/dashboard/constants';
-  import { Ph } from '#components/icons';
+import { METRICS_COLOURS, METRICS_ICONS, METRICS_TITLES } from '#components/dashboard/constants';
+import { Ph } from '#components/icons';
 
-  type MetricProps = {
-    key: keyof typeof METRICS_COLOURS;
-    value: string;
-    trend: 'up' | 'down';
-    trendValue: number;
-  };
+type MetricProps = {
+  key: keyof typeof METRICS_COLOURS;
+  value: string;
+  trend: 'up' | 'down';
+  trendValue: number;
+};
 
-  let { key, value, trend, trendValue }: MetricProps = $props();
+let { key, value, trend, trendValue }: MetricProps = $props();
 
-  let colour = $derived(METRICS_COLOURS[key]);
-  let title = $derived(METRICS_TITLES[key]);
-  let Icon = $derived(METRICS_ICONS[key]);
-  let TrendIcon = $derived(trend === 'up' ? Ph.ArrowUp : Ph.ArrowDown);
+let colour = $derived(METRICS_COLOURS[key]);
+let title = $derived(METRICS_TITLES[key]);
+let Icon = $derived(METRICS_ICONS[key]);
+let TrendIcon = $derived(trend === 'up' ? Ph.ArrowUp : Ph.ArrowDown);
 </script>
 
 <Card data-metric class="shadow-none">
@@ -47,31 +47,31 @@
 </Card>
 
 <style lang="postcss">
-  :global([data-metric]) {
-    @apply p-4;
+:global([data-metric]) {
+  @apply p-4;
 
-    [data-metric-value] {
-      @apply flex items-center justify-between;
+  [data-metric-value] {
+    @apply flex items-center justify-between;
 
-      span[data-metric-value-actual] {
-        @apply text-3xl font-semibold;
-      }
-
-      :global([data-metric-trend]) {
-        @apply rounded-full text-sm;
-      }
-
-      :global([data-metric-trend].trend-down) {
-        @apply border-red-300 bg-red-50 text-red-500;
-      }
-
-      :global([data-metric-trend].trend-up) {
-        @apply border-green-300 bg-green-50 text-green-500;
-      }
+    span[data-metric-value-actual] {
+      @apply text-3xl font-semibold;
     }
 
-    p {
-      @apply text-muted-foreground;
+    :global([data-metric-trend]) {
+      @apply rounded-full text-sm;
+    }
+
+    :global([data-metric-trend].trend-down) {
+      @apply border-red-300 bg-red-50 text-red-500;
+    }
+
+    :global([data-metric-trend].trend-up) {
+      @apply border-green-300 bg-green-50 text-green-500;
     }
   }
+
+  p {
+    @apply text-muted-foreground;
+  }
+}
 </style>

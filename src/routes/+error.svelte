@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { page } from '$app/state';
+import { page } from '$app/state';
 
-  import { Button } from 'shadcn/button';
+import { Button } from 'shadcn/button';
 </script>
 
 <div class="flex h-screen w-screen items-center justify-center">

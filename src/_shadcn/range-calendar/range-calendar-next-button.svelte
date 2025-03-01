@@ -1,16 +1,16 @@
 <script lang="ts">
-  import ChevronRight from 'svelte-radix/ChevronRight.svelte';
-  import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
+import ChevronRight from 'svelte-radix/ChevronRight.svelte';
+import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 
-  import { buttonVariants } from 'shadcn/button/index.js';
-  import { cn } from 'shadcn/utils.js';
+import { buttonVariants } from 'shadcn/button/index.js';
+import { cn } from 'shadcn/utils.js';
 
-  let {
-    ref = $bindable(null),
-    class: className,
-    children,
-    ...restProps
-  }: RangeCalendarPrimitive.NextButtonProps = $props();
+let {
+  ref = $bindable(null),
+  class: className,
+  children,
+  ...restProps
+}: RangeCalendarPrimitive.NextButtonProps = $props();
 </script>
 
 {#snippet Fallback()}
