@@ -1,5 +1,5 @@
 <script lang="ts">
-import DotsHorizontal from 'svelte-radix/DotsHorizontal.svelte';
+import Ellipsis from 'lucide-svelte/icons/ellipsis';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { WithElementRef, WithoutChildren } from 'bits-ui';
 
@@ -19,6 +19,6 @@ let {
   class={cn('flex size-9 items-center justify-center', className)}
   {...restProps}
 >
-  <DotsHorizontal class="size-4 outline-none" tabindex={-1} />
+  <Ellipsis class="size-4" />
   <span class="sr-only">More</span>
 </span>

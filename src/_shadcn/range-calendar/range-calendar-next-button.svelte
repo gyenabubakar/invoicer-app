@@ -1,6 +1,6 @@
 <script lang="ts">
-import ChevronRight from 'svelte-radix/ChevronRight.svelte';
 import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
+import ChevronRight from 'lucide-svelte/icons/chevron-right';
 
 import { buttonVariants } from 'shadcn/button/index.js';
 import { cn } from 'shadcn/utils.js';
@@ -14,7 +14,7 @@ let {
 </script>
 
 {#snippet Fallback()}
-  <ChevronRight class="size-4" />
+  <ChevronRight />
 {/snippet}
 
 <RangeCalendarPrimitive.NextButton

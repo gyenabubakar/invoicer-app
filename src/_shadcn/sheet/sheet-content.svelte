@@ -23,8 +23,8 @@ export type Side = VariantProps<typeof sheetVariants>['side'];
 </script>
 
 <script lang="ts">
-import Cross2 from 'svelte-radix/Cross2.svelte';
 import { Dialog as SheetPrimitive } from 'bits-ui';
+import X from 'lucide-svelte/icons/x';
 import type { Snippet } from 'svelte';
 import type { WithoutChildrenOrChild } from 'bits-ui';
 
@@ -35,23 +35,25 @@ import SheetOverlay from './sheet-overlay.svelte';
 let {
   ref = $bindable(null),
   class: className,
+  portalProps,
   side = 'right',
   children,
   ...restProps
 }: WithoutChildrenOrChild<SheetPrimitive.ContentProps> & {
+  portalProps?: SheetPrimitive.PortalProps;
   side?: Side;
   children: Snippet;
 } = $props();
 </script>
 
-<SheetPrimitive.Portal>
+<SheetPrimitive.Portal {...portalProps}>
   <SheetOverlay />
   <SheetPrimitive.Content bind:ref class={cn(sheetVariants({ side }), className)} {...restProps}>
     {@render children?.()}
     <SheetPrimitive.Close
       class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
     >
-      <Cross2 class="size-4" />
+      <X class="size-4" />
       <span class="sr-only">Close</span>
     </SheetPrimitive.Close>
   </SheetPrimitive.Content>

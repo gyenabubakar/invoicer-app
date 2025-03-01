@@ -1,6 +1,6 @@
 <script lang="ts">
-import ChevronUp from 'svelte-radix/ChevronUp.svelte';
 import { Select as SelectPrimitive } from 'bits-ui';
+import ChevronUp from 'lucide-svelte/icons/chevron-up';
 import type { WithoutChildrenOrChild } from 'bits-ui';
 
 import { cn } from 'shadcn/utils.js';

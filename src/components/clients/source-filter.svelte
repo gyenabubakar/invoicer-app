@@ -11,12 +11,7 @@ import type { ClientsPageContext } from '#components/clients/types';
 const { selectedSource } = getContext<ClientsPageContext>(CLIENTS_PAGE_CTX);
 </script>
 
-<Select.Root
-  type="single"
-  controlledValue
-  value={selectedSource}
-  onValueChange={onSelectedChange('source', 'all')}
->
+<Select.Root type="single" value={selectedSource} onValueChange={onSelectedChange('source', 'all')}>
   <Select.Trigger class="relative flex w-[150px] shadow-none">
     <div data-dot class:visible={selectedSource !== 'all'}></div>
 

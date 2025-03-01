@@ -8,11 +8,9 @@ import { cn } from 'shadcn/utils';
 
 import { Ph } from '#components/icons';
 
-let {
-  class: className,
-  value = $bindable(),
-  ...restProps
-}: WithElementRef<HTMLInputAttributes> = $props();
+type Props = WithElementRef<Omit<HTMLInputAttributes, 'type'>>;
+
+let { class: className, value = $bindable(), ...restProps }: Props = $props();
 
 let inputElement: HTMLInputElement | null = $state(null);
 let showingPassword = $state(false);

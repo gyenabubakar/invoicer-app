@@ -29,14 +29,15 @@ let { avatar, client, invoiceNumber, invoiceStatus }: Props = $props();
     style="width: calc(100% - (50px + 12px));"
   >
     <div class="truncate">
-      <Badge data-invoice-status class={cn(invoiceStatus.toLowerCase())}>
-        {invoiceStatus}
-      </Badge>
       <p
         class="mt-0.5 items-center overflow-clip text-ellipsis text-base leading-5 text-muted-foreground"
       >
         &nbsp;<span class="inline font-medium text-black">#{invoiceNumber}</span>&nbsp;&nbsp;sent to {client}.
       </p>
+
+      <Badge data-invoice-status class={cn(invoiceStatus.toLowerCase())}>
+        {invoiceStatus}
+      </Badge>
     </div>
 
     <Button variant="outline" size="sm" class="">View</Button>
